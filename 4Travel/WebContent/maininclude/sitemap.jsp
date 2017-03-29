@@ -6,11 +6,14 @@
 	$(document).ready(function() {
 	 
 		$("#package").on("mouseover",function(event) {	
-			
 			$(".siteMapList").toggle();
+			$(".siteMapList").css("display","block"); 
 		});
 		$(".siteMapList").css("padding","0px;");
-		$(".siteMapList").css("display","table");
+		$(".siteMapList").on("mouseout",function(event) {	
+			$(".siteMapList").css("display","none"); 
+		});
+		
 		
 	});
 			</script>
@@ -38,7 +41,7 @@
                 <div class="list-group">
                     <a href="index.html" class="list-group-item">Home</a>
                     <a href="#" class="list-group-item" id = "package">패키지</a>
-                    <ul class="siteMapList" style="diplay:none;">
+                    <ul class="siteMapList" style="display:none;">
                     <a href ="PackageFirstALLController?loc=동남아"><li class="list-group-item">동남아/대만</li></a>
                     <a href ="PackageFirstALLController?loc=중국"><li class="list-group-item">중국/홍콩</li></a>
                     <a href ="PackageFirstALLController?loc=일본"><li class="list-group-item">일본</li></a>

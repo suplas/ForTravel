@@ -23,7 +23,7 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-
+   <link href="css/mainSerch.css" rel="stylesheet">
 <jsp:include  page="maininclude/navi.jsp" flush="true"/>
 <jsp:include page="board/reviewBoard.jsp" flush="true"/>
 </body>
