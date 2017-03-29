@@ -35,7 +35,7 @@ $(document).ready(function(){
 			console.log($.trim($(this).next().next().next(".reple").attr("style"))=='display: block;');
 		});//end rdeplebutton event
 		
-		$(".rprpformButton").on("click",function(event){
+		$("body").on("click",".rprpformButton",function(event){
 			console.log($(this).closest(".rprpform"));
 			var queryString = $(this).closest(".rprpform").serialize() ;
 			console.log(queryString);
@@ -75,7 +75,7 @@ $(document).ready(function(){
 					By ${list.userid} <small>${list.writeday}</small>
 				</h4>
 				<pre style="background: none; border: 0;">${list.content}</pre>
-			<button class="replebutton btn btn-primary" style="display: inline; size: ">댓글 달기</button>
+				<span class="replebutton label label-success" style="cursor: pointer;">답글 달기</span>
 			<br/><br/>
 			<div class="reple well" style="display: none;">
 				<h4>Leave a Comment:</h4>

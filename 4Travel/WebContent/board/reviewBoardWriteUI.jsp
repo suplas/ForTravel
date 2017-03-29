@@ -1,28 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script>
 
+<script>
         $(document).ready(function(){
             function readURL(input) {
                 if (input.files && input.files[0]) {
+                	//console.log(input.files);
+                	//console.log(input.files[0]);
                     var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
                     reader.onload = function (e) {
                     //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-                        $('#blah').attr('src', e.target.result);
+                        $('#blah').append($('<img/>', {
+                            src: e.target.result,
+                        }));
+                        $('#blah').append('<br/>');
+                        $('#blah').append('<br/>'); 
+                    	///* $('#blah').attr('src', e.target.result); */
                         //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
                         //(아래 코드에서 읽어들인 dataURL형식)
                     }                   
-                    reader.readAsDataURL(input.files[0]);
                     //File내용을 읽어 dataURL형식의 문자열로 저장
+                    reader.readAsDataURL(input.files[0]); 
+                	//console.log($(".imgInp").val());
+                	//console.log($(".imgInp"));
+                	//console.log($(".imgInp")[0].files);
+                	//console.log($(".imgInp")[0].files[0]);
                 }
             }//readURL()--
    
             //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-            $("#imgInp").change(function(){
+            $("body").on("change",".imgInp",function(){
                 //alert(this.value); //선택한 이미지 경로 표시
+                var fileNm = this.value();
+ 
+				if (fileNm != "") {
+ 
+				    var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();
+ 
+    			if (!(ext == "gif" || ext == "jpg" || ext == "png")) {
+        			alert("이미지파일 (.jpg, .png, .gif ) 만 업로드 가능합니다.");
+       				 return false;
+    				}
+ 
+}
+
                 readURL(this);
+                
+                $(this).after("<input type='file' name='theFile' class='imgInp' ><br />");
+                
+                $(this).css("display","none");
+                //$("#realFile")[0].files[$(".imgInp").length-1]=$(this)[0].files[0];
+                //$("#realFile")[0].files.length=$(".imgInp").length; 
+                //console.log($("#realFile")[0].files);
+                //console.log($("#realFile")[0].files.length);
             });
-         });
+        });
   
   </script>    
     
@@ -54,11 +86,12 @@
 		<option value="교토">교토</option>
 		</select><br/><br/>
 		 제목:  <input type="text" name="title" size="124"><br /> <br /> 
-					<img id="blah" src="#" alt="사진도 같이 올려보세요" />
-					<input type="file" name="theFile" id="imgInp"><br />
+		 <div id="blah"></div>
+					<!-- <img id="blah" src="#" alt="사진도 같이 올려보세요" /> -->
+					<input type="file" name="theFile" class="imgInp" ><br />
 			</div>
 			<div class="col-md-6">
-				<p><textarea rows="20" cols="130" name="content"></textarea></p>
+				<p><textarea rows="20" cols="130" id="content" name="content" ></textarea></p>
 				<a class="btn btn-primary" href="javascript:form1.submit();">글작성 <i
 					class="fa fa-angle-right"></i></a>
 			</div>

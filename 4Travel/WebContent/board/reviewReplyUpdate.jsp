@@ -11,7 +11,6 @@
     
     <%
     String content=request.getParameter("rprpContent");
-    String num=request.getParameter("num");
     String repRoot=request.getParameter("repRoot");
     String repStep=request.getParameter("repStep");
     String repIndent=request.getParameter("repIndent");
@@ -21,7 +20,6 @@
     
     rpDTO.setContent(content);
 	rpDTO.setUserid(mdto.getUserid());
-	rpDTO.setNum(Integer.parseInt(reviewNum));
 	rpDTO.setRepRoot(Integer.parseInt(repRoot));
 	rpDTO.setRepStep(Integer.parseInt(repStep));
 	rpDTO.setRepIndent(Integer.parseInt(repIndent));
@@ -53,7 +51,7 @@
 			<c:forEach begin="0" end="${list.repIndent}">
 
 			<a class="pull-left" href="#">
-					<div class="media-object" >&nbsp;&nbsp;</div>
+					<div class="media-object" >&nbsp;&nbsp;&nbsp;&nbsp;</div>
 			</a>
 				</c:forEach>
 			<a class="pull-left" href="#">
@@ -64,8 +62,8 @@
 				<h4 class="media-heading">
 					By ${list.userid} <small>${list.writeday}</small>
 				</h4>
-				<pre>${list.content}</pre>
-			<button class="replebutton btn btn-primary">댓글 달기</button>
+				<pre style="background: none; border: 0;">${list.content}</pre>
+				<span class="replebutton label label-success" style="cursor: pointer;">답글 달기</span>
 			<br/><br/>
 			<div class="reple well" style="display: none;">
 				<h4>Leave a Comment:</h4>
@@ -78,12 +76,11 @@
 					<input type="hidden" name="repRoot" value="${list.repRoot}">
 					<input type="hidden" name="repStep" value="${list.repStep}">
 					<input type="hidden" name="repIndent" value="${list.repIndent}">
-					<input type="hidden" name="reviewNum" value="${boardRetrieve.num}">
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<input type="hidden" name="reviewNum" value="<%=reviewNum%>">
+					<button type="button" class="rprpformButton btn btn-primary">Submit</button>
 				</form>
 			</div>
 			</div>
 		</div>
-		<hr>
 	</c:forEach>
 	<!-- Comment -->

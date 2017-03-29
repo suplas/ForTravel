@@ -101,10 +101,12 @@
 				<p>${dto.writeday}</p>
 			</div>
 			<c:if test="${dto.image1 !=null}">
+			<c:set var="image_array" value="${fn:split(dto.image1,'/')}" />
 				<div class="col-md-5">
-					<a href="#"> <img class="img-responsive img-hover"
-						src="/4Travel/images/${dto.image1}" width="300px" height="180px"  alt="">
-					</a>
+					<a href="#"> 
+					<img class="img-responsive img-hover"
+						src="/4Travel/images/${image_array[1]}" width="300px" height="180px"  alt="">
+				</a>
 				</div>
 			</c:if>
 			<div class="col-md-6">
@@ -142,7 +144,7 @@
 					</c:if>
 					<c:if test="${curpage!=i}">
 					<li>
-                        <a href="ReviewBoardController?travelNation=${travelNation}&travelLoc=${travelLoc}&orders=readcnt&searchName=${searchName}&searchValue=${searchValue}&curpage=${i}">${i}</a>
+                        <a href="ReviewBoardController?travelNation=${travelNation}&travelLoc=${travelLoc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}&curpage=${i}">${i}</a>
                     </li>
 					</c:if>
 				</c:forEach>

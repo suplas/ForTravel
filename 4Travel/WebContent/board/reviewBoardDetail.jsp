@@ -40,19 +40,22 @@ padding:0;
 
 			<!-- Date/Time -->
 			<p>
-				<i class="fa fa-clock-o"></i> Posted on ${boardRetrieve.writeday}
+			<p class="lead">${boardRetrieve.title}</p>	<i class="fa fa-clock-o"></i> Posted on ${boardRetrieve.writeday}
 			</p>
 
-			<hr>
 
 			<!-- Preview Image -->
-			<img class="img-responsive"
-				src="/4Travel/images/${boardRetrieve.image1}" alt="">
-
+			<c:if test="${boardRetrieve.image1 != null}">
 			<hr>
+			<c:set var="image_array" value="${fn:split(boardRetrieve.image1,'/')}" />
+			<c:forEach var="image" items="${image_array}" varStatus="s">
+			<img class="img-responsive"
+				src="/4Travel/images/${image}" alt=""><br/><br/>
+				</c:forEach>
+			</c:if>
 
 			<!-- Post Content -->
-			<p class="lead">${boardRetrieve.title}</p>
+			
 			<p>
 			<pre>${boardRetrieve.content}</pre>
 			</p>

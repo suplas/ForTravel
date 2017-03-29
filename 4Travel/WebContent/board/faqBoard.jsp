@@ -6,10 +6,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">FAQ
-                    <small>Subheading</small>
+                    <small>자주 묻는 질문</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
+                    <li><a href="Home">Home</a>
                     </li>
                     <li class="active">FAQ</li>
                 </ol>
