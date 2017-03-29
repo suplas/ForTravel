@@ -9,6 +9,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+   <link href="css/mainSerch.css" rel="stylesheet">
  <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->

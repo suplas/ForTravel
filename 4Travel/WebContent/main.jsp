@@ -5,29 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.TotalSerch{ 
-	position: absolute;
-	top : 7%; 
-	left : 40%; 
-}
-.serchinput{
-	border: 0px;
-}
-#logimg{
-	position : absolute;
-	top : 4%;
-	left : 30%;
-}
 
-.spanmenu{
-	position: absolute;
-	top: 2%;
-	left:76%;  
-	font-size: 10px; 
-}
 </style>
     <!-- Bootstrap Core CSS -->
+     <link href="css/mainSerch.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
