@@ -10,6 +10,7 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/background01.jpg"> -->
 <title>Insert title here</title>
+<link href="css/mainSerch.css" rel="stylesheet">
    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -23,7 +24,7 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-   <link href="css/mainSerch.css" rel="stylesheet">
+   <jsp:include page="maininclude/Serch.jsp" flush="true"/>
 <jsp:include  page="maininclude/navi.jsp" flush="true"/>
 <jsp:include page="board/reviewBoard.jsp" flush="true"/>
 </body>
