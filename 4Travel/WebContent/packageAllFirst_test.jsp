@@ -209,9 +209,9 @@
 			var sc = $(document).scrollTop();
 			var dHeight = $("body").height();
 			var wHeight = $(window).height();
-			console.log(sc);
+			/* console.log(sc); */
 			if(sc == (dHeight - wHeight)){
-				console.log("nnn");
+				/* console.log("nnn"); */
 			}
 		});
 	</script>
