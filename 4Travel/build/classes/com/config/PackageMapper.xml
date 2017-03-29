@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fortravel.PackageMapper">
+ 	<select id="packageAllList" parameterType="string" resultType="PackageThirdDTO">
+ 		select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
+ 		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg
+ 		from packagedb
+ 		where PACKAGENAME = #{packagename}
+ 	</select>
+ 	<select id="selectCountList" parameterType="String" resultType="int">
+ 		select count(*) as cnt
+ 		from packagedb
+ 		where PACKAGENAME = #{packagename} 
+ 	</select>
+    <select id="packageList" parameterType="string" resultType="PackageThirdDTO">
+    	select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
+ 		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg
+ 		from packagedb
+ 		where city = #{city}
+    </select>
+    
+     <select id="countryAllList" parameterType="string" resultType="PackageFirstDTO">
+    	select packageno,packagename,price,image,term,loc from packagemain
+    	where loc = #{loc}
+    	order by price asc
+    </select>
+    <select id="packageNewlist" resultType="PackageThirdDTO">
+ 		select packagename,COMPANY,doorimg,AIRLINE,price,STARTDATE,LASTDATE,loc,term
+ 		from packagedb
+ 		order by packageno
+ 	</select>
+ 	<!-- <update id="recentlyPackage" parameterType="MemberDTO">
+		update member
+		set packageno = #{packageno}
+		where userid = #{userid}
+	</update> -->
+ 	
+</mapper>

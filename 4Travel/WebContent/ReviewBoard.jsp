@@ -23,6 +23,7 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <jsp:include  page="maininclude/navi.jsp" flush="true"/>
 <jsp:include page="board/reviewBoard.jsp" flush="true"/>
 </body>

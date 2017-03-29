@@ -19,6 +19,7 @@
     <script src="js/bootstrap.min.js"></script> 
 </head>
 <body>
+<jsp:include page="maininclude/Serch.jsp" flush="true"/>
 <jsp:include page="maininclude/navi.jsp" flush="true"/>
 <jsp:include page="packageInclude/packageAllFirst.jsp" flush="true"/>
 </body>

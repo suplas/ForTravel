@@ -23,7 +23,7 @@ import com.exception.CommonException;
 public class HomeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int num = 3;
+		int readcnt = 0;
 		int page=0;
 		int totalPage = 0;
 		if(request.getParameter("page")==""||request.getParameter("page")==null){//페이지번호가 없으면 기본값 1 삽입			
@@ -42,7 +42,7 @@ public class HomeController extends HttpServlet {
 			List<PackageThirdDTO> list = service.packageNewlist();
 			request.setAttribute("Plist", list);
 			target="main.jsp";
-			List<ReviewBoardDTO> list2 = biz.bestredcnt(num);
+			List<ReviewBoardDTO> list2 = biz.bestredcnt(readcnt);
 			request.setAttribute("Plist2", list2);
 		
 			

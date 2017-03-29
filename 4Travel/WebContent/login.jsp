@@ -19,6 +19,7 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<jsp:include page="maininclude/Serch.jsp" flush="true"/>
 <jsp:include page="maininclude/navi.jsp" flush="true" />
 <jsp:include page="maininclude/login.jsp" flush="true" />
 
