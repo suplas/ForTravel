@@ -17,9 +17,29 @@
 		$("#002").css("left","65%");
 		$("#002box").css("background-color","orange");
 		$("#002box").css("color","white"); 
-	
-	});
 		
+		$("#api").css("position","fixed");
+		$("#api").css("left","88%");
+		$("#api").css("top","75%");
+		
+		$(window).scroll(function(){
+			
+			var sc = $(document).scrollTop();
+			var dHeight = $("body").height();
+			var wHeight = $(window).height();
+			console.log(sc);
+			if(sc > 100){
+				$("#api").css("position","fixed");
+				$("#api").css("top","20%");    
+				$("#api").css("left","88%");
+			}else if (sc < 100){   
+			$("#api").css("position","fixed");
+			$("#api").css("top","75%"); 
+			$("#api").css("left","88%");
+			/* $("#navitop").css("top","100"); */
+			}
+		});
+	});
 	
 /* 	setInterval(function(){
 		$(".testEle").toggle();
@@ -30,13 +50,17 @@
         <br>
         <div class="marquee"> 
            <marquee>   
-           	<font color="black"><h3>환율 정보 api</h3></font>  
+           	<font color="black"><h3>환율 정보 api</h3></font>   
            </marquee>
-           
+           </div>
+           <div>
+        <iframe id ="api" src="https://sbiz.wooribank.com/biz/Dream?withyou=FXCNT0002&rc=0&divType=1&lang=KOR" frameBorder=0
+width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginHeight=0 title="무료환율표A형"></iframe>			
+			
            </div>
     
          <h3 class="page-header">
-                 <font color="orange">BEST 여행 후기</font> 	 
+                 <font color="orange">1BEST 여행 후기</font>  	 
          </h3>
          
      <c:forEach var="BestReview" items="${Plist2}"> 
@@ -62,7 +86,7 @@
          <div class="row">
             <div class="col-lg-12">
                 <h3 class="page-header">
-                    	<font color="orange">추천 패키지</font> 
+                    	<font color="orange">추천 패키지</font><font size = "1"><a href="#" >더보기...</font></a>
                 </h3> 
             </div>
              
