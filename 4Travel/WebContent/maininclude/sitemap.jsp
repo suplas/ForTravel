@@ -4,12 +4,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("ul").css("display","none");
+	 
 		$("#package").on("mouseover",function(event) {	
-			$("ul").css("display","table");
-			$("ul").toggle();
+			
+			$(".siteMapList").toggle();
 		});
-		$("ul").css("padding","0px;");
+		$(".siteMapList").css("padding","0px;");
+		$(".siteMapList").css("display","table");
 		
 	});
 			</script>
@@ -37,7 +38,7 @@
                 <div class="list-group">
                     <a href="index.html" class="list-group-item">Home</a>
                     <a href="#" class="list-group-item" id = "package">패키지</a>
-                    <ul>
+                    <ul class="siteMapList" style="diplay:none;">
                     <a href ="PackageFirstALLController?loc=동남아"><li class="list-group-item">동남아/대만</li></a>
                     <a href ="PackageFirstALLController?loc=중국"><li class="list-group-item">중국/홍콩</li></a>
                     <a href ="PackageFirstALLController?loc=일본"><li class="list-group-item">일본</li></a>
