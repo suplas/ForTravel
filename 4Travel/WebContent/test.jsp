@@ -46,7 +46,7 @@ function initMap() {
 
   // Construct a new InfoWindow.
   var infoWindow = new google.maps.InfoWindow({
-    content: 'Google Sydney'
+    content: 'ForTravel' 
   });
 
   // Opens the InfoWindow when marker is clicked.

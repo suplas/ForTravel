@@ -67,7 +67,7 @@
 
 		  // Construct a new InfoWindow.
 		  var infoWindow = new google.maps.InfoWindow({
-		    content: 'Google Sydney'
+		    content: '4Travel' 
 		  });
 
 		  // Opens the InfoWindow when marker is clicked.
@@ -164,8 +164,4 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNOUoJKvbs7BehUVusnx2k5rHY0rovywE&signed_in=true&libraries=places&callback=initMap"></script>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>

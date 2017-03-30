@@ -240,7 +240,7 @@
                         <a href="SignUPController" class="dropdown-toggle" >회원가입 </a>
                     </li>
                      <li class="dropdown">
-                        <a href="SiteMapController" class="dropdown-toggle" ><!-- data-toggle="dropdown" -->사이트맵 </a>
+                        <a href="SiteMapController" class="dropdown-toggle" ><!-- data-toggle="dropdown" -->회사소개&사이트맵 </a>
                     </li>
 			</ul>
 		</div>
