@@ -138,7 +138,7 @@
              	<strong>대표전화  :</strong> 02-000-0000
              </span>
              <hr>
-             </span>>
+             </span> 
             <div id="location">
              <h2><font color="#ffa70b">|</font> 위치안내</h2>
              </div> 
