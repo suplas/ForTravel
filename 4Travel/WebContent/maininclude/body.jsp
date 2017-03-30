@@ -19,7 +19,7 @@
 		$("#002box").css("color","white"); 
 		
 		$("#api").css("position","fixed");
-		$("#api").css("left","88%");
+		$("#api").css("left","85%");
 		$("#api").css("top","75%");
 		
 		$(window).scroll(function(){
