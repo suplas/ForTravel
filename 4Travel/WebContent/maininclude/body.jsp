@@ -8,7 +8,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".newpackage").css("width","330px");
+		$(".newpackage").css("width","100%");
 		$(".newpackage").css("height","200px");
 		
 		$(".testEle").css("color","red");
