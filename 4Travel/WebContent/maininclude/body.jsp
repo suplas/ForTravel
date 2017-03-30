@@ -31,11 +31,11 @@
 			if(sc > 100){
 				$("#api").css("position","fixed");
 				$("#api").css("top","20%");    
-				$("#api").css("left","88%");
+				$("#api").css("left","85%");
 			}else if (sc < 100){   
 			$("#api").css("position","fixed");
 			$("#api").css("top","75%"); 
-			$("#api").css("left","88%");
+			$("#api").css("left","85%");
 			/* $("#navitop").css("top","100"); */
 			}
 		});
