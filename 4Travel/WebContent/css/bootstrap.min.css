@@ -3798,7 +3798,9 @@ tbody.collapse.in {
 }
 
 .dropdown, .dropup {
-	position: relative
+	position: relative;
+	width : 14%;
+	text-align: center;
 }
 
 .dropdown-toggle:focus {
@@ -4739,7 +4741,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 @media ( min-width :768px) {
 	.navbar-nav {
-		float: left;
+			
 		margin: 0
 	}
 	.navbar-nav>li {
@@ -4882,7 +4884,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 		float: left !important
 	}
 	.navbar-right {
-		float: right !important;
+		
 		margin-right: -15px
 	}
 	.navbar-right ~.navbar-right {

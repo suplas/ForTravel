@@ -45,10 +45,10 @@
 		var wHeight = $(window).height();
 		console.log(sc);
 		console.log($("#navitop"));
-		if(sc > 100){
+		if(sc > 10){
 			$("#navitop").css("top","0px");
 			console.log("if"); 
-		}else if (sc < 100){
+		}else if (sc < 10){
 		$("#navitop").attr("style","top:100px");   
 		/* $("#navitop").css("top","100"); */
 		console.log("else");
@@ -59,7 +59,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navitop"> 
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
+		<!-- <div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span> <span
@@ -67,7 +67,7 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand"  href="Home"><font color="white">4Travel</font></a>
-		</div>
+		</div> -->
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		
 		<div class="collapse navbar-collapse"
@@ -240,7 +240,7 @@
                         <a href="SignUPController" class="dropdown-toggle" >회원가입 </a>
                     </li>
                      <li class="dropdown">
-                        <a href="SiteMapController" class="dropdown-toggle" ><!-- data-toggle="dropdown" -->회사소개&사이트맵 </a>
+                        <a href="SiteMapController" class="dropdown-toggle" ><!-- data-toggle="dropdown" -->회사소개 </a> 
                     </li>
 			</ul>
 		</div>
