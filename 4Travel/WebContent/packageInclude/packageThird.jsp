@@ -5,14 +5,20 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<style type ="text/css">
+	.tit{
+		position : absolute;
+		left : 5%;
+	}
+	.conten{
+		position: absolute;
+    	left: 15%; 
+	}
+	
+	</style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".img-responsive").css("width","1150px");
-		$(".img-responsive").css("height","420px");
-		
-		$(".col-md-4").css("top","400px");
-		
-	});
+	 
 	</script>
 <div class="container">
 
@@ -70,64 +76,26 @@
             </div>
 
             <div class="col-lg-12">
-                <h3>${Plist[0].packagename}</h3>
-                <p>${Plist[0].term}&nbsp;&nbsp;${Plist[0].airline}</p>
-                <p><font color="pink">한국출발 </font>${Plist[0].startdate}&nbsp;&nbsp;<font color="blue">${Plist[0].startairplaneid}</font></p> 
-               <p><font color="pink">한국도착</font> ${Plist[0].lastdate}&nbsp;&nbsp;<font color="blue">${Plist[0].lastairplaneid}</font></p> 
-               
-                <ul>
-                	<li>여행사 : ${Plist[0].company}</li>
-                    <li>최소 출발 인원 : ${Plist[0].minpersonnel}</li> 
-                    <li>예약가능 인원 : ${Plist[0].presentreservation}/${Plist[0].personnel}</li>
-                    <li>가격 : ${Plist[0].price}</li>
-                    <li><a href="${Plist[0].link}">예약하러 가기</a></li> 
-                </ul>
-                	상품 안내  
+            
+              	  <span class = "tit">상품 가격</span><br>
+              	  <span class="conten" style="top:0%;"><font color="red" size="2px">${Plist[0].price}원 ~ ${Plist[0].price}원</font></span>
+              	
+              	  	<span class = "tit" style="top:50%;">여행기간</span><br>
+              	  	<span class="conten">${Plist[0].term}</span> 
+              	 
+              	  	<span class = "tit" style="top:100%;">간략일정</span><br>
+              	  	<span class="conten"></span>
+              	 
+              	  	<span class = "tit" style="top:200%;">상품설명</span><br>
+              	 
+                	  
             </div>
 
         </div>
+ 	 	<div>
  	 	
-        <!-- Related Projects Row -->
-      <!--   <div class="row">
-
-            <div class="col-lg-12">
-                <h3 class="page-header">추천 패키지</h3>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-        </div>
-        /.row
-
-        
-
-        Footer
+ 	 	</div>
        
-
-    </div> -->
-    <!-- /.container -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

@@ -28,7 +28,7 @@
      
  	<c:forEach var="i" items="${Plist}">
         <div class="row">
-            <div class="col-md-4 img-portfolio">
+            <div class="col-md-4 img-portfolio"> 
                 <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&userid=${login.userid}">
                     <img class="img-responsive img-hover" src="images/${i.doorimg}.jpg" alt="packageimage01">
                 </a>

@@ -60,7 +60,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
            </div>
     
          <h3 class="page-header">
-                 <font color="orange">1BEST 여행 후기</font>  	 
+                 <font color="orange">BEST 여행 후기</font>  	 
          </h3> 
          
      <c:forEach var="BestReview" items="${Plist2}"> 
@@ -127,15 +127,19 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
         <hr>
 
         <!-- Footer -->
-        <footer>
-            <div class="row">
+        
+
+    </div>
+    <footer style="margin: 0 auto;">
+            <div class="row" style="background: black;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;">
                 <div class="col-lg-12">
                    <jsp:include page="forcopy.jsp" flush="true" />
                 </div>
             </div>
         </footer>
-
-    </div>
     <!-- /.container -->
 
     <!-- jQuery -->

@@ -8,7 +8,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".packagediv").css("width","970px");
+		$(".packagediv").css("width","970px"); 
 		$(".packagediv").css("width","970px");
 		
 		$(".packagelayout").css("width","970px");
