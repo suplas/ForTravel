@@ -29,7 +29,7 @@
 		$(".title").css("left","40%");
 		$(".title").css("position","relative"); 
 		
-		$(".col-md-1").css("left","14%");  
+		$(".col-md-1").css("left","20%");  
 		$(".col-md-1").css("position","relative"); 
 		$(".col-md-1").css("width","30%");  
 			
