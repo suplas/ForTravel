@@ -31,8 +31,8 @@
 		
 		$(".col-md-1").css("left","20%");  
 		$(".col-md-1").css("position","relative"); 
-		$(".col-md-1").css("width","30%");  
-			
+		$(".col-md-1").css("width","30%"); 
+			$(".liTagNation").css("color","9fa2ab"); 
 	});
 </script>
 <div class="container">
@@ -45,8 +45,8 @@
 			<ol class="breadcrumb">
 				<li><a href="Home">Home</a></li>
 				<li class="active">여행 후기
-				<li class="dropdown">나라 : 
-				<a id="aTagNation" href="ReviewBoardController?orders=${orders}&searchName=${searchName}&searchValue=${searchValue}" class="dropdown-toggle" data-toggle="dropdown">${travelNation}<b
+				<li class="dropdown">나라 :
+				<a id="aTagNation"  href="ReviewBoardController?orders=${orders}&searchName=${searchName}&searchValue=${searchValue}" class="dropdown-toggle" data-toggle="dropdown">${travelNation}<b
 						class="caret"></b></a>
 					<ul id="ulTagNation" class="dropdown-menu">
 						<li class="liTagNation"><a href="ReviewBoardController?orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">전체보기</a></li>

@@ -35,7 +35,7 @@
 		$("#subul").css("left","50px");
 		$("#subul").css("width","600px");
 		$("#subul").css("height","600px	");
-		 $(".dropdown-toggle").css("color","white");  
+	
 		 $("#navitop").css("top","100px");
 	});
 	$(window).scroll(function(){
@@ -74,7 +74,7 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">패키지 <b class="caret"></b></a>
+					data-toggle="dropdown" style="color:white;">패키지 <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="PackageFirstALLController?loc=대만">동남아/대만</a></li>
 						<li><a href="PackageFirstALLController?loc=중국">중국/홍콩</a></li>
