@@ -24,6 +24,15 @@
 				window.open(popUrl,"",popOption);
 
 			});
+		
+		$("body").on("click",".reviewDelete",function(event){
+			var popUrl = "board/reviewDeletePopUp.jsp?num="+$(this).parent().children(".dtonumber").text();	//팝업창에 출력될 페이지 URL
+
+			var popOption = "top=300, left=200, width=300, height=40, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+				window.open(popUrl,"",popOption);
+
+			});
 	$(".contest").css("position","absolute");
 		$(".contest").css("float","right");
 		$(".title").css("left","40%");
@@ -117,7 +126,7 @@
 				<p>조회수 : ${dto.readcnt}</p>
 				<p>${dto.writeday}</p>
 				<span >
-					<b class="dtonumber">${dto.num}</b>
+					<b class="dtonumber" style="display: none;">${dto.num}</b>
 					<c:if test="${sessionScope.login.userid==dto.userid}">
 					<button class="reviewUpdate btn label label-success" >수정</button><br><br>  
 					<button class="reviewDelete btn label label-success" >삭제</button>
@@ -129,7 +138,7 @@
 				<div class="col-md-1">  
 					<a href="#"> 
 					<img class="img-responsive img-hover"
-						src="/4Travel/images/${image_array[1]}"  alt="">
+						src="/4Travel/images/${image_array[0]}"  alt="">
 				</a>
 				</div>
 			</c:if>

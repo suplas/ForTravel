@@ -94,4 +94,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     values ( reviewboard_seq.nextval, #{title},#{content},#{userid},0
     ,#{travelNation},#{travelLoc},#{image1})
 	</insert>
+	
+	<update id="reviewBoardUpdate" parameterType="hashmap">
+		update reviewboard
+		set title=#{title}, content=#{content},
+		travelNation=#{travelNation},travelLoc=#{travelLoc},
+		image1=#{image1}
+		where num = #{num}
+	</update>
 </mapper>

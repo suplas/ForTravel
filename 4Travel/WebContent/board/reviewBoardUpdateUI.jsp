@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script>
-var imageIndex='';
         $(document).ready(function(){
             function readURL(input) {
                 if (input.files && input.files[0]) {
-                	//console.log(input.files);
-                	//console.log(input.files[0]);
-                    var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+                    var reader = new FileReader();
+                    var state = FileReader.readyState;
                     reader.onload = function (e) {
-                    //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
                         $('.blah').append($('<img/>', {
 							class:'buttonx',
                         	src: 'images/buttonx.png',
@@ -20,56 +19,48 @@ var imageIndex='';
                     	$('.blah').append($('<img/>', {
                             src: e.target.result,
                         }));
-                        
-                    	///* $('#blah').attr('src', e.target.result); */
-                        //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
-                        //(아래 코드에서 읽어들인 dataURL형식)
-                    }                   
-                    //File내용을 읽어 dataURL형식의 문자열로 저장
+                    	
+               		}
                     reader.readAsDataURL(input.files[0]); 
-                	//console.log($(".imgInp").val());
-                	//console.log($(".imgInp"));
-                	//console.log($(".imgInp")[0].files);
-                	//console.log($(".imgInp")[0].files[0]);
-                }
-            }//readURL()--
-   
-            //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+            	}//readURL()--
+            }
             $("body").on("change",".imgInp",function(){
-                //alert(this.value); //선택한 이미지 경로 표시
                 var fileNm = this.value;
-				console.log(fileNm);
-                if (fileNm != "") {
- 			
+ 
+				if (fileNm != "") {
+ 
 				    var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();
  
     			if (!(ext == "gif" || ext == "jpg" || ext == "png")) {
         			alert("이미지파일 (.jpg, .png, .gif ) 만 업로드 가능합니다.");
        				 return false;
     				}else{
-    					 readURL(this);
-    		                
-    		                $(this).after("<input type='file' name='theFile' class='imgInp' ><br />");
-    		                
-    		                $(this).css("display","none");
+    					
+    					readURL(this);
+    	                
+    	                $(this).after("<input type='file' name='theFile' class='imgInp' ><br />");
+    	                
+    	                $(this).css("display","none");
     				}
  
 				}
-                //$("#realFile")[0].files[$(".imgInp").length-1]=$(this)[0].files[0];
-                //$("#realFile")[0].files.length=$(".imgInp").length; 
-                //console.log($("#realFile")[0].files);
-                //console.log($("#realFile")[0].files.length);
+
+                
             });
-            
             $("body").on("click",".buttonx",function(){
             	imageIndex=$(".buttonx").index(this);
+            	console.log(imageIndex);
 				$(this).next().remove();
             	$(this).remove();
             	$(".imgInp").eq(imageIndex).remove();
-            
-            });
+            	if($.isEmptyObject($(".existingImage"))==true){
+            		$(".existingImage").remove();
+            	}
+          });
         });
+  
   </script>    
+    
   <div class="container">
 <div class="row">
 		<div class="col-lg-12">
@@ -87,25 +78,31 @@ var imageIndex='';
 	
 	<!-- Blog Post Row -->
 		<div class="row">
-		<form  id="form1" name="form1"method="POST" enctype="multipart/form-data" action="ReviewBoardWriteController">
+		<form  id="form1" name="form1" method="post" enctype="multipart/form-data" action="ReviewBoardUpdateController">
 			<div class="col-lg-12">
 		<select name="travelNation">
-		<option value="일본">일본</option>
-		<option value="미국">미국</option>
+		<option value="${boardRetrieve.travelNation}" selected="selected">${boardRetrieve.travelNation}</option>
 		</select> 
 		<select name="travelLoc">
-		<option value="오사카">오사카</option>
-		<option value="교토">교토</option>
+		<option value="${boardRetrieve.travelLoc}" selected="selected">${boardRetrieve.travelLoc}</option>
 		</select><br/><br/>
-		 제목:  <input type="text" name="title" size="124"><br /> <br />
-		  
-		 <div class="blah"></div>
-					<!-- <img id="blah" src="#" alt="사진도 같이 올려보세요" /> -->
+		 제목:  <input type="text" name="title" size="124" value="${boardRetrieve.title}"><br /> <br /> 
+		 <div class="existingImage"><c:if test="${boardRetrieve.image1 != null}">
+			<c:set var="image_array" value="${fn:split(boardRetrieve.image1,'/')}" />
+			<c:forEach var="image" items="${image_array}" varStatus="s">
+			<img class="buttonx" src="images/buttonx.png" width="20px" style="cursor: pointer;">
+			<img class="existingImages" src="/4Travel/images/${image}" alt="">
+				<input type="file" name="theFile" class="imgInp" style="display: none;" value="/4Travel/images/${image}">
+				</c:forEach>
+			</c:if>
+			</div>
+			<div class="blah"></div>
 					<input type="file" name="theFile" class="imgInp" ><br />
 			</div>
 			<div class="col-md-6">
-				<p><textarea rows="20" cols="130" id="content" name="content" ></textarea></p>
-				<a class="btn btn-primary" href="javascript:form1.submit();">글작성 <i
+				<p><textarea rows="20" cols="130" id="content" name="content" >${boardRetrieve.content}</textarea></p>
+				<input type="hidden" name="num" value="${boardRetrieve.num}">
+				<a class="btn btn-primary" href="javascript:form1.submit();">수정하기 <i
 					class="fa fa-angle-right"></i></a>
 			</div>
 			</form>

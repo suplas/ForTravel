@@ -57,9 +57,20 @@ public class ReviewBoardBiz {
 		
 		}
 	}	
+	public void reviewBoardUpdate(HashMap<String, String> map) throws CommonException{
+		SqlSession session=MySqlSessionFactory.openSession();
+		try{
+			session.update(namespace+"reviewBoardUpdate",map);
+			session.commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("수정 실패");
+		}finally {
+			session.close();
+		}
+	}	
 	
 	public ReviewBoardDTO boardRetrieve(int num){
-		boardReadcnt(num);
 		SqlSession session=MySqlSessionFactory.openSession();
 		ReviewBoardDTO dto=null;
 		try{

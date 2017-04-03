@@ -12,6 +12,7 @@ background-size: 10px;
 padding:0;
 }
 </style>
+
 <div class="container">
 
 	<!-- Page Heading/Breadcrumbs -->
@@ -61,7 +62,7 @@ padding:0;
 			</p>
 
 			<hr>
-
+			
 			<!-- Blog Comments -->
 
 			<!-- Comments Form -->
