@@ -24,14 +24,15 @@
 				window.open(popUrl,"",popOption);
 
 			});
-		$(".contest").css("position","absolute");
+	$(".contest").css("position","absolute");
 		$(".contest").css("float","right");
-		$(".title").css("left","88%");
+		$(".title").css("left","72%");
 		$(".title").css("position","relative");
 		$(".title").css("top","-38px");
-		$(".img").css("left","10%"); 
+		$(".img").css("left","10%");  
 		$(".img").css("position","relative"); 
-		$(".img").css("width","50%"); 
+		$(".img").css("width","30%"); 
+		$(".img").css("height","50%");  	
 	});
 </script>
 <div class="container">
