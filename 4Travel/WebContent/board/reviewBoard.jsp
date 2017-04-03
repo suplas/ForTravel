@@ -28,7 +28,7 @@
 		$(".contest").css("float","right");
 		$(".title").css("left","72%");
 		$(".title").css("position","relative");
-		$(".title").css("top","-38px");
+		$(".title").css("top","-152px");
 		$(".img").css("left","10%");  
 		$(".img").css("position","relative"); 
 		$(".img").css("width","30%"); 
