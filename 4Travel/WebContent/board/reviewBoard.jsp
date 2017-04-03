@@ -26,9 +26,9 @@
 			});
 	$(".contest").css("position","absolute");
 		$(".contest").css("float","right");
-		$(".title").css("left","72%");
+		$(".title").css("left","40%");
 		$(".title").css("position","relative"); 
-		$(".title").css("margin-top","-4%");  
+		
 		$(".col-md-1").css("left","14%");  
 		$(".col-md-1").css("position","relative"); 
 		$(".col-md-1").css("width","30%");  
