@@ -9,14 +9,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".packagediv").css("width","970px");
-		$(".packagediv").css("width","970px");
-		
-		$(".packagelayout").css("width","970px");
-		$(".packagelayout").css("height","226px");
+		// $(".packagediv").css("width","30%");
+	
+		$(".packagelayout").css("width","30%");
+		$(".packagelayout").css("height","30%");
 		$(".packagelayout").css("position","relative");
 		
-		$(".packageimg").css("width","300px")
+		/*$(".packageimg").css("width","300px")
 		
 		$(".title").css("position","absolute");
 		$(".title").css("left","450px");
@@ -40,15 +39,9 @@
 		$(".price").css("font-size","20px");
 		$(".price").css("width","150px");
 		
-		$(".testEle").css("color","red");
+		$(".testEle").css("color","red"); */ 
 		});
-	
-		setInterval(function(){
-		$(".testEle").toggle();
-		}, 500);
-		
-		
-		
+
 		</script>
 
         <!-- Page Heading/Breadcrumbs -->
@@ -75,11 +68,11 @@
 
         <!-- Projects Row -->
         
-      <c:forEach var="i" items="${Plist}">
+      
       
         <div class="packagediv">
+        <c:forEach var="i" items="${Plist}">
             <div class ="packagelayout">
-          
        			<a href="PackageThirdListController?loc=${i.loc}&packagename=${i.packagename}">
                     <img class="packageimg" src="images/${i.image}.jpg" alt="package01">
                 </a>
@@ -88,13 +81,14 @@
                 </h3>
                			<p class = "loc">여행 지역 : ${i.loc}</p>
                			<p class = "term">여행 기간 : ${i.term}</p>
-                		<p class = "price"><span>가격 : </span><span class="testEle">${i.price}</span></p>
+                		<p class = "price">가격 :${i.price}</p>
 
            
             </div>
+            </c:forEach> 
             </div>
            
-            </c:forEach> 
+            
      
         <!-- /.row -->
 

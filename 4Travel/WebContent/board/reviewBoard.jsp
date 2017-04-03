@@ -16,6 +16,22 @@
 			$("#loc").css("display","inline");		
 		}
 		
+		$("body").on("click",".reviewUpdate",function(event){
+			var popUrl = "board/reviewUpdatePopUp.jsp?num="+$(this).parent().children(".dtonumber").text();	//팝업창에 출력될 페이지 URL
+
+			var popOption = "top=300, left=200, width=300, height=40, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+				window.open(popUrl,"",popOption);
+
+			});
+		$(".contest").css("position","absolute");
+		$(".contest").css("float","right");
+		$(".title").css("left","88%");
+		$(".title").css("position","relative");
+		$(".title").css("top","-38px");
+		$(".img").css("left","10%"); 
+		$(".img").css("position","relative"); 
+		$(".img").css("width","50%"); 
 	});
 </script>
 <div class="container">
@@ -38,8 +54,8 @@
 						</li>
 					</ul>
 				</li>	
-				<li class="dropdown">
-					<span id="loc">
+				<li class="dropdown" id="loc">
+					<span >
 				지역 : <a id="aTagLoc" href="ReviewBoardController?travelNation=${travelNation}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}"
 					class="dropdown-toggle" data-toggle="dropdown">${travelLoc} <b
 						class="caret"></b></a>
@@ -93,33 +109,41 @@
 	<c:forEach items="${pageDTO.list}" var="dto">
 
 		<!-- Blog Post Row -->
-		<div class="row">
-			<div class="col-md-1 text-center">
+		<div class="row" style="margin-left: 2%;"> 
+			<div class="contest">
 				<p>${dto.travelNation}</p>
 				<p>${dto.travelLoc}</p>
 				<p>조회수 : ${dto.readcnt}</p>
 				<p>${dto.writeday}</p>
+				<span >
+					<b class="dtonumber">${dto.num}</b>
+					<c:if test="${sessionScope.login.userid==dto.userid}">
+					<button class="reviewUpdate btn label label-success" >수정</button><br><br>  
+					<button class="reviewDelete btn label label-success" >삭제</button>
+					</c:if>
+				</span>
 			</div>
 			<c:if test="${dto.image1 !=null}">
 			<c:set var="image_array" value="${fn:split(dto.image1,'/')}" />
-				<div class="col-md-5">
+				<div class="img">
 					<a href="#"> 
 					<img class="img-responsive img-hover"
 						src="/4Travel/images/${image_array[1]}" width="300px" height="180px"  alt="">
 				</a>
 				</div>
 			</c:if>
-			<div class="col-md-6">
+			<div class="title">
 				<h3>
 					<a href="ReviewBoardDetailController?num=${dto.num}">${dto.title}</a>
 				</h3>
 				<p>
-					by <a href="#">${dto.userid}</a>
+					by <a style="color: black; text-decoration: none;">${dto.userid}</a>
 				</p>
 				<p>${dto.content}</p>
 				<a class="btn btn-primary" href="ReviewBoardDetailController?num=${dto.num}">Read More <i
 					class="fa fa-angle-right"></i></a>
 			</div>
+			
 		</div>
 		<!-- /.row -->
 		<hr>
