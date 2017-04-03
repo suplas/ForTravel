@@ -29,10 +29,10 @@
 		$(".title").css("left","72%");
 		$(".title").css("position","relative"); 
 		$(".title").css("margin-top","-4%");  
-		$(".img").css("left","10%");  
-		$(".img").css("position","relative"); 
-		$(".img").css("width","30%"); 
-		$(".img").css("height","50%");  	
+		$(".col-md-1").css("left","14%");  
+		$(".col-md-1").css("position","relative"); 
+		$(".col-md-1").css("width","30%");  
+			
 	});
 </script>
 <div class="container">
@@ -126,10 +126,10 @@
 			</div>
 			<c:if test="${dto.image1 !=null}">
 			<c:set var="image_array" value="${fn:split(dto.image1,'/')}" />
-				<div class="img">
+				<div class="col-md-1">  
 					<a href="#"> 
 					<img class="img-responsive img-hover"
-						src="/4Travel/images/${image_array[1]}" width="300px" height="180px"  alt="">
+						src="/4Travel/images/${image_array[1]}"  alt="">
 				</a>
 				</div>
 			</c:if>
