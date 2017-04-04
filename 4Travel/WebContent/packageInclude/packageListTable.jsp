@@ -97,11 +97,6 @@
 	</style>
 <script type="text/javascript">
 
-$(document).ready(function(){
-	$("#prevButton").on("click",function(event){
-		$("#tablelistPrevbutton").attr("href=''")
-	});
-});
 	</script>
 <div class="container">
 
@@ -178,8 +173,8 @@ $(document).ready(function(){
         
         <div style="width: 100%; height:16%;">
         <%Date today = new Date();%>
-       			
- 				<a id = "tablelistPrevbutton" href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+2%>&term=${Plist[0].term}">
+       
+ 				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+2%>&term=${Plist[0].term}">
  				<span id = "prevButton"><button type="button" >prev</button></span></a>
  				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+1%>&term=${Plist[0].term}">
  				<span id = "nextButton"><button type="button">next</button></span></a>
@@ -192,7 +187,7 @@ $(document).ready(function(){
  	 				<tr style="text-align: center;"> 
  	 				<td>출/도착시간</td><td>항공  </td><td>상품명</td><td> 여행기간 </td><td>상품가격 </td><td> 예약상태 </td>  
  	 				</tr>
- 	 				<c:forEach var="i" items="${Plist2}">
+ 	 				<c:forEach var="i" items="${Plist3}">
  	 				<tr class="packagelistTable">
  	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <td>${i.packagename}</td> 
  	 				<td>${i.term}</td> <td><font color="red">${i.price}</font></td> <td>${i.reservationab}</td>  

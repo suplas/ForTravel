@@ -19,14 +19,13 @@ import com.exception.CommonException;
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet("/PackageThirdListController")
-public class PackageThirdListController extends HttpServlet {
+@WebServlet("/PackageListTableController")
+public class PackageListTableController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String packagename = request.getParameter("packagename");
 		String startdate = request.getParameter("startdate");
 		String term = request.getParameter("term");
-		
 		PackageThirdDTO dto = new PackageThirdDTO();
 		dto.setPackagename(packagename);
 		dto.setStartdate("0"+startdate);
@@ -39,7 +38,9 @@ public class PackageThirdListController extends HttpServlet {
 			List<PackageThirdDTO> list2=biz.packageTableAllList(dto);
 			request.setAttribute("Plist", list);
 			request.setAttribute("Plist2", list2);
-			target="PackageThird.jsp";
+			List<PackageThirdDTO> list3=biz.packageTableAllList(dto);
+			request.setAttribute("Plist3", list3);
+			target="PackageListTable.jsp";
 			
 		} catch (CommonException e) {
 			e.printStackTrace();

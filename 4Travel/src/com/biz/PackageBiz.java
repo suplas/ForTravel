@@ -88,6 +88,19 @@ public class PackageBiz {
 		}
 		return list;
 	}
-
+	public List<PackageThirdDTO>packageTableAllList(PackageThirdDTO dto) throws CommonException{
+		SqlSession session=MySqlSessionFactory.openSession();
+		List<PackageThirdDTO> list = null;
+		try{
+		list = session.selectList(namespace+"packageTableAllList",dto);
+		
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("패키지리스트 불러오기 실패");
+		}finally {
+			session.close();
+		}
+		return list;
+	}
 	
 }//end class

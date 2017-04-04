@@ -9,11 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		from packagedb
  		where PACKAGENAME = #{packagename}
  	</select>
- 	<select id="packageTableAllList" parameterType="string" resultType="PackageThirdDTO">
+ 	<select id="packageTableAllList" parameterType="PackageThirdDTO" resultType="PackageThirdDTO">
  		select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
  		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail
  		from packagedb
- 		where PACKAGENAME = #{packagename}
+ 		where PACKAGENAME = #{packagename} and to_char(startdate,'mm') = #{startdate} and term = #{term}
  	</select>
  	<select id="selectCountList" parameterType="String" resultType="int">
  		select count(*) as cnt

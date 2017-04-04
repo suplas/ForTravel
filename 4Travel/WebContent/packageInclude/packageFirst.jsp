@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="com.entity.PackageThirdDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -29,7 +30,8 @@
  	<c:forEach var="i" items="${Plist}">
         <div class="row">
             <div class="col-md-4 img-portfolio"> 
-                <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}">
+            <%Date today = new Date();%>
+                <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=today.getMonth()+1%>&term=${i.term}">
                     <img class="img-responsive img-hover" src="images/${i.doorimg}.jpg" alt="packageimage01">
                 </a>
                 <h3>

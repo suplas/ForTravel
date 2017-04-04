@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -94,8 +95,8 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
                         <h4><i class="fa fa-fw fa-check"></i>추천 패키지</h4>
                     </div> -->
                     <div class="panel-body">
-    
-				<a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}">
+    				<%Date today = new Date();%>
+				<a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=today.getMonth()+1%>&term=${i.term}">
                         <p><img  class="newpackage" src="images/${i.doorimg}.jpg"></img></a><br><br>
                         	패키지 명 : ${i.packagename}<br>
                         	출발날짜 : ${i.startdate}<br>
