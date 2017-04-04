@@ -29,11 +29,11 @@
  	<c:forEach var="i" items="${Plist}">
         <div class="row">
             <div class="col-md-4 img-portfolio"> 
-                <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&userid=${login.userid}">
+                <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}">
                     <img class="img-responsive img-hover" src="images/${i.doorimg}.jpg" alt="packageimage01">
                 </a>
                 <h3>
-                    <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&userid=${login.userid}">${i.packagename}</a>
+                    <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}">${i.packagename}</a>
                 </h3>
                			<p>여행 지역 : ${i.loc}</p>
                			<p>여행 기간 : ${i.term}</p>

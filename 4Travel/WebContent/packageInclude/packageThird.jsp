@@ -177,11 +177,12 @@
  	 				<tr>
  	 				<td>출/도착시간</td><td>◆ 항공 ◆</td><td>상품명</td><td>◆ 여행기간 ◆</td><td>상품가격 </td><td>◆ 예약상태 ◆</td> 
  	 				</tr>
- 	 				<c:forEach var=i items="${Plist}">
+ 	 				<c:forEach var="i" items="${Plist}">
  	 				<tr>
  	 				<td>${i.startdate}<br>${i.lastdate}</td> <td>${i.airline}</td> <td>${i.packagename}</td> 
  	 				<td>${i.term}</td> <td>${i.price}</td> <td>${i.reservationab}</td>  
  	 				</tr>
+ 	 				<br> 
  	 				</c:forEach>
  	 			</table>
  	 		</div>
