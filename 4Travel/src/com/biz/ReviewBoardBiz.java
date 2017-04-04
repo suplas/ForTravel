@@ -68,7 +68,21 @@ public class ReviewBoardBiz {
 		}finally {
 			session.close();
 		}
-	}	
+	}//end update
+	
+	
+	public void reviewBoardDelete(int num) throws CommonException{
+		SqlSession session=MySqlSessionFactory.openSession();
+		try{
+			session.delete(namespace+"reviewBoardDelete",num);
+			session.commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new CommonException("삭제 실패");
+		}finally {
+			session.close();
+		}
+	}//end delete	
 	
 	public ReviewBoardDTO boardRetrieve(int num){
 		SqlSession session=MySqlSessionFactory.openSession();
@@ -80,6 +94,7 @@ public class ReviewBoardBiz {
 		}
 		return dto;
 	}
+	
 	public List<ReviewBoardDTO> ReviewBoardSelect() throws CommonException{
 		SqlSession session=MySqlSessionFactory.openSession();
 		List<ReviewBoardDTO> list=null;
@@ -95,7 +110,8 @@ public class ReviewBoardBiz {
 		return list;
 	}
 	//전체 레코드
-		private int totalrecord(){
+	
+	private int totalrecord(){
 			SqlSession session=MySqlSessionFactory.openSession();
 			int count=0;
 			try{

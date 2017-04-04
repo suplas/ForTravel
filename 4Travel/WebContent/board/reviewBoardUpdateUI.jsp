@@ -52,11 +52,9 @@
             	console.log(imageIndex);
 				$(this).next().remove();
             	$(this).remove();
-            	$(".imgInp").eq(imageIndex).remove();
-            	if($.isEmptyObject($(".existingImage"))==true){
-            		$(".existingImage").remove();
-            	}
+            	$(".InputexistingImages").eq(imageIndex).remove();
           });
+            
         });
   
   </script>    
@@ -78,7 +76,7 @@
 	
 	<!-- Blog Post Row -->
 		<div class="row">
-		<form  id="form1" name="form1" method="post" enctype="multipart/form-data" action="ReviewBoardUpdateController">
+		<form  id="updateform" name="form1" method="post" enctype="multipart/form-data" action="ReviewBoardUpdateController">
 			<div class="col-lg-12">
 		<select name="travelNation">
 		<option value="${boardRetrieve.travelNation}" selected="selected">${boardRetrieve.travelNation}</option>
@@ -92,7 +90,7 @@
 			<c:forEach var="image" items="${image_array}" varStatus="s">
 			<img class="buttonx" src="images/buttonx.png" width="20px" style="cursor: pointer;">
 			<img class="existingImages" src="/4Travel/images/${image}" alt="">
-				<input type="file" name="theFile" class="imgInp" style="display: none;" value="/4Travel/images/${image}">
+			<input type="hidden" class="InputexistingImages" name="existingImages" value="${image}">
 				</c:forEach>
 			</c:if>
 			</div>

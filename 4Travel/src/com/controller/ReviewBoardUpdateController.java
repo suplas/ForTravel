@@ -59,12 +59,14 @@ public class ReviewBoardUpdateController extends HttpServlet {
 		String image1="";
 		while (ite.hasNext()) {
 			FileItem fileItem = ite.next();
-			System.out.println("파일 아이템 임::::::::::"+fileItem);
 			if (fileItem.isFormField()) { //type = "file" false
 				fieldName = fileItem.getFieldName();
 				fieldValue = fileItem.getString("UTF-8");
 				map.put(fieldName, fieldValue);
-				System.out.println("if 파일 네임:"+fieldName+"\t"+"if필드 밸류"+fieldValue);
+				System.out.println("if 필드 네임:"+fieldName+"\t"+"if필드 밸류"+fieldValue);
+				if(fieldName.equals("existingImages")){
+					image1 += fieldValue+"/";
+				}
 			} else { //type = "file" true
 				fileName = fileItem.getName();  
 				fileSize = fileItem.getSize();
@@ -95,7 +97,6 @@ public class ReviewBoardUpdateController extends HttpServlet {
 		ReviewBoardBiz biz=new ReviewBoardBiz();
 		try {
 			biz.reviewBoardUpdate(map);
-			System.out.println(map.get("num"));
 			target="ReviewBoardDetailController?num="+map.get("num");
 		} catch (CommonException e) {
 			// TODO Auto-generated catch block
