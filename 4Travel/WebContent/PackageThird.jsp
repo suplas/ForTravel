@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+
    <link href="css/mainSerch.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,15 +21,7 @@
 <jsp:include page="maininclude/Serch.jsp" flush="true"/>
 <jsp:include page="maininclude/navi.jsp" flush="true"/>
 <jsp:include page="packageInclude/packageThird.jsp" flush="true"/>
- <footer>
- <hr>
-            <div class="row" >
-            
-                <div class="col-lg-12">
-                
-                   <jsp:include page="maininclude/forcopy.jsp" flush="true"/>
-                </div>
-            </div>
-        </footer>
+<%-- <jsp:include page="maininclude/forcopy.jsp" flush="true"/> --%>
+ 
 </body>
 </html>

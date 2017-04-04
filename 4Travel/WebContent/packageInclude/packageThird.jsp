@@ -6,18 +6,92 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<style type ="text/css">
-	.tit{
-		position : absolute;
+	#price1{
+		position : absolute; 
 		left : 5%;
+		top : 30%;
 	}
-	.conten{
+	#price2{
 		position: absolute;
     	left: 15%; 
+    	top : 30%;
 	}
-	
+	#term{
+		position : absolute; 
+		left: 5%;  
+		top : 38%; 
+	}
+	#term2{
+		position : absolute; 
+		left: 15%;
+		top : 38%;
+	}
+	#date1{
+		position : absolute; 
+		left: 5%;
+		top : 46%;
+	}
+	#date2{
+		position : absolute; 
+		left: 15%;
+		top : 46%;
+	}
+	#contents{
+		position : absolute;  
+		left: 5%;
+		top : 55%; 
+	}
+		#contents2{
+		position : absolute;  
+		left: 15%;
+		top : 55%; 
+		width: 40%;
+	}
+	#remoteButton{
+	position: absolute;
+	top : 100%;
+	width: 100%; 
+	height: 70%;
+	 
+	}
+	#prevButton{
+	position: absolute;
+	left: 74%;
+	}
+	#nextButton{
+	position: absolute;
+	left: 26%; 
+	}
+	#datespan1{
+	position: absolute;
+    left: 31%; 
+    width: 19%;
+    text-align: center;
+    border: 1px solid;
+   
+	}
+	#datespan2{
+	position: absolute;
+    left: 54%;
+    width: 19%;
+    border: 1px solid;
+    text-align: center;
+    	
+	}
+	#listDayPackage{
+    position: absolute;
+    top: 26%;
+    left: 12%;
+    width: 86%;
+	}
+ #tablelist{
+ 	width: 100%;
+ }
 	</style>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+	}; 
 	 
 	</script>
 <div class="container">
@@ -42,7 +116,7 @@
         <!-- Portfolio Item Row -->
         <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-8" style="float: right;"> 
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
@@ -55,13 +129,13 @@
                     
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img class="img-responsive" src="images/${Plist[0].image1}.jpg" alt="그림1">
+                            <img class="img-responsive" style="height: 300px;" src="images/${Plist[0].image1}.jpg" alt="그림1">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="images/${Plist[0].image2}.jpg" alt="그림2">
+                            <img class="img-responsive" style="height: 300px;" src="images/${Plist[0].image2}.jpg" alt="그림2">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="images/${Plist[0].image3}.jpg" alt="그림3">
+                            <img class="img-responsive" style="height: 300px;" src="images/${Plist[0].image3}.jpg" alt="그림3">
                         </div>
                     </div>
 
@@ -77,24 +151,44 @@
 
             <div class="col-lg-12">
             
-              	  <span class = "tit">상품 가격</span><br>
-              	  <span class="conten" style="top:0%;"><font color="red" size="2px">${Plist[0].price}원 ~ ${Plist[0].price}원</font></span>
+              	  <span id = "price1">상품 가격</span><br>
+              	  <span id ="price2" ><font color="red" size="2px">${Plist[0].price}원 ~ ${Plist[0].price}원</font></span>
               	
-              	  	<span class = "tit" style="top:50%;">여행기간</span><br>
-              	  	<span class="conten">${Plist[0].term}</span> 
+              	  	<span id = "term" >여행기간</span><br>
+              	  	<span id ="term2">${Plist[0].term}</span> 
               	 
-              	  	<span class = "tit" style="top:100%;">간략일정</span><br>
-              	  	<span class="conten"></span>
+              	  	<span id = "date1">간략일정</span><br>
+              	  	<span id ="date2">${Plist[0].overview}</span>
               	 
-              	  	<span class = "tit" style="top:200%;">상품설명</span><br>
-              	 
-                	  
+              	  	<span  id = "contents">상품설명</span>
+              	  	<span  id = "contents2">${Plist[0].detail}</span>
+ 				
             </div>
-
         </div>
- 	 	<div>
- 	 	
- 	 	</div>
+        <div id = "remoteButton">
+        
+        <div>
+ 				<span id = "prevButton"><button type="button">prev</button></span>
+ 				<span id = "nextButton"><button type="button">next</button></span> 
+ 				<span id = "datespan1">test</span>
+ 				<span id ="datespan2">test2</span>
+ 				<div id="listDayPackage"> 
+ 	 			<table id="tablelist"> 
+ 	 				<tr>
+ 	 				<td>출/도착시간</td><td>◆ 항공 ◆</td><td>상품명</td><td>◆ 여행기간 ◆</td><td>상품가격 </td><td>◆ 예약상태 ◆</td> 
+ 	 				</tr>
+ 	 				<c:forEach var=i items="${Plist}">
+ 	 				<tr>
+ 	 				<td>${i.startdate}<br>${i.lastdate}</td> <td>${i.airline}</td> <td>${i.packagename}</td> 
+ 	 				<td>${i.term}</td> <td>${i.price}</td> <td>${i.reservationab}</td>  
+ 	 				</tr>
+ 	 				</c:forEach>
+ 	 			</table>
+ 	 		</div>
+ 	 		</div>
+ 			</div>
+ 			
+	
        
 
     <!-- jQuery -->

@@ -22,15 +22,18 @@ public class PackageThirdDTO {
 	private String image3;
 	private String city;
 	private String doorimg;
+	private String overview;
+	private String detail;
 	
 	public PackageThirdDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public PackageThirdDTO(int packageno, String company, String startdate, String lastdate, String airline,
 			String startairplaneid, String lastairplaneid, String term, String packagename, int price,
 			String reservationab, int minpersonnel, int presentreservation, int personnel, String loc, String link,
-			String image1, String image2, String image3, String city, String doorimg) {
+			String image1, String image2, String image3, String city, String doorimg, String overview, String detail) {
 		super();
 		this.packageno = packageno;
 		this.company = company;
@@ -53,133 +56,192 @@ public class PackageThirdDTO {
 		this.image3 = image3;
 		this.city = city;
 		this.doorimg = doorimg;
-		
+		this.overview = overview;
+		this.detail = detail;
 	}
+
 	public int getPackageno() {
 		return packageno;
 	}
+
 	public void setPackageno(int packageno) {
 		this.packageno = packageno;
 	}
+
 	public String getCompany() {
 		return company;
 	}
+
 	public void setCompany(String company) {
 		this.company = company;
 	}
+
 	public String getStartdate() {
 		return startdate;
 	}
+
 	public void setStartdate(String startdate) {
 		this.startdate = startdate;
 	}
+
 	public String getLastdate() {
 		return lastdate;
 	}
+
 	public void setLastdate(String lastdate) {
 		this.lastdate = lastdate;
 	}
+
 	public String getAirline() {
 		return airline;
 	}
+
 	public void setAirline(String airline) {
 		this.airline = airline;
 	}
+
 	public String getStartairplaneid() {
 		return startairplaneid;
 	}
+
 	public void setStartairplaneid(String startairplaneid) {
 		this.startairplaneid = startairplaneid;
 	}
+
 	public String getLastairplaneid() {
 		return lastairplaneid;
 	}
+
 	public void setLastairplaneid(String lastairplaneid) {
 		this.lastairplaneid = lastairplaneid;
 	}
+
 	public String getTerm() {
 		return term;
 	}
+
 	public void setTerm(String term) {
 		this.term = term;
 	}
+
 	public String getPackagename() {
 		return packagename;
 	}
+
 	public void setPackagename(String packagename) {
 		this.packagename = packagename;
 	}
+
 	public int getPrice() {
 		return price;
 	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 	public String getReservationab() {
 		return reservationab;
 	}
+
 	public void setReservationab(String reservationab) {
 		this.reservationab = reservationab;
 	}
+
 	public int getMinpersonnel() {
 		return minpersonnel;
 	}
+
 	public void setMinpersonnel(int minpersonnel) {
 		this.minpersonnel = minpersonnel;
 	}
+
 	public int getPresentreservation() {
 		return presentreservation;
 	}
+
 	public void setPresentreservation(int presentreservation) {
 		this.presentreservation = presentreservation;
 	}
+
 	public int getPersonnel() {
 		return personnel;
 	}
+
 	public void setPersonnel(int personnel) {
 		this.personnel = personnel;
 	}
+
 	public String getLoc() {
 		return loc;
 	}
+
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
+
 	public String getLink() {
 		return link;
 	}
+
 	public void setLink(String link) {
 		this.link = link;
 	}
+
 	public String getImage1() {
 		return image1;
 	}
+
 	public void setImage1(String image1) {
 		this.image1 = image1;
 	}
+
 	public String getImage2() {
 		return image2;
 	}
+
 	public void setImage2(String image2) {
 		this.image2 = image2;
 	}
+
 	public String getImage3() {
 		return image3;
 	}
+
 	public void setImage3(String image3) {
 		this.image3 = image3;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public String getDoorimg() {
 		return doorimg;
 	}
+
 	public void setDoorimg(String doorimg) {
 		this.doorimg = doorimg;
+	}
+
+	public String getOverview() {
+		return overview;
+	}
+
+	public void setOverview(String overview) {
+		this.overview = overview;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 
 	@Override
@@ -190,7 +252,7 @@ public class PackageThirdDTO {
 				+ price + ", reservationab=" + reservationab + ", minpersonnel=" + minpersonnel
 				+ ", presentreservation=" + presentreservation + ", personnel=" + personnel + ", loc=" + loc + ", link="
 				+ link + ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3 + ", city=" + city
-				+ ", doorimg=" + doorimg + "]";
+				+ ", doorimg=" + doorimg + ", overview=" + overview + ", detail=" + detail + "]";
 	}
 	
 }	

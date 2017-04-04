@@ -14,7 +14,8 @@
 		$(".testEle").css("color","red");
 		$(".fontcolor").css("color","black");
 		
-		$("#002").css("left","65%");
+		$("#002").css("left","29%");
+		$("#002").css("position","relative"); 
 		$("#002box").css("background-color","orange");
 		$("#002box").css("color","white"); 
 		
@@ -36,14 +37,10 @@
 			$("#api").css("position","fixed");
 			$("#api").css("top","75%"); 
 			$("#api").css("left","85%");
-			/* $("#navitop").css("top","100"); */
+			
 			}
 		});
 	});
-	
-/* 	setInterval(function(){
-		$(".testEle").toggle();
-		}, 500); */
 	
 			</script>
         <!-- Marketing Icons Section -->

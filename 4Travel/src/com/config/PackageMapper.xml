@@ -5,7 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.fortravel.PackageMapper">
  	<select id="packageAllList" parameterType="string" resultType="PackageThirdDTO">
  		select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
- 		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg
+ 		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail
+ 		from packagedb
+ 		where PACKAGENAME = #{packagename}
+ 	</select>
+ 	<select id="packageTableAllList" parameterType="string" resultType="PackageThirdDTO">
+ 		select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
+ 		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail
  		from packagedb
  		where PACKAGENAME = #{packagename}
  	</select>
@@ -16,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
     <select id="packageList" parameterType="string" resultType="PackageThirdDTO">
     	select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
- 		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg
+ 		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail
  		from packagedb
  		where city = #{city}
     </select>
