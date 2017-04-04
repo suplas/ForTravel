@@ -35,9 +35,9 @@ function submitUpdate(){
 <body>
 <form id="reviewDeleteForm" name="reviewUpdateForm" action="ReviewBoardDeleteController">
 <input type="hidden" name="num" value="<%=num%>">
-<center><b><%=num%>번 글을 삭제하시겠습니까?</b></center>
+<center><b><%=num%>번 글을 삭제하시겠습니까? <br>삭제하신글은<font color="red">복구</font>가 불가능합니다</b></center>
 <center>
-<input type="submit" value="수정하기" onclick="javascript:submitUpdate()">
+<input type="submit" value="삭제하기" onclick="javascript:submitUpdate()">
 <input type="reset" value="취소" onclick="javascript:frameclose()">
 </center>
 </form>
