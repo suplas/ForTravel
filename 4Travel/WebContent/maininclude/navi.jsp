@@ -221,7 +221,7 @@
                         <a href="ReviewBoardController" class="dropdown-toggle" style="color:white;">여행후기 </a>
                     </li>		
                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white;">공지사항 </a> 
+                        <a href="NoticeUIController" class="dropdown-toggle" style="color:white;">공지사항 </a> 
                     </li>
                     <li class="dropdown">
                         <a href="QABoardListController" class="dropdown-toggle" style="color:white;">FAQ</a>
