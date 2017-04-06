@@ -15,10 +15,19 @@
     top: 24%;
 }
 .reviewimg{
-	    left: 74%;
+	    left: 72%;
     position: relative;	
     width: 25%;
     height: 20%;
+    top : -147px;
+}
+.title {
+ position: relative;
+ left : 29%;
+ top : -187px; 
+ width: 11%;
+ height: 165px;
+ 
 }
 </style>
 <!-- Bootstrap Core JavaScript -->
@@ -47,18 +56,10 @@
 				window.open(popUrl,"",popOption);
 
 			});
-	$(".contest").css("position","absolute");
-		$(".contest").css("float","right");
-		$(".title").css("left","40%");
-		$(".title").css("position","relative"); 
-		
-		$(".col-md-1").css("left","20%");  
-		$(".col-md-1").css("position","relative"); 
-		$(".col-md-1").css("width","30%"); 
-			$(".liTagNation").css("color","9fa2ab"); 
+
 	});
 </script>
-<div class="container">
+<div class="container" style="position: relative; top:20px;">  
 
 	<div class="row">
 		<div class="col-lg-12">
@@ -133,7 +134,7 @@
 	<c:forEach items="${pageDTO.list}" var="dto">
 
 		<!-- Blog Post Row -->
-		<div class="row reviewlist" style="margin-left: 2%;"> 
+		<div class="row reviewlist" style="margin-left: 2%; height: 174px;">  
 			<div class="contest">
 				<p>${dto.travelNation}</p>
 				<p>${dto.travelLoc}</p>
