@@ -25,7 +25,7 @@
 .title {
  position: relative;
  left : 29%;
- top : -150px; 
+ top : -128px; 
  width: 11%;
  height: 165px;
  
@@ -60,7 +60,7 @@
 
 	});
 </script>
-<div class="container" style="position: relative; top:20px;">  
+<div class="container">  
 
 	<div class="row">
 		<div class="col-lg-12">
@@ -136,7 +136,7 @@
 
 		<!-- Blog Post Row -->
 		<div class="row reviewlist" style="margin-left: 2%; height: 174px;">  
-			<div class="contest">
+			<div class="contest" style="position: relative; top:20px;"> 
 				<p>${dto.travelNation}</p>
 				<p>${dto.travelLoc}</p>
 				<p>조회수 : ${dto.readcnt}</p>
@@ -167,8 +167,8 @@
 					by <a style="color: black; text-decoration: none;">${dto.userid}</a>
 				</p>
 				<p>${dto.content}</p>
-				<a class="btn btn-primary" href="ReviewBoardDetailController?num=${dto.num}">Read More <i
-					class="fa fa-angle-right"></i></a>
+				<%-- <a class="btn btn-primary" href="ReviewBoardDetailController?num=${dto.num}">Read More <i
+					class="fa fa-angle-right"></i></a> --%> 
 			</div>
 			
 		</div>
