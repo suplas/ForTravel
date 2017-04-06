@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
  		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail
  		from packagedb
- 		where PACKAGENAME = #{packagename} and to_char(startdate,'mm') = #{startdate} and term = #{term}
+ 		where PACKAGENAME = #{packagename} and to_char(startdate,'yyyy/mm') = #{startdate} and term = #{term}
  	</select>
  	<select id="selectCountList" parameterType="String" resultType="int">
  		select count(*) as cnt

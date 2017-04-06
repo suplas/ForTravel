@@ -96,8 +96,41 @@
  }
 	</style>
 <script type="text/javascript">
-<%Date today = new Date();%>
-
+$(document).ready(function() {
+	var dt = new Date();
+	//Display the month, day, and year. getMonth() returns a 0-based number.
+	var month = dt.getMonth()+1;
+	var day = dt.getDate();
+	var year = dt.getFullYear();
+	$("#datespan1").text(year+"년"+month+"월");
+	$("#datespan2").text(year+"년"+(month+1)+"월");
+	$("body").on("click","#nextButton",function(){
+		month=month+1;
+		if((month+1)==13){
+			month=1;
+			year=year+1;
+		}
+	$("#datespan1").text(year+"년"+month+"월");
+	$("#datespan2").text(year+"년"+(month+1)+"월");
+	$.ajax({
+		type:"get",
+		url:"packageInclude/packageThridListUpdate.jsp",
+		dataType:"html",
+		data:{
+			packagename:'${Plist[0].packagename}',
+			startdate:year+'/'+month,
+			term:'${Plist[0].term}'
+		},
+		success:function(responseData,status,xhr){
+			console.log(responseData);
+			$("#tablelist").html(responseData);
+		},
+		error:function(error){
+			console.log(error);
+		}
+	}); //end ajax 
+	});//end nextButtonClickEvent
+});
 	</script>
 <div class="container">
 
@@ -175,12 +208,11 @@
         <div style="width: 100%; height:16%;">
         
        			
- 				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+2%>&term=${Plist[0].term}">
- 				<span id = "prevButton"><button type="button" >prev</button></span></a>
- 				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+1%>&term=${Plist[0].term}">
- 				<span id = "nextButton"><button type="button">next</button></span></a>
- 				<span id = "datespan1">0<%=today.getMonth()+2%>월</span> 
- 				<span id ="datespan2">test2</span>
+ 				<span id = "prevButton"><button type="button" >prev</button></span>
+ 				<%-- <a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+1%>&term=${Plist[0].term}"> --%>
+ 				<span id = "nextButton"><button type="button">next</button></span><!-- </a> -->
+ 				<span id = "datespan1"></span> 
+ 				<span id ="datespan2"></span>
  				
  				
  				<div id="listDayPackage"> 
