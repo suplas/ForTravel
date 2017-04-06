@@ -12,7 +12,7 @@
 		$(".title").css("text-align","center");
 		
 		$("#signup").css("position","absolute");
-		$("#signup").css("top","134px");
+		$("#signup").css("top","66%"); 
 		$("#signup").css("left","620px");
 		
 		$("#login").css("position","absolute");

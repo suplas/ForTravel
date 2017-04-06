@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <style type="text/css">
+    .noticetable{
+    	width: 10%;
+    	text-align: center;	
+    }
+    </style>
 <script type="text/javascript">
 	$(document).ready(function() {
 		//ajax 통신
@@ -31,6 +37,7 @@
 					$("#addBanTable").html(mesg);
 				});
 				$("#BanTotalCount").append(totalCount);
+				
 			},
 			error : function(error) {
 				console.log(error);
@@ -133,6 +140,7 @@
             <button id="banUpdate">금지목록 업데이트</button>&nbsp;&nbsp;<font color="red"><small>주의! 업데이트는 시간이 다소 걸리는 과정입니다</small></font><br>
             </form>
              금지목록 마지막 업데이트 날짜:<span id="banUpdateDate"></span><br>
+             
          <a id="BanTableaTag">금지목록 테이블로 보기 </a>
          <div id="BanTableDiv" style="display: none;">
         <table border="1" id="BanTable">
@@ -161,23 +169,23 @@
            
             경보목록 마지막 업데이트 날짜:<span id="warningUpdateDate"></span><br>
          <a id="WarningTableaTag">경보목록 테이블로 보기 </a>
-         <div id="WarningTableDiv" style="display: none;">
-         <table border="1" id="warningTable" style="width: 1000px; height:2000px; overflow: auto; " >
+         <div id="WarningTableDiv" style="display: none; width: 100%;">
+         <table border="1" id="warningTable" style="width: 100%; height:2000px; overflow: auto; text-align: center;" > 
 		<thead>
-			<tr>
-				<th>대륙</th>
-				<th>국가명</th>
-				<th>영문 국가명</th>
-				<th>등록일</th>
-				<th>여행유의</th>
-				<th>여행유의(일부)</th>
-				<th>여행유의 내용</th>
-				<th>여행자제</th>
-				<th>여행자제(일부)</th>
-				<th>여행자제 내용</th>
-				<th>여행제한</th>
-				<th>여행제한(일부)</th>
-				<th>여행제한 내용</th>
+			<tr class="noticetable">
+				<th class="noticetable" colsapn="14">대륙</th>
+				<th class="noticetable" colsapn="13">국가명</th>
+				<th class="noticetable" colsapn="13">영문 국가명</th>
+				<th class="noticetable" colsapn="13">등록일</th>
+				<th class="noticetable" colsapn="13">여행유의</th>
+				<th class="noticetable" colsapn="13">여행유의(일부)</th>
+				<th class="noticetable" colsapn="13">여행유의 내용</th>
+				<th class="noticetable" colsapn="13">여행자제</th>
+				<th class="noticetable" colsapn="13">여행자제(일부)</th>
+				<th class="noticetable" colsapn="13">여행자제 내용</th>
+				<th class="noticetable" colsapn="13">여행제한</th>
+				<th class="noticetable" colsapn="13">여행제한(일부)</th>
+				<th class="noticetable" colsapn="13">여행제한 내용</th>
 			</tr>
 		</thead>
 		<tbody id="addWarningTable">

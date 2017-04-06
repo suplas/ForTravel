@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="com.entity.PackageThirdDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -73,11 +74,12 @@
         <div class="packagediv">
         <c:forEach var="i" items="${Plist}">
             <div class ="packagelayout">
-       			<a href="PackageThirdListController?loc=${i.loc}&packagename=${i.packagename}">
+             <%Date today = new Date();%>
+       			<a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=today.getMonth()+1%>&term=${i.term}">
                     <img class="packageimg" src="images/${i.image}.jpg" alt="package01">
                 </a>
                 <h3 class = "title">
-                    <a href="PackageThirdListController?loc=${i.loc}&packagename=${i.packagename}">${i.packagename}</a>
+                    <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=today.getMonth()+1%>&term=${i.term}">${i.packagename}</a>
                 </h3>
                			<p class = "loc">여행 지역 : ${i.loc}</p>
                			<p class = "term">여행 기간 : ${i.term}</p>
