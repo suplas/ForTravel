@@ -178,12 +178,15 @@ $(document).ready(function(){
       <%Date today = new Date();
 		String num=request.getParameter("startdate");
 		int snum=Integer.parseInt(num);
-		int mnum = snum -4;
-		if(snum<=11){ 
-			snum = snum-2;	
-		}
-		if(mnum>=3){
-			mnum = today.getMonth()+1;
+		int mnum = 0;
+		if(snum<=11 && snum>=5){ 
+			snum = snum-2;
+			mnum = snum-2;
+		}else if(snum>11){
+			snum = 9;
+			mnum = 8;
+		}else if(mnum <=4){
+			snum = snum-2;
 		}
 		%>
 		
@@ -192,8 +195,8 @@ $(document).ready(function(){
  				<span id = "prevButton"><button type="button" >next</button></span></a>
  				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+mnum%>&term=${Plist[0].term}">
  				<span id = "nextButton"><button type="button">prev</button></span></a>
- 				<span id = "datespan1"><%=today.getYear()%>년.0<%=today.getMonth()+snum%>월</span> 
- 				<span id ="datespan2">test2</span>
+ 				<span id = "datespan1"><%=today.getMonth()+mnum%>월</span>  
+ 				<span id ="datespan2"><%=today.getMonth()+snum%>월</span>
  				
  				
  				<div id="listDayPackage"> 

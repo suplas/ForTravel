@@ -179,7 +179,7 @@
  				<span id = "prevButton"><button type="button" >prev</button></span></a>
  				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+1%>&term=${Plist[0].term}">
  				<span id = "nextButton"><button type="button">next</button></span></a>
- 				<span id = "datespan1"><%=today.getYear()%>년.0<%=today.getMonth()+2%>월</span> 
+ 				<span id = "datespan1">0<%=today.getMonth()+2%>월</span> 
  				<span id ="datespan2">test2</span>
  				
  				
