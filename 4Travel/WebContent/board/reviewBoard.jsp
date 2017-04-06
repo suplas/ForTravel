@@ -12,19 +12,20 @@
 	 position: absolute;
     float: right;
     left: 58%; 
-    top: 24%;
+    top: 22%;
 }
 .reviewimg{
-	    left: 72%;
+	    left: -2%;
     position: relative;	
     width: 25%;
-    height: 20%;
+    height: 100%;
+    float: right;
     top : -147px;
 }
 .title {
  position: relative;
  left : 29%;
- top : -187px; 
+ top : -150px; 
  width: 11%;
  height: 165px;
  
