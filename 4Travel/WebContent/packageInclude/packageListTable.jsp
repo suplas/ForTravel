@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="javafx.scene.control.Alert"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -96,7 +97,9 @@
  }
 	</style>
 <script type="text/javascript">
-
+$(document).ready(function(){
+	 
+});
 	</script>
 <div class="container">
 
@@ -172,13 +175,24 @@
         <div id = "remoteButton">
         
         <div style="width: 100%; height:16%;">
-        <%Date today = new Date();%>
+      <%Date today = new Date();
+		String num=request.getParameter("startdate");
+		int snum=Integer.parseInt(num);
+		int mnum = snum -4;
+		if(snum<=11){ 
+			snum = snum-2;	
+		}
+		if(mnum>=3){
+			mnum = today.getMonth()+1;
+		}
+		%>
+		
        
- 				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+2%>&term=${Plist[0].term}">
- 				<span id = "prevButton"><button type="button" >prev</button></span></a>
- 				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+1%>&term=${Plist[0].term}">
- 				<span id = "nextButton"><button type="button">next</button></span></a>
- 				<span id = "datespan1"><%=today.getYear()%>년.0<%=today.getMonth()+2%>월</span> 
+ 				<a id = "tablelistPrevbutton" href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+snum%>&term=${Plist[0].term}">
+ 				<span id = "prevButton"><button type="button" >next</button></span></a>
+ 				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+mnum%>&term=${Plist[0].term}">
+ 				<span id = "nextButton"><button type="button">prev</button></span></a>
+ 				<span id = "datespan1"><%=today.getYear()%>년.0<%=today.getMonth()+snum%>월</span> 
  				<span id ="datespan2">test2</span>
  				
  				

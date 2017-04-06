@@ -96,12 +96,8 @@
  }
 	</style>
 <script type="text/javascript">
+<%Date today = new Date();%>
 
-$(document).ready(function(){
-	$("#prevButton").on("click",function(event){
-		$("#tablelistPrevbutton").attr("href=''")
-	});
-});
 	</script>
 <div class="container">
 
@@ -177,9 +173,9 @@ $(document).ready(function(){
         <div id = "remoteButton">
         
         <div style="width: 100%; height:16%;">
-        <%Date today = new Date();%>
+        
        			
- 				<a id = "tablelistPrevbutton" href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+2%>&term=${Plist[0].term}">
+ 				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+2%>&term=${Plist[0].term}">
  				<span id = "prevButton"><button type="button" >prev</button></span></a>
  				<a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+1%>&term=${Plist[0].term}">
  				<span id = "nextButton"><button type="button">next</button></span></a>
