@@ -45,7 +45,7 @@
                 </div>
                 <ol class="breadcrumb">
                     <li><a href="Home">Home</a>
-                    </li>
+                    </li> 
                     <li class="active">4travel 회원 로그인</li>
                 </ol>
             </div>

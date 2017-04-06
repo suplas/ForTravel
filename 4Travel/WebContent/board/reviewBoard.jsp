@@ -69,7 +69,7 @@
 				지역 : <a id="aTagLoc" href="ReviewBoardController?travelNation=${travelNation}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}"
 					class="dropdown-toggle" data-toggle="dropdown">${travelLoc} <b
 						class="caret"></b></a>
-					<ul id="ulTagLoc" class="dropdown-menu">
+					<ul id="ulTagLoc" class="dropdown-menu"> 
 						<li class="liTagLoc"><a href="ReviewBoardController?travelNation=${travelNation}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">전체보기</a></li>
 						<c:forEach items="${locList}"  var="loc">
 						<li class="liTagLoc"><a href="ReviewBoardController?travelNation=${travelNation}&travelLoc=${loc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">${loc}</a></li>

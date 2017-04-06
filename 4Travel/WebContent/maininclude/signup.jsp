@@ -99,7 +99,7 @@ $(document).ready(function(){
 			}else if(!reg_email2.test($("#email2").val())){ 
 				alert("유효하지 않은 email 형식 입니다");
 				$("#email2").focus();
-				check=false;
+				check=false; 
 			}else if(!$.isNumeric($("#phone2").val())){
 				alert("전화번호는 숫자만 입력해주세요.");
 				$("#phone2").focus();
