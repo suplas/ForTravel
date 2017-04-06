@@ -6,7 +6,21 @@
 <!-- jQuery -->
 
 <script src="js/jquery.js"></script>
-
+<!-- CSS -->
+<style type="text/css">
+.udbutton{
+	 position: absolute;
+    float: right;
+    left: 58%; 
+    top: 24%;
+}
+.reviewimg{
+	    left: 74%;
+    position: relative;	
+    width: 25%;
+    height: 20%;
+}
+</style>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -125,17 +139,18 @@
 				<p>${dto.travelLoc}</p>
 				<p>조회수 : ${dto.readcnt}</p>
 				<p>${dto.writeday}</p>
-				<span >
+				
+			</div>
+			<span class = "udbutton">
 					<b class="dtonumber" style="display: none;">${dto.num}</b>
 					<c:if test="${sessionScope.login.userid==dto.userid}">
 					<button class="reviewUpdate btn label label-success" style="display: inline;">수정</button>  
 					<button class="reviewDelete btn label label-success" >삭제</button>
 					</c:if>
 				</span><br>
-			</div>
 			<c:if test="${dto.image1 !=null}">
 			<c:set var="image_array" value="${fn:split(dto.image1,'/')}" />
-				<div class="col-md-1">  
+				<div class="reviewimg">  
 					<a href="#"> 
 					<img class="img-responsive img-hover"
 						src="/4Travel/images/${image_array[0]}"  alt="">
