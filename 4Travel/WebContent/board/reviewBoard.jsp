@@ -119,7 +119,7 @@
 	<c:forEach items="${pageDTO.list}" var="dto">
 
 		<!-- Blog Post Row -->
-		<div class="row" style="margin-left: 2%;"> 
+		<div class="row reviewlist" style="margin-left: 2%;"> 
 			<div class="contest">
 				<p>${dto.travelNation}</p>
 				<p>${dto.travelLoc}</p>
@@ -128,10 +128,10 @@
 				<span >
 					<b class="dtonumber" style="display: none;">${dto.num}</b>
 					<c:if test="${sessionScope.login.userid==dto.userid}">
-					<button class="reviewUpdate btn label label-success" >수정</button><br><br>  
+					<button class="reviewUpdate btn label label-success" style="display: inline;">수정</button>  
 					<button class="reviewDelete btn label label-success" >삭제</button>
 					</c:if>
-				</span>
+				</span><br>
 			</div>
 			<c:if test="${dto.image1 !=null}">
 			<c:set var="image_array" value="${fn:split(dto.image1,'/')}" />

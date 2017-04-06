@@ -70,8 +70,8 @@ $(document).ready(function(){
 			$("#email2").attr("readonly","readonly");
 		}
 	});//end email event
-	$("form").on("submit",function(event){
-		$("form input").each(function(idx,obj){
+	$("form[name='sinupForm']").on("submit",function(event){
+		$("form[name='sinupForm'] input").each(function(idx,obj){
 			if($.trim($(this).val())==''){
 				alert("공란 없이 입력해주세요");
 				$(this).focus();
@@ -156,7 +156,7 @@ $(document).ready(function(){
 </span>
 <br>
 	
-	<form action="MemberJoinController">
+	<form name="sinupForm" action="MemberJoinController">
 	이름 (한글, 예 홍길동) <br>
 	<input type="text" name="username" id="username"><br><br>
 	 생일 <input type="date" name="birth" id="birth" max="2017-03-27" min="1900-01-01"><br><br>
