@@ -82,12 +82,28 @@
 				console.log(error);
 			}
 		}); //end ajax
+		$("body").on("click","#BanTableaTag",function(event){
+			if($("#BanTableDiv").attr("style")=='display: block;'){
+				$("#BanTableDiv").css("display","none");
+			}else{
+				$("#BanTableDiv").css("display","block");
+			}
+			});//end BanTableaTag event
+
+			$("body").on("click","#WarningTableaTag",function(event){
+			if($("#WarningTableDiv").attr("style")=='display: block;'){
+				$("#WarningTableDiv").css("display","none");
+			}else{
+				$("#WarningTableDiv").css("display","block");
+			}
+			});//end BanTableaTag event
+	
+	
 	}); /* endDoucumentReady */
 </script>    
 
     
 <div class="container">
-
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
@@ -106,15 +122,19 @@
         <!-- Content Row -->
         <div class="row">
         
+	<small><font color=red>주의!</font> 본 정보에는 오류가 있을 수 있으며, <a href="http://www.0404.go.kr/dev/main.mofa">외교부해외안전여행</a> 사이트에서 정확한 정보를 확인하실 수 있습니다.</small><br>
+	<small> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 각 목록 업데이트 날짜는 본 사이트(4Travel)의 데이터 업데이트 날짜를 의미 합니다.</small>
        
        
         <!-- /.row -->
         <hr>
         <form action="BanListUpdateController" name="banUpdateForm" method="post">
         	<!-- <input type="hidden" name="banUpdateDate"  id="banUpdateDate"> -->
-            <button id="banUpdate">금지목록 업데이트</button>&nbsp;&nbsp;<font color="red"><small>주의! 시간이 다소 걸리는 과정입니다</small></font><br>
+            <button id="banUpdate">금지목록 업데이트</button>&nbsp;&nbsp;<font color="red"><small>주의! 업데이트는 시간이 다소 걸리는 과정입니다</small></font><br>
             </form>
-             금지목록 마지막 업데이트 날짜:<span id="banUpdateDate"></span>
+             금지목록 마지막 업데이트 날짜:<span id="banUpdateDate"></span><br>
+         <a id="BanTableaTag">금지목록 테이블로 보기 </a>
+         <div id="BanTableDiv" style="display: none;">
         <table border="1" id="BanTable">
 		<thead>
 			<tr>
@@ -132,14 +152,16 @@
 		</tbody>
 	</table>
 		<div id="BanTotalCount">TotalCount:</div>
-    
+    </div>
     <hr>
      <form action="WarningListUpdateController" name="warningUpdateForm" method="post">
         	<!-- <input type="hidden" name="warningUpdateDate"  id="warningUpdateDate"> -->
-            <button id="warningUpdate">경보목록 업데이트</button>&nbsp;&nbsp;<font color="red"><small>주의! 시간이 다소 걸리는 과정입니다</small></font><br>
+            <button id="warningUpdate">경보목록 업데이트</button>&nbsp;&nbsp;<font color="red"><small>주의! 업데이트는 시간이 다소 걸리는 과정입니다</small></font><br>
         </form>  
            
-            경보목록 마지막 업데이트 날짜:<span id="warningUpdateDate"></span>
+            경보목록 마지막 업데이트 날짜:<span id="warningUpdateDate"></span><br>
+         <a id="WarningTableaTag">경보목록 테이블로 보기 </a>
+         <div id="WarningTableDiv" style="display: none;">
          <table border="1" id="warningTable" style="width: 1000px; height:2000px; overflow: auto; " >
 		<thead>
 			<tr>
@@ -163,7 +185,9 @@
 		</tbody>
 	</table>
 	<div id="WarningTotalCount">TotalCount:</div>
+    </div>
     <hr>
+    
    <small> 출처: <a href="https://www.data.go.kr/">공공데이터포털</a>의 여행금지제도,여행경보제도 api </small><br>
    <small> 원본 xml : <a href="http://apis.data.go.kr/1262000/TravelBanService/getTravelBanList?ServiceKey=Mf2l3D3UqYuFtvFpn8hCECfVaMTxH9HCvqZTuAmsPYNNqJ8i8rrBH5ExjOsYcbJ1kYpixDEzmiN7dWQRk6ZXhw%3D%3D">여행금지제도</a>,<a href="http://apis.data.go.kr/1262000/TravelWarningService/getTravelWarningList?ServiceKey=Mf2l3D3UqYuFtvFpn8hCECfVaMTxH9HCvqZTuAmsPYNNqJ8i8rrBH5ExjOsYcbJ1kYpixDEzmiN7dWQRk6ZXhw%3D%3D&numOfRows=150">여행경보제도</a></small>
     <hr>

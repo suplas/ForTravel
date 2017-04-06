@@ -17,7 +17,10 @@ import com.exception.CommonException;
 @WebServlet("/NoticeUIController")
 public class NoticeUIController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		
+		
+		
 		RequestDispatcher dis=request.getRequestDispatcher("Notice.jsp");
 		dis.forward(request, response);
 	}
