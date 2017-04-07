@@ -70,7 +70,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
                         <h4><i class="fa fa-fw fa-compass"></i>베스트 여행후기</h4>
                     </div> -->
         	 <div class="panel-body">
-        	 <p><a href="ReviewBoardDetailController"><img  class="newpackage" src="/4Travel/images/${BestReview.image1}"></img></a><br><br>
+        	 <p><a href="ReviewBoardDetailController?num=${BestReview.num}"><img  class="newpackage" src="/4Travel/images/${BestReview.image1}"></img></a><br><br>
                         	<span>타이틀 : </span><span class="testEle">${BestReview.title}</span></p>
                         	작성자 : ${BestReview.userid}<br>
                         	여행지 : ${BestReview.travelNation}/${BestReview.travelLoc}<br>
