@@ -4,46 +4,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fortravel.PackageMapper">
  	<select id="packageAllList" parameterType="string" resultType="PackageThirdDTO">
+ 	<![CDATA[
  		select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
  		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail
  		from packagedb
- 		where PACKAGENAME = #{packagename}
+ 		where PACKAGENAME = #{packagename} and startdate >= sysdate
+ 		]]> 
  	</select>
  	<select id="packageTableAllList" parameterType="PackageThirdDTO" resultType="PackageThirdDTO">
+ 	<![CDATA[
  		select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
  		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail
  		from packagedb
- 		where PACKAGENAME = #{packagename} and to_char(startdate,'yyyy/mm') = #{startdate} and term = #{term}
+ 		where PACKAGENAME = #{packagename} and to_char(startdate,'yyyy/mm') = #{startdate} and term = #{term} and startdate >= sysdate
+ 		]]> 
  	</select>
  	<select id="selectCountList" parameterType="String" resultType="int">
+ 	<![CDATA[
  		select count(*) as cnt
  		from packagedb
- 		where PACKAGENAME = #{packagename} 
+ 		where PACKAGENAME = #{packagename} and startdate >= sysdate 
+ 		]]> 
  	</select>
     <select id="packageList" parameterType="string" resultType="PackageThirdDTO">
+    <![CDATA[
     	select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
  		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail
  		from packagedb
- 		where city = #{city}
+ 		where city = #{city} and startdate >= sysdate
+ 		]]> 
     </select>
     
      <select id="countryAllList" parameterType="string" resultType="PackageFirstDTO">
+     
     	select packageno,packagename,price,image,term,loc from packagemain
-    	where loc = #{loc}
+    	where loc = #{loc} 
     	order by price asc
+    	
     </select>
     <select id="packageNewlist" resultType="PackageThirdDTO">
     <![CDATA[
  		select packagename,COMPANY,doorimg,AIRLINE,price,STARTDATE,LASTDATE,loc,term
  		from packagedb
- 		where rownum <= 3
+ 		where rownum <= 3 and startdate >= sysdate
  		order by packageno
  		]]>
  	</select>
- 	<!-- <update id="recentlyPackage" parameterType="MemberDTO">
-		update member
-		set packageno = #{packageno}
-		where userid = #{userid}
-	</update> -->
- 	
+
 </mapper>

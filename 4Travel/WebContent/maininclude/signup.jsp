@@ -1,6 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   <div class="container">
+  <style type="text/css">
+  .inputSize{
+  width: 16%;
+  height: 25px;
+  }
+  .phoneinputSize{
+      width: 4%;
+    height: 25px;
+  	}
+  #emailSelect,#phone1{ 
+  height: 25px;
+  }
+  #name{
+    position: relative;
+    left: 30%;
+  }
+  #birthday{
+      position: relative;
+    left: 30%;
+    top: 20px;
+  }
+  #userid1{
+      position: relative;
+    top: 34px;
+    left: 30%;
+  }
+  #passwd1{
+     position: relative;
+    top: 31px;
+    left: 30%;
+  }
+#reg_id{
+color: red;
+position: relative;
+left: 15%;
+top : 20px; 
+}
+#passwd2{
+    position: relative;
+    bottom: 14px;
+    left: 66%; 
+}
+#emaildiv{
+position: relative;
+    top: 19px;
+    left: 30%; 
+}
+#addres{
+    position: relative;
+    top: 35px;
+    left: 30%;
+}
+#phonenum{
+    position: relative;
+    bottom: 351px;
+    left: 66%;
+}
+#submitbutton{
+    position: relative;
+    bottom: 35px;
+    left: 70%;
+    width: 39%;
+}
+  </style>
   <script type="text/javascript">
 $(document).ready(function(){
 		var check=false;
@@ -13,6 +77,9 @@ $(document).ready(function(){
 				$("#reg_id").text("아이디는 3-15자 영문이여야 하며 \n" 
                         +"마침표, '-', '_'를 제외한 문자는 사용하실수 없습니다.");
 				$("#reg_id").css("color","red");
+				/*$("#reg_id").css("position","relative");
+				$("#reg_id").css("left","24%");
+				$("#reg_id").css("top","14%");  */
     		}else{
     			$("#reg_id").empty();
     		}
@@ -28,8 +95,15 @@ $(document).ready(function(){
 					$("#result").text(responseData);
 					if($.trim(responseData)=="아이디 사용 가능"){
 						$("#result").css("color","blue");
+						$("#result").css("position","relative");
+						$("#result").css("left","35%");
+						$("#result").css("bottom","11px"); 
+						
 					}else{
 						$("#result").css("color","red");
+						$("#result").css("position","relative");
+						$("#result").css("left","35%");
+						$("#result").css("bottom","11px"); 
 					}
 				},
 				error:function(error){
@@ -42,6 +116,9 @@ $(document).ready(function(){
 				$("#reg_pw").text('비밀번호 형식이 잘못되었습니다.\n' 
 	                    +'(영문,숫자를 혼합하여 6~20자 이내)');
 				$("#reg_pw").css("color","red");
+				$("#reg_pw").css("position","relative");
+				$("#reg_pw").css("top","49px");
+				$("#reg_pw").css("right","5%");  
 			}else{
 				$("#reg_pw").empty();
 			} 
@@ -52,9 +129,15 @@ $(document).ready(function(){
 			if($("#passwd").val()==$("#passwdconfirm").val()){
 					$("#confirm").text("비밀 번호 일치");
 					$("#confirm").css("color","blue");
+					$("#confirm").css("position","relative");
+					$("#confirm").css("top","14px");
+					$("#confirm").css("left","30%");
 			}else{
 				$("#confirm").text("비밀 번호 불일치 비밀번호를 확인해주세요.");
 					$("#confirm").css("color","red");
+					$("#confirm").css("position","relative");
+					$("#confirm").css("top","14px");
+					$("#confirm").css("left","30%"); 
 					$("#passwdconfirm").val("");
 			}
 		});//end pw confirm event
@@ -95,7 +178,7 @@ $(document).ready(function(){
 			}else if(!reg_email1.test($("#email1").val())){ 
 				alert("유효하지 않은 email 형식 입니다");
 				$("#email1").focus();
-				check=false;
+				check=false; 
 			}else if(!reg_email2.test($("#email2").val())){ 
 				alert("유효하지 않은 email 형식 입니다");
 				$("#email2").focus();
@@ -134,7 +217,7 @@ $(document).ready(function(){
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">회원가입
+                <h1 class="page-header">회원가입 
                     <small>4Travel</small>
                 </h1>
                 <ol class="breadcrumb">
@@ -148,39 +231,46 @@ $(document).ready(function(){
 
         <!-- Content Row -->
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12"  style="overflow:hidden;">
 			<!-- 회원 가입 -->
-<h3>회원가입</h3>
+<h3  style="position: relative; left:50%;">회원가입</h3>
 <span id = "font">
 
 </span>
 <br>
 	
 	<form name="sinupForm" action="MemberJoinController">
+	<div id = "name">
 	이름 (한글, 예 홍길동) <br>
-	<input type="text" name="username" id="username"><br><br>
-	 생일 <input type="date" name="birth" id="birth" max="2017-03-27" min="1900-01-01"><br><br>
-	아이디<span id="reg_id"></span><br>
-	<input type ="text" name="userid" id="userid" name="userid">
+	<input class="inputSize" type="text" name="username" id="username"></div>
+	<div id="birthday">
+	 생년월일 <br><input class="inputSize" type="date" name="birth" id="birth" max="2017-03-27" min="1900-01-01"></div>
+	 <div id = "userid1"> 
+	아이디<span id="reg_id"></span><br> 
+	<input class="inputSize" type ="text" name="userid" id="userid" name="userid"></div>
 	<span id="result"></span><br>
+	<div id="passwd1">
 	비밀번호<span id="reg_pw"></span><br>
-	<input type="password" id="passwd" name="passwd"><br>
+	<input class="inputSize" type="password" id="passwd" name="passwd"></div>
+	<div id = "passwd2">
 	비밀번호 확인<br>
-	<input type="password" id="passwdconfirm" name="passwdconfirm">  &nbsp;&nbsp;&nbsp;
+	<input class="inputSize" type="password" id="passwdconfirm" name="passwdconfirm"></div> 
 	<span id="confirm"></span><br>
+	<div id = "emaildiv">
 	이메일<br>
-	<input type="text" name ="email1" id="email1">@
+	<input class="inputSize" type="text" name ="email1" id="email1">@
+	<input class="inputSize" type="text" id="email2" name="email2" readonly="readonly" value="naver.com">
 	<select id="emailSelect">
 	<option selected="selected">naver.com</option>
 	<option>gmail.com</option>
-	<option>daum.net</option>
+	<option>daum.net</option> 
 	<option>hotmail.com</option>
 	<option>직접입력</option>
 	</select> 
-	<input type="text" id="email2" name="email2" readonly="readonly" value="naver.com">
-	<br><br>
+	</div>
 	<!-- 다음 호면만 본인 화면으로 설정................. -->
-	주소<br><br>
+	<div id = "addres">
+	주소<br>
 	<input name="post1" id="post1" size="5" readonly=""> -
 	<input name="post2" id="post2" size="5" readonly="">
 	<input onclick="openDaumPostcode()" type="button" value="우편번호찾기">
@@ -194,15 +284,14 @@ $(document).ready(function(){
 			enablecontextmenu="false" wmode="transparent"
 			allowscriptaccess="always"></span>
 	<span style="line-height: 10%;"><br></span>
-	<input name="addr1" id="addr1" size="40" readonly=""
-		placeholder="도로명주소">
+	<input name="addr1" id="addr1" size="40" readonly="" placeholder="도로명주소">
 	<br>
 	<span style="line-height: 10%;"><br></span>
 	<input name="addr2" id="addr2" size="40" placeholder="지번주소">
-    <br>
-	<br>
+   </div>
+   <div id = "phonenum">
 	전화번호<br>
-	<select name="phone1" id="phone1">
+	<select  name="phone1" id="phone1" style="width:4%;">
 	<option>010</option>
 	<option>011</option>
 	<option>02(서울)</option>
@@ -223,11 +312,13 @@ $(document).ready(function(){
 	<option>063(전북)</option>
 	<option>064(제주)</option>
 	</select>
-	<input type="text" name="phone2" id="phone2"> - 
-	<input type = "text" name="phone3" id="phone3"><br>
-	<input type ="submit" value="회원가입" name="sub">
-	<input type ="reset" value="취소" name="res">
-	</form>
+	- 
+	<input class="phoneinputSize" type="text" name="phone2" id="phone2"> - 
+	<input class="phoneinputSize" type = "text" name="phone3" id="phone3"></div>
+	<div id = "submitbutton">
+	<input class="inputSize" type ="submit" value="회원가입" name="sub">
+	<input class="inputSize" type ="reset" value="취소" name="res"></div> 
+	</form> 
             </div>
         </div>
         <!-- /.row -->
