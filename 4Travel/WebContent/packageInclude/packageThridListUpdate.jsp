@@ -10,15 +10,17 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 String packagename=request.getParameter("packagename");
-String startdate=request.getParameter("startdate");
+String startyear=request.getParameter("startyear");
+String startmonth=request.getParameter("startmonth");
 String term=request.getParameter("term");
+String startdate=startyear+"/0"+startmonth;
 PackageThirdDTO dto = new PackageThirdDTO();
 dto.setPackagename(packagename);
 dto.setStartdate(startdate);
 dto.setTerm(term);
 PackageBiz biz=new PackageBiz();
 List<PackageThirdDTO> list2=null;
-
+System.out.println(startdate);
 try {
 	list2=biz.packageTableAllList(dto);
 	request.setAttribute("Plist2", list2);

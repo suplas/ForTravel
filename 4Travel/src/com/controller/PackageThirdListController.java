@@ -26,10 +26,10 @@ public class PackageThirdListController extends HttpServlet {
 		String packagename = request.getParameter("packagename");
 		String startdate = request.getParameter("startdate");
 		String term = request.getParameter("term");
-		
+		System.out.println(startdate);
 		PackageThirdDTO dto = new PackageThirdDTO();
 		dto.setPackagename(packagename);
-		dto.setStartdate("0"+startdate);
+		dto.setStartdate(startdate);
 		dto.setTerm(term);
 		String target="";
 		PackageBiz biz=new PackageBiz();

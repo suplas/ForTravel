@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -46,11 +47,6 @@
 			</script>
         <!-- Marketing Icons Section -->
         <br>
-        <div class="marquee"> 
-           <marquee>   
-           	<font color="black"><h3>환율 정보 api</h3></font>   
-           </marquee>
-           </div>
            <div>
         <iframe id ="api" src="https://sbiz.wooribank.com/biz/Dream?withyou=FXCNT0002&rc=0&divType=1&lang=KOR" frameBorder=0
 width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginHeight=0 title="무료환율표A형"></iframe>			
@@ -95,8 +91,10 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
                         <h4><i class="fa fa-fw fa-check"></i>추천 패키지</h4>
                     </div> -->
                     <div class="panel-body">
-    				<%Date today = new Date();%>
-				<a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=today.getMonth()+1%>&term=${i.term}">
+    				<%Date today = new Date();
+    				SimpleDateFormat dayform=new SimpleDateFormat("yyyy/MM"); 
+    				%>
+				<a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">
                         <p><img  class="newpackage" src="images/${i.doorimg}.jpg"></img></a><br><br>
                         	패키지 명 : ${i.packagename}<br>
                         	출발날짜 : ${i.startdate}<br>

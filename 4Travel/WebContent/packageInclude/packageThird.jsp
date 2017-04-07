@@ -123,7 +123,8 @@ $(document).ready(function() {
 		dataType:"html",
 		data:{
 			packagename:'${Plist[0].packagename}',
-			startdate:year+'/'+month,
+			startyear:year,
+			startmonth:month,
 			term:'${Plist[0].term}'
 		},
 		success:function(responseData,status,xhr){
@@ -135,6 +136,34 @@ $(document).ready(function() {
 		}
 	}); //end ajax 
 	});//end nextButtonClickEvent
+	
+	$("body").on("click","#prevButton",function(){
+		month=month-1;
+		if((month)==1){
+			month=11;
+			year=year-1;
+		}
+	$("#datespan1").text(year+"년"+month+"월");
+	$("#datespan2").text(year+"년"+(month+1)+"월");
+	$.ajax({
+		type:"get",
+		url:"packageInclude/packageThridListUpdate.jsp",
+		dataType:"html",
+		data:{
+			packagename:'${Plist[0].packagename}',
+			startyear:year,
+			startmonth:month,
+			term:'${Plist[0].term}'
+		},
+		success:function(responseData,status,xhr){
+			console.log(responseData);
+			$("#tablelist").html(responseData);
+		},
+		error:function(error){
+			console.log(error);
+		}
+	}); //end ajax 
+	});//end prevButtonClickEvent
 });
 	</script>
 <div class="container">
