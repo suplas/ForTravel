@@ -58,11 +58,11 @@
 	}
 	#prevButton{
 	position: absolute;
-	left: 74%;
+	left: 26%; 
 	}
 	#nextButton{
 	position: absolute;
-	left: 26%; 
+	left: 74%;
 	}
 	#datespan1{
 	position: absolute;
@@ -93,6 +93,11 @@
  	height: 80px; 
  	padding: 25px 0 25px 0;
  	text-align: center;
+ }
+ .footer{
+     background-color: black;
+    position: relative;
+    top: 70%;   
  }
 	</style>
 <script type="text/javascript">
@@ -222,7 +227,7 @@ $(document).ready(function() {
  	 				</tr>
  	 				<c:forEach var="i" items="${Plist2}">
  	 				<tr class="packagelistTable">
- 	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <td>${i.packagename}</td> 
+ 	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <a href="#"><td>${i.packagename}</td></a> 
  	 				<td>${i.term}</td> <td><font color="red">${i.price}</font></td> <td>${i.reservationab}</td>  
  	 				</tr>
  	 				
@@ -233,7 +238,19 @@ $(document).ready(function() {
  			</div>
  			</div>
 	
-       
+        <!-- Footer -->
+        <footer class="footer"> 
+            <div class="row">
+                <div class="col-lg-12" style="margin-left: 10%;">  
+                   <br><font size="2px" color="gray"><p>ForTravel 대표이사: team M&M 서울 강남구 역삼동  에이콘아카데미(주)에이콘이즈</p>   
+						<p>대표전화: 02-000-0000 팩스:02-000-0000</p>
+                   		 <p>Copyright &copy; team M&amp;M(Jung MinWoo,Lee Min Sub) All Rights Reserved.</p></font>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+  
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

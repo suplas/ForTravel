@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
   
         <!-- Footer -->
-        <footer style="background-color: black; position:relative; top:15%;"> 
+        <footer class="footer" style="background-color: black; position:relative; top:15%;"> 
             <div class="row">
                 <div class="col-lg-12">
                    <br><font size="2px" color="gray"><p>ForTravel 대표이사: team M&M 서울 강남구 역삼동  에이콘아카데미(주)에이콘이즈</p>   
