@@ -9,10 +9,10 @@
 <!-- CSS -->
 <style type="text/css">
 .udbutton{
-	 position: absolute;
+	 position: relative;
     float: right;
-    left: 58%; 
-    top: 22%;
+    right: 40%; 
+    bottom: 45px;
 }
 .reviewimg{
 	    left: -2%;
