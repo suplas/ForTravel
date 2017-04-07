@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.entity.PackageThirdDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -30,12 +31,14 @@
  	<c:forEach var="i" items="${Plist}">
         <div class="row">
             <div class="col-md-4 img-portfolio"> 
-            <%Date today = new Date();%>
-                <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=today.getMonth()+1%>&term=${i.term}">
+            <%Date today = new Date();
+            SimpleDateFormat dayform=new SimpleDateFormat("yyyy/MM");
+            %>
+                <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">
                     <img class="img-responsive img-hover" src="images/${i.doorimg}.jpg" alt="packageimage01">
                 </a>
                 <h3>
-                    <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=today.getMonth()+1%>&term=${i.term}">${i.packagename}</a>
+                    <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">${i.packagename}</a>
                 </h3>
                			<p>여행 지역 : ${i.loc}</p>
                			<p>여행 기간 : ${i.term}</p>
