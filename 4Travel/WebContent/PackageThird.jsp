@@ -22,6 +22,9 @@
 <jsp:include page="maininclude/navi.jsp" flush="true"/>
 <jsp:include page="packageInclude/packageThird.jsp" flush="true"/>
 
- 
+  <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
