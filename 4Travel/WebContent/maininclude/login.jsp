@@ -59,7 +59,7 @@
  <form action="LoginController">
  <pre width="500px">
  <center> 아이디  <input type ="text" name="userid"></center>
-<center> 비밀번호<input type ="text" name="passwd"></center>
+<center> 비밀번호<input type ="password" name="passwd"></center>
 </pre> 	<!-- <input type="checkbox" name="idsave">아이디 저장 -->
  		<input type = "submit" size="10" value="로그인" id ="login"><br>
  	</form>
