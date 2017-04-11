@@ -28,8 +28,7 @@
 						info += "<td>"+countryName+"</td>";
 						info += "<td>"+countryEnName+"</td>";
 						info += "<td>"+continent+"</td>";
-						info += "<td>"+ban+"</td>";
-						info += "<td>"+banPartial+"</td>";
+						info += "<td>"+ban+banPartial+"</td>";
 						info += "<td>"+banNote+"</td>";
 						info += "<td>"+wrtDt+"</td>";
 						info += "</tr>";
@@ -69,14 +68,11 @@
 					info += "<td>"+countryName+"</td>";
 					info += "<td>"+countryEnName+"</td>";
 					info += "<td>"+wrtDt+"</td>";
-					info += "<td>"+attention+"</td>";
-					info += "<td>"+attentionPartial+"</td>";
+					info += "<td>"+attention+attentionPartial+"</td>";
 					info += "<td>"+attentionNote+"</td>";
-					info += "<td>"+control+"</td>";
-					info += "<td>"+controlPartial+"</td>";
+					info += "<td>"+control+controlPartial+"</td>";
 					info += "<td>"+controlNote+"</td>";
-					info += "<td>"+limit+"</td>";
-					info += "<td>"+limitPartial+"</td>";
+					info += "<td>"+limit+limitPartial+"</td>";
 					info += "<td>"+limitNote+"</td>";
 					info += "</tr>";
 					mesg += info;
@@ -107,6 +103,8 @@
 	
 	
 	}); /* endDoucumentReady */
+	
+	
 </script>    
 
     
@@ -141,16 +139,17 @@
             </form>
              금지목록 마지막 업데이트 날짜:<span id="banUpdateDate"></span><br>
              
+         <a id="BanMapTag">금지목록 지도로 보기 </a>
+		 <div id="map"></div>
          <a id="BanTableaTag">금지목록 테이블로 보기 </a>
-         <div id="BanTableDiv" style="display: none;">
+         <div id="BanTableDiv" style="display: none; cursor: pointer;">
         <table border="1" id="BanTable">
 		<thead>
 			<tr>
 				<th>국가명</th>
 				<th>영문 국가명</th>
 				<th>대륙</th>
-				<th>여행금지</th>
-				<th>여행금지(일부)</th>
+				<th>여행금지/(일부)</th>
 				<th>여행금지 내용</th>
 				<th>등록일</th>
 			</tr>
@@ -177,14 +176,11 @@
 				<th class="noticetable" colsapn="13">국가명</th>
 				<th class="noticetable" colsapn="13">영문 국가명</th>
 				<th class="noticetable" colsapn="13">등록일</th>
-				<th class="noticetable" colsapn="13">여행유의</th>
-				<th class="noticetable" colsapn="13">여행유의(일부)</th>
+				<th class="noticetable" colsapn="13">여행유의/(일부)</th>
 				<th class="noticetable" colsapn="13">여행유의 내용</th>
-				<th class="noticetable" colsapn="13">여행자제</th>
-				<th class="noticetable" colsapn="13">여행자제(일부)</th>
+				<th class="noticetable" colsapn="13">여행자제/(일부)</th>
 				<th class="noticetable" colsapn="13">여행자제 내용</th>
-				<th class="noticetable" colsapn="13">여행제한</th>
-				<th class="noticetable" colsapn="13">여행제한(일부)</th>
+				<th class="noticetable" colsapn="13">여행제한/(일부)</th>
 				<th class="noticetable" colsapn="13">여행제한 내용</th>
 			</tr>
 		</thead>

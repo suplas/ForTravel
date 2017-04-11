@@ -72,24 +72,24 @@ $(document).ready(function(){
         var reg_pw = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/; 
         var reg_email1 = /([\w-\.]+)/;
 		var reg_email2 = /((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-		var regPhone = /\d\d\d\d/;
+		var regPhone = /\d{2,4}/ ;
 		
 		$("#phone2").on("blur",function(){
-			if (!regPhone.test($("phone2").val())) {
-			}
+			if (!regPhone.test(parseInt($("#phone2").val()))) {
 			$("#phone2").focus();
-			console.log(!regPhone.test($("phone2").val()));
+			$("#phone2").val("");
+			}
 		});
 		
 		$("#phone3").on("blur",function(){
-			/* if (!regPhone.test($("phone3").val())) {
-			      alert("잘못된 휴대폰 번호입니다. 4자리의 숫자만 입력하세요.");
-			} */
+			if (!regPhone.test(parseInt($("#phone3").val()))) {
 			$("#phone3").focus();
+			$("#phone3").val("");
+			}
 		}); 
 		
 		
-		/* $("#userid").on("keyup",function(){
+		$("#userid").on("keyup",function(){
 			if(!reg_id.test($("#userid").val())){ 
 				$("#reg_id").text("아이디는 3-15자 영문이여야 하며 \n" 
                         +"마침표, '-', '_'를 제외한 문자는 사용하실수 없습니다.");
@@ -218,7 +218,7 @@ $(document).ready(function(){
 		}else{
 			event.preventDefault();
 		} 
-	}); //end submit event */
+	}); //end submit event 
 });//end ready
   
   
@@ -258,7 +258,7 @@ $(document).ready(function(){
 	이름 (한글, 예 홍길동) <br>
 	<input class="inputSize" type="text" name="username" id="username"></div>
 	<div id="birthday">
-	 생년월일 <br><input class="inputSize" type="date" name="birth" id="birth" max="2017-03-27" min="1900-01-01"></div>
+	 생년월일 <br><input class="inputSize" type="date" name="birth" id="birth" max="2017-04-11" min="1900-01-01"></div>
 	 <div id = "userid1"> 
 	아이디<span id="reg_id"></span><br> 
 	<input class="inputSize" type ="text" name="userid" id="userid" name="userid"></div>
@@ -328,7 +328,7 @@ $(document).ready(function(){
 	</select>
 	- 
 	<input class="phoneinputSize" type="text" name="phone2" id="phone2"> - 
-	<input class="phoneinputSize" type = "text" name="phone3" id="phone3"></div>
+	<input class="phoneinputSize" type="text" name="phone3" id="phone3"></div>
 	<div id = "submitbutton">
 	<input class="inputSize" type ="submit" value="회원가입" name="sub">
 	<input class="inputSize" type ="reset" value="취소" name="res"></div> 
