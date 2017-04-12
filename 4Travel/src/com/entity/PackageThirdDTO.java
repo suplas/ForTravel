@@ -24,6 +24,10 @@ public class PackageThirdDTO {
 	private String doorimg;
 	private String overview;
 	private String detail;
+	private int babyprice;
+	private int childprice;
+	private int tax;
+	private String imgdetail;
 	
 	public PackageThirdDTO() {
 		super();
@@ -33,7 +37,8 @@ public class PackageThirdDTO {
 	public PackageThirdDTO(int packageno, String company, String startdate, String lastdate, String airline,
 			String startairplaneid, String lastairplaneid, String term, String packagename, int price,
 			String reservationab, int minpersonnel, int presentreservation, int personnel, String loc, String link,
-			String image1, String image2, String image3, String city, String doorimg, String overview, String detail) {
+			String image1, String image2, String image3, String city, String doorimg, String overview, String detail,
+			int babyprice, int childprice, int tax, String imgdetail) {
 		super();
 		this.packageno = packageno;
 		this.company = company;
@@ -58,6 +63,10 @@ public class PackageThirdDTO {
 		this.doorimg = doorimg;
 		this.overview = overview;
 		this.detail = detail;
+		this.babyprice = babyprice;
+		this.childprice = childprice;
+		this.tax = tax;
+		this.imgdetail = imgdetail;
 	}
 
 	public int getPackageno() {
@@ -244,6 +253,38 @@ public class PackageThirdDTO {
 		this.detail = detail;
 	}
 
+	public int getBabyprice() {
+		return babyprice;
+	}
+
+	public void setBabyprice(int babyprice) {
+		this.babyprice = babyprice;
+	}
+
+	public int getChildprice() {
+		return childprice;
+	}
+
+	public void setChildprice(int childprice) {
+		this.childprice = childprice;
+	}
+
+	public int getTax() {
+		return tax;
+	}
+
+	public void setTax(int tax) {
+		this.tax = tax;
+	}
+
+	public String getImgdetail() {
+		return imgdetail;
+	}
+
+	public void setImgdetail(String imgdetail) {
+		this.imgdetail = imgdetail;
+	}
+
 	@Override
 	public String toString() {
 		return "PackageThirdDTO [packageno=" + packageno + ", company=" + company + ", startdate=" + startdate
@@ -252,7 +293,9 @@ public class PackageThirdDTO {
 				+ price + ", reservationab=" + reservationab + ", minpersonnel=" + minpersonnel
 				+ ", presentreservation=" + presentreservation + ", personnel=" + personnel + ", loc=" + loc + ", link="
 				+ link + ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3 + ", city=" + city
-				+ ", doorimg=" + doorimg + ", overview=" + overview + ", detail=" + detail + "]";
+				+ ", doorimg=" + doorimg + ", overview=" + overview + ", detail=" + detail + ", babyprice=" + babyprice
+				+ ", childprice=" + childprice + ", tax=" + tax + ", imgdetail=" + imgdetail + "]";
 	}
+
 	
 }	

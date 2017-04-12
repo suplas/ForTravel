@@ -43,7 +43,7 @@
 		left: 5%;
 		top : 52%; 
 	}
-		#contents2{
+	#contents2{
 		position : absolute;  
 		left: 25%;
 		top : 52%; 
@@ -243,7 +243,7 @@ $(document).ready(function() {
         
        			
  				<span id = "prevButton"><button type="button" >prev</button></span>
- 				<%-- <a href ="PackageListTableController?packagename=${Plist[0].packagename}&startdate=<%=today.getMonth()+1%>&term=${Plist[0].term}"> --%>
+ 				
  				<span id = "nextButton"><button type="button">next</button></span><!-- </a> -->
  				<span id = "datespan1"></span> 
  				<span id ="datespan2"></span>
@@ -256,7 +256,7 @@ $(document).ready(function() {
  	 				</tr>
  	 				<c:forEach var="i" items="${Plist2}">
  	 				<tr class="packagelistTable">
- 	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <a href="#"><td>${i.packagename}</td></a> 
+ 	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <td><a href="PackageDeteilController?packagename=${i.packagename}">${i.packagename}</a></td> 
  	 				<td>${i.term}</td> <td><font color="red">${i.price}</font></td> <td>${i.reservationab}</td>  
  	 				</tr>
  	 				

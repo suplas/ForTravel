@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,7 +8,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-	
+
 		
 	});
 	</script>
@@ -15,10 +16,11 @@
 
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
+       
             <div class="col-lg-12">
             
                 <h1 class="page-header">${Plist[0].packagename}
-                    <small>${i.city}</small>
+                    <small>${Plist[0].city}</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="Home">Home</a>
@@ -28,12 +30,87 @@
                 </ol>
             </div>
         </div> 
+         <div class="col-lg-12" style="bottom: 23px; position: relative; width: 66%; height:308px;">      
+                <h3>${Plist[0].detail}</h3>
+                <table style="text-align: center; width: 41%;"> 
+                <tr style="border-bottom: 1px dotted; border-top: 1px solid; height: 35px;">
+                <td style="border-right: 1px dotted; background-color:#e6edf8">출발일</td><td>${Plist[0].startdate}</td>
+                </tr>
+                <tr style="border-bottom: 1px dotted; height: 35px;">
+                <td style="border-right: 1px dotted; background-color:#e6edf8">도착일</td><td>${Plist[0].lastdate}</td>
+                </tr>
+                <tr style="border-bottom: 1px dotted; height: 35px;">
+                <td style="border-right: 1px dotted; background-color:#e6edf8">이용항공</td><td>${Plist[0].airline}</td>
+                </tr>
+                <tr style="border-bottom: 1px solid; height: 35px;"> 
+                <td style="border-right: 1px dotted; background-color:#e6edf8">예약</td><td>${Plist[0].reservationab}(최소출발 ${Plist[0].minpersonnel}명)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid; height: 35px;"> 
+                <td style="border-right: 1px dotted; background-color:#e6edf8">여행사</td><td>${Plist[0].company}</td>
+                </tr>
+                </table>
+                 
+ 				<table style="text-align: center; width: 50%; position:relative; left:45%; bottom:177px;"> 
+                <tr style="border-bottom: 1px dotted; border-top: 1px solid; height: 45px;">
+                <td style="border-right: 1px dotted; background-color:#e6edf8">이용자구분</td><td style="border-right: 1px dotted; background-color:#e6edf8">성인<br><font size="2px">만12세이상</font></td>
+                <td style="border-right: 1px dotted; background-color:#e6edf8">아동<br><font size="2px">만12세이상</font></td><td style="background-color:#e6edf8">유아<br><font size="2px">만12세이상</font></td>
+                </tr>
+                <tr style="border-bottom: 1px dotted; height: 45px;">  
+                <td style="border-right: 1px dotted; background-color:#e6edf8">기본상품가</td><td style="border-right: 1px dotted;">${Plist[0].price - Plist[0].tax}원</td>
+                <td style="border-right: 1px dotted; ">${Plist[0].childprice - Plist[0].tax}원</td><td>${Plist[0].babyprice}원</td>
+                </tr>
+                <tr style="border-bottom: 1px dotted; height: 45px;">
+                <td style="border-right: 1px dotted; background-color:#e6edf8">유류할증료</td><td style="border-right: 1px dotted;">${Plist[0].tax}원</td>
+                <td style="border-right: 1px dotted; ">${Plist[0].tax}원</td><td>0원</td>
+                </tr>
+                <tr style="border-bottom: 1px solid; height: 45px;">  
+                <td style="border-right: 1px dotted; background-color:#e6edf8;">총상품가</td><td style="border-right: 1px dotted;  color:red;">${Plist[0].price}원</td> 
+                <td style="border-right: 1px dotted;  color:red;">${Plist[0].childprice}원</td><td style=" color:red;">${Plist[0].babyprice}원</td> 
+                </tr> 
+                </table>
+            </div> 
+            <div style="position: absolute; left:74%; width: 25%;">
+            	<div style="background-color:#ffa70b; height:125px; font-size:20px; width: 82%;"> 
+            	<br>
+            	<h5 style="margin-left: 6%;">총 상품가격(성인 1인 기준)</h5> 
+            	<h2 style="margin-left: 6%;">${Plist[0].price}원</h2>  
+            	</div>
+            	<br> 
+            	<div style="margin-left: 5%;">
+            	<span>
+            	상품명<br> 
+            	 ${Plist[0].packagename}
+            	 </span>
+            	<br>
+            	<br>
+            	출발일  <br>
+            	<font color="red">${Plist[0].startdate}<br></font>
+            	<br> 
+            	도착일<br>
+            	<font color="red">${Plist[0].lastdate}<br></font>
+            	<br>
+            	<br>
+            	여행기간<br> 
+            	${Plist[0].term}
+            	<br>
+            	<br>
+            	항공사<br>
+            	${Plist[0].airline}
+            	<br>
+            	<br>
+            	예약현황<br>
+            	${Plist[0].presentreservation}/${Plist[0].personnel}명<font color="red" size="3px">(최소출발인원 ${Plist[0].minpersonnel}명)</font>
+            	<br><br> 
+            	<button>예약하기</button>
+            	</div>
+            	
+            </div>
         <!-- /.row -->
-
+<br>
         <!-- Portfolio Item Row -->
         <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-8" style="margin-left: 2%; width: 53%; height: 320px;" > 
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
@@ -46,13 +123,13 @@
                     
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img class="img-responsive" src="images/${Plist[0].image1}.jpg" alt="그림1">
+                            <img class="img-responsive" src="images/${Plist[0].image1}.jpg" alt="그림1" style="height:315px;">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="images/${Plist[0].image2}.jpg" alt="그림2">
+                            <img class="img-responsive" src="images/${Plist[0].image2}.jpg" alt="그림2" style="height:315px;">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="images/${Plist[0].image3}.jpg" alt="그림3">
+                            <img class="img-responsive" src="images/${Plist[0].image3}.jpg" alt="그림3" style="height:315px;"> 
                         </div>
                     </div>
 
@@ -65,65 +142,13 @@
                     </a>
                 </div>
             </div>
-
-            <div class="col-lg-12">
-                <h3>${Plist[0].packagename}</h3>
-                <p>${Plist[0].term}&nbsp;&nbsp;${Plist[0].airline}</p>
-                <p><font color="pink">한국출발 </font>${Plist[0].startdate}&nbsp;&nbsp;<font color="blue">${Plist[0].startairplaneid}</font></p> 
-               <p><font color="pink">한국도착</font> ${Plist[0].lastdate}&nbsp;&nbsp;<font color="blue">${Plist[0].lastairplaneid}</font></p> 
-               
-                <ul>
-                	<li>여행사 : ${Plist[0].company}</li>
-                    <li>최소 출발 인원 : ${Plist[0].minpersonnel}</li> 
-                    <li>예약가능 인원 : ${Plist[0].presentreservation}/${Plist[0].personnel}</li>
-                    <li>가격 : ${Plist[0].price}</li>
-                    <li><a href="${Plist[0].link}">예약하러 가기</a></li> 
-                </ul>
-                	상품 안내  
-            </div>
-
+			<div style="width:73%; position: relative; top:76px; left:2%;overflow: hidden;"> 
+			<span style="position: absolute; right: 92%; bottom: 100%;"><font color="#ffa70b">|</font> 상품안내</span><br> 
+				<img src="images/${Plist[0].imgdetail}.jpg" style="width: 100%; position: relative; height:100%;"> 
+			</div>	
         </div>
  	 	
-        <!-- Related Projects Row -->
-      <!--   <div class="row">
-
-            <div class="col-lg-12">
-                <h3 class="page-header">추천 패키지</h3>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-        </div>
-        /.row
-
-        
-
-        Footer
-       
-
-    </div> -->
+     
     <!-- /.container -->
 
     <!-- jQuery -->

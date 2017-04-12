@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="packageAllList" parameterType="string" resultType="PackageThirdDTO">
  	<![CDATA[
  		select packageno,COMPANY,STARTDATE,LASTDATE,AIRLINE,startAIRPLANEID,lastAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,
- 		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail
+ 		PERSONNEL,loc,LINK,city,image1,image2,image3,doorimg,overview,detail,babyprice,childprice,tax,imgdetail
  		from packagedb
  		where PACKAGENAME = #{packagename} and startdate >= sysdate
  		]]> 
