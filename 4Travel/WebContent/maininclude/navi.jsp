@@ -43,15 +43,11 @@
 		var sc = $(document).scrollTop();
 		var dHeight = $("body").height();
 		var wHeight = $(window).height();
-		console.log(sc);
-		console.log($("#navitop"));
 		if(sc > 10){
 			$("#navitop").css("top","0px");
-			console.log("if"); 
 		}else if (sc < 10){
 		$("#navitop").attr("style","top:100px");   
 		/* $("#navitop").css("top","100"); */
-		console.log("else");
 		}
 	});
 </script>
