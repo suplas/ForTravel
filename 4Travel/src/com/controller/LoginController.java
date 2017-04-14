@@ -43,6 +43,9 @@ public class LoginController extends HttpServlet {
 				target = "Home";
 				HttpSession session = request.getSession();
 				session.setAttribute("login", dto);
+				if(map.get("userid").equals("admin")){
+				session.setAttribute("adminlogin", dto);	
+				}
 			}
 			
 		} catch (CommonException e) {

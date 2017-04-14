@@ -72,17 +72,19 @@ $(document).ready(function(){
         var reg_pw = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/; 
         var reg_email1 = /([\w-\.]+)/;
 		var reg_email2 = /((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-		var regPhone = /\d{2,4}/ ;
+		var regPhone = /^\d{4}$/; 
 		
 		$("#phone2").on("blur",function(){
-			if (!regPhone.test(parseInt($("#phone2").val()))) {
+			
+			console.log(!regPhone.test(parseInt($("#phone2").val())));
+			if ((!regPhone.test(parseInt($("#phone2").val())))) {
 			$("#phone2").focus();
 			$("#phone2").val("");
 			}
 		});
 		
 		$("#phone3").on("blur",function(){
-			if (!regPhone.test(parseInt($("#phone3").val()))) {
+			if ((!regPhone.test(parseInt($("#phone3").val())))) {
 			$("#phone3").focus();
 			$("#phone3").val("");
 			}

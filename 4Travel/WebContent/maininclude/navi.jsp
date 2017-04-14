@@ -69,6 +69,11 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
+				   <c:if test="${adminlogin != null }">
+                     <li class="dropdown"> 
+                        <a href="#" class="dropdown-toggle" style="color:white;">관리자 </a>
+                    </li>
+                    </c:if>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" style="color:white;">패키지 <b class="caret"></b></a>
 					<ul class="dropdown-menu">
@@ -238,6 +243,7 @@
                      <li class="dropdown">
                         <a href="SiteMapController" class="dropdown-toggle" style="color:white;"><!-- data-toggle="dropdown" -->회사소개 </a>  
                     </li>
+                 
 			</ul> 
 		</div>
 		<!-- /.navbar-collapse -->

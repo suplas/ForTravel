@@ -18,6 +18,12 @@
 		height:700px;
       	position: relative;
       }
+      .displaytoggle{
+      	display: none;
+      }
+      .displayblock{
+      	display:block;
+      }
     </style>
     <script type="text/javascript">
 var nation = '{"nations":['+
@@ -591,16 +597,17 @@ var nation = '{"nations":['+
 			}
 		}); //end ajax
 		$("body").on("click","#BanTableaTag",function(event){
-			if($("#BanTableDiv").attr("style")=='display: block;'){
-				$("#BanTableDiv").css("display","none");
+			if($("#BanTableDiv").attr("style")=='display: block; cursor: pointer;'){
+				$("#BanTableDiv").css("display","none"); 
 			}else{
 				$("#BanTableDiv").css("display","block");
 			}
 			});//end BanTableaTag event
 
 			$("body").on("click","#WarningTableaTag",function(event){
-			if($("#WarningTableDiv").attr("style")=='display: block;'){
+			if($("#WarningTableDiv").attr("style")=='display: block; width: 100%;'){
 				$("#WarningTableDiv").css("display","none");
+				
 			}else{
 				$("#WarningTableDiv").css("display","block");
 			}
@@ -645,8 +652,8 @@ var nation = '{"nations":['+
              
          <a id="BanMapTag">금지목록 지도로 보기 </a>
          <div id="MapMapping">
-		 <div id="map"></div>
-		 <div class="BanTotalCount">TotalCount:</div>
+		 <div id="map"></div> 
+		 <div class="BanTotalCount" style="position: relative; color: red;">TotalCount:</div>
          </div>
          <a id="BanTableaTag">금지목록 테이블로 보기 </a>
          <div id="BanTableDiv" style="display: none; cursor: pointer;">
@@ -758,8 +765,6 @@ var nation = '{"nations":['+
   						}
 					}//end for
   				});//end each
-  				$(".BanTotalCount").append(totalCount);
-    				console.log(sameCountryName); 
   			},//end sucess
   			error : function(error) {
   				console.log(error);
@@ -800,7 +805,13 @@ var nation = '{"nations":['+
             }
         }
       }
-      
+      $(document).ready(function() {
+    	  
+		$("body").on("click","#BanMapTag",function(){
+			$("#MapMapping").toggleClass("displaytoggle");
+		});    	  
+    	  
+      });
       
     </script>
     <!-- /.container -->
