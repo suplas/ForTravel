@@ -71,7 +71,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				   <c:if test="${adminlogin != null }">
                      <li class="dropdown"> 
-                        <a href="#" class="dropdown-toggle" style="color:white;">관리자 </a>
+                        <a href="AdminUIController" class="dropdown-toggle" style="color:white;">관리자 </a>
                     </li>
                     </c:if>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
