@@ -37,7 +37,7 @@ $(document).ready(function(){
 		
 		$("body").on("click",".rprpformButton",function(event){
 			console.log($(this).closest(".rprpform"));
-			var queryString = $(this).closest(".rprpform").serialize() ;
+			var queryString = $(this).closest(".rprpform").serialize();
 			console.log(queryString);
 		
 			$.ajax({
