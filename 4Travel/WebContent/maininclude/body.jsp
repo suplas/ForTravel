@@ -30,7 +30,6 @@
 			var sc = $(document).scrollTop();
 			var dHeight = $("body").height();
 			var wHeight = $(window).height();
-			console.log(sc);
 			if(sc > 490){
 				$("#api").css("position","fixed");
 				$("#api").css("top","20%");    

@@ -19,6 +19,5 @@
 <jsp:include page="maininclude/Serch.jsp" flush="true"/>
 <jsp:include page= "maininclude/navi.jsp" flush="true" />
 <jsp:include page= "packageInclude/packagesecond.jsp" flush="true" />
-<jsp:include page= "maininclude/forcopy.jsp" flush="true" />
 </body>
 </html>

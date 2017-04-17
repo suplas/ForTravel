@@ -37,7 +37,7 @@ try {
  	 				</tr>
  	 				<c:forEach var="i" items="<%=list2%>">
  	 				<tr class="packagelistTable">
- 	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <td>${i.packagename}</td> 
+ 	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <td><a href="PackageDeteilController?packagename=${i.packagename}">${i.packagename}</a></td> 
  	 				<td>${i.term}</td> <td><font color="red">${i.price}</font></td> <td>${i.reservationab}</td>  
  	 				</tr>
  	 				

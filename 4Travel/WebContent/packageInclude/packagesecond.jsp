@@ -8,8 +8,24 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-
-		
+		$(window).scroll(function(){
+			
+			var sc = $(document).scrollTop();
+			var dHeight = $("body").height();
+			var wHeight = $(window).height();
+			if(sc > 292){ 
+				$("#DefoultBar").css("top","30px");
+				$("#DefoultBar").css("left","72%");   
+				$("#DefoultBar").css("width","21%");     
+				$("#DefoultBar").css("position","fixed");
+			}else if (sc < 292){
+				$("#DefoultBar").css("position","absolute"); 
+				$("#DefoultBar").css("left","74%");  
+				$("#DefoultBar").css("width","23%"); 
+				$("#DefoultBar").css("top","5%");   
+			
+			};
+		});
 	});
 	</script>
 <div class="container">
@@ -30,7 +46,7 @@
                 </ol>
             </div>
         </div> 
-         <div class="col-lg-12" style="bottom: 23px; position: relative; width: 66%; height:308px;">      
+         <div class="col-lg-12" style="bottom: 23px; position: relative; width: 66%; height:275px;">       
                 <h3>${Plist[0].detail}</h3>
                 <table style="text-align: center; width: 41%;"> 
                 <tr style="border-bottom: 1px dotted; border-top: 1px solid; height: 35px;">
@@ -69,7 +85,7 @@
                 </tr> 
                 </table>
             </div> 
-            <div style="position: absolute; left:74%; width: 25%;">
+            <div id = DefoultBar style="position: absolute; left:74%; width: 25%; top:5%;">
             	<div style="background-color:#ffa70b; height:125px; font-size:20px; width: 82%;"> 
             	<br>
             	<h5 style="margin-left: 6%;">총 상품가격(성인 1인 기준)</h5> 
@@ -110,7 +126,7 @@
         <!-- Portfolio Item Row -->
         <div class="row">
 
-            <div class="col-md-8" style="margin-left: 2%; width: 53%; height: 320px;" > 
+            <div class="col-md-8" style="margin-left: 1%; width: 61%; height: 320px;" > 
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
@@ -142,14 +158,24 @@
                     </a>
                 </div>
             </div>
-			<div style="width:73%; position: relative; top:76px; left:2%;overflow: hidden;"> 
-			<span style="position: absolute; right: 92%; bottom: 100%;"><font color="#ffa70b">|</font> 상품안내</span><br> 
+			<div style="width:59%; position: relative; top:23px; left:2%;overflow: hidden;"> 
+			<span style="position:relative;"><font color="#ffa70b">|</font> 상품안내</span>  
 				<img src="images/${Plist[0].imgdetail}.jpg" style="width: 100%; position: relative; height:100%;"> 
 			</div>	
+			
+			
+		<footer class="footer" style="background-color: black; position:relative; top:38px;"> 
+            <div class="row"> 
+                <div class="col-lg-12">
+                   <br><font size="2px" color="gray"><p>ForTravel 대표이사: team M&M 서울 강남구 역삼동  에이콘아카데미(주)에이콘이즈</p>   
+						<p>대표전화: 02-000-0000 팩스:02-000-0000</p>
+                   		 <p>Copyright &copy; team M&amp;M(Jung MinWoo,Lee Min Sub) All Rights Reserved.</p></font>
+                </div>
+            </div>
+        </footer>
         </div>
- 	 	
-     
-    <!-- /.container -->
+   
+    
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
