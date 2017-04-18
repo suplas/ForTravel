@@ -56,7 +56,8 @@
         <div class="row">
             <div class="col-lg-12">
             <div class = content>
- <form action="LoginController">
+ <form action="LoginController" method="post">
+ 
  <pre width="500px">
  <center> 아이디  <input type ="text" name="userid"></center>
 <center> 비밀번호<input type ="password" name="passwd"></center>

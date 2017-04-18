@@ -19,21 +19,21 @@ $(document).ready(function(){
         <div class="carousel-inner">
             <div class="item active">
             <a href = "#">
-                <div class="fill" style="background-image:url('images/배너1.jpg');"></div>
+                <div class="fill" style="background-image:url('/4Travel/images/배너1.jpg');"></div>
                 <div class="carousel-caption">
                     
                 </div></a> 
             </div>
             <div class="item">
             <a href = "#">
-                <div class="fill" style="background-image:url('images/배너2.jpg');"></div>
+                <div class="fill" style="background-image:url('/4Travel/images/배너2.jpg');"></div>
                 <div class="carousel-caption">
                   
                 </div></a>
             </div>
             <div class="item">
             <a href = "#">
-                <div class="fill" style="background-image:url('images/배너3.jpg');"></div>
+                <div class="fill" style="background-image:url('/4Travel/images/배너3.jpg');"></div>
                 <div class="carousel-caption">
                      
                 </div></a>

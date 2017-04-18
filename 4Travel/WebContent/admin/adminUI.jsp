@@ -10,7 +10,10 @@
 	$(document).ready(function() {
 		$("body").on("click","#adminUI",function(){
 			myAjax('admin/admin.jsp',true,'html','','.content');
-		});
+		});//end adminUI
+		
+		$("body").on("click","#adminMain",function(){
+		});//end adminUI 
 		
 	}); /* endDoucumentReady */
 	

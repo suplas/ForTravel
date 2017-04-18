@@ -59,12 +59,10 @@ public class ReviewBoardWriteController extends HttpServlet {
 		String image1="";
 		while (ite.hasNext()) {
 			FileItem fileItem = ite.next();
-			System.out.println(fileItem);
 			if (fileItem.isFormField()) { //type = "file" false
 				fieldName = fileItem.getFieldName();
 				fieldValue = fileItem.getString("UTF-8");
 				map.put(fieldName, fieldValue);
-				System.out.println("if 파일 네임:"+fieldName+"\t"+"if필드 밸류"+fieldValue);
 			} else { //type = "file" true
 				fileName = fileItem.getName();  
 				fileSize = fileItem.getSize();
@@ -73,8 +71,6 @@ public class ReviewBoardWriteController extends HttpServlet {
 				f = new File("C:\\temp\\upload",fileName);
 				image1 += fileName+"/";
 				}
-				System.out.println("파일네임!!!!!!!!!!!!!11111"+fileName);
-				System.out.println("이미지 111111111111111111"+image1);
 				map.put("image1", image1);
 				try {
 					fileItem.write(f);
@@ -90,13 +86,11 @@ public class ReviewBoardWriteController extends HttpServlet {
 		MemberDTO dto=(MemberDTO)session.getAttribute("login");
 		String userid=dto.getUserid();
 		map.put("userid", userid);
-		System.out.println("유저아이디입니다 : "+userid);
 		request.setAttribute("map", map);
 		request.setAttribute("fieldValue", fieldValue);
 		request.setAttribute("image1", image1);
 		request.setAttribute("fileSize", fileSize);
 		request.setAttribute("content", content);
-		System.out.println(map);
 		ReviewBoardBiz biz=new ReviewBoardBiz();
 		try {
 			biz.reviewBoardWrite(map);
