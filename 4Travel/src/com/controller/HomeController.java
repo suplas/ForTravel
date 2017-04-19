@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.biz.BannerImageBiz;
 import com.biz.PackageBiz;
 import com.biz.ReviewBoardBiz;
+import com.entity.BannerImageDTO;
 import com.entity.PackageThirdDTO;
 import com.entity.ReviewBoardDTO;
 import com.exception.CommonException;
@@ -36,15 +38,16 @@ public class HomeController extends HttpServlet {
 		PackageBiz service = new PackageBiz();
 		ReviewBoardBiz biz = new ReviewBoardBiz();
 		PackageThirdDTO dto = new PackageThirdDTO();
-		
+		BannerImageBiz bannerBiz=new BannerImageBiz();
 	
 		try {
 			List<PackageThirdDTO> list = service.packageNewlist();
 			request.setAttribute("Plist", list);
-			target="main.jsp";
 			List<ReviewBoardDTO> list2 = biz.bestredcnt(readcnt);
 			request.setAttribute("Plist2", list2);
-		
+			BannerImageDTO bannerdto=bannerBiz.BannerImageSelect();
+			request.setAttribute("bannerdto", bannerdto);
+			target="main.jsp";
 			
 		} catch (CommonException e) {
 			e.printStackTrace();
