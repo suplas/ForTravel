@@ -16,6 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     values (1, #{imageName},#{imageCaption})
 	</insert>
 	
+	<update id="BannerUpdate" parameterType="BannerImageDTO">
+		update BannerImage
+		set imageName=#{imageName},imageCaption=#{imageCaption}
+		where num = #{num}
+	</update>
+	
 	<delete id="BannerImageDelete" >
 		delete from BannerImage
 		where num=1

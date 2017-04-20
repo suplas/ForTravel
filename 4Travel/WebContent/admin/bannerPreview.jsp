@@ -1,34 +1,16 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.StringTokenizer"%>
-<%@page import="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"%>
-<%@page import="com.entity.BannerImageDTO"%>
-<%@page import="com.biz.BannerImageBiz"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%
-BannerImageBiz biz=new BannerImageBiz();
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 
-BannerImageDTO dto=biz.BannerImageSelect();
-ArrayList<String> imageList=new ArrayList<>();
-ArrayList<String> captionList=new ArrayList<>();
-StringTokenizer imagetoken=new StringTokenizer(dto.getImageName(),"/");
-
-if(dto.getImageCaption()!=null){
-StringTokenizer captiontoken=new StringTokenizer(dto.getImageCaption(),"/");
-while(captiontoken.hasMoreTokens()){
-	captionList.add(captiontoken.nextToken());
-}
-	
-}
-while(imagetoken.hasMoreTokens()){
-	imageList.add(imagetoken.nextToken());
-}
-
-%>
-   <link href="css/mainSerch.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+     <link href="css/mainSerch.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -37,11 +19,19 @@ while(imagetoken.hasMoreTokens()){
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript">
+</head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
 	$(document).ready(function() {
+		$("#myCarousel").css("top", "81px");
 		 $(".item").eq(0).addClass("active");
 	});
 </script>
+<body>
+<jsp:include page="../maininclude/Serch.jsp" flush="true"/>
+<jsp:include page= "../maininclude/navi.jsp" flush="true" />
+
 <header id="myCarousel" class="carousel slide">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
@@ -53,19 +43,27 @@ while(imagetoken.hasMoreTokens()){
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner">
 		<!-- Preview Image -->
-			<c:forEach var="image" items="<%=imageList%>" varStatus="image_status">
+		<c:if test="${bannerdto.imageName != null}">
+			<c:set var="image_array" value="${fn:split(bannerdto.imageName,'/')}" />
+			<c:forEach var="image" items="${image_array}" varStatus="image_status">
 				<div class="item">
 					<a href="#">
-						<div class="fill" style="background-image:url('/4Travel/images/${image}');"></div>
-					<c:if test="<%=captionList.size()==0%>">
-						<c:forEach var="caption" items="<%=captionList%>" varStatus="caption_status">
-							<c:if test="${image_status.index==caption_status.index}"></c:if>
+						<div class="fill"
+							style="background-image:url('/4Travel/images/${image}');"></div>
+					<c:if test="${bannerdto.imageCaption != null}">
+						<c:set var="caption_array"
+							value="${fn:split(bannerdto.imageCaption,'/')}" />
+						<c:forEach var="caption" items="${caption_array}" varStatus="caption_status">
+							<c:if test="${image_status.index==caption_status.index}">
 							<div class="carousel-caption">${caption}</div>
+							</c:if>
 						</c:forEach>
 					</c:if>
 					 </a>
 				</div>
 			</c:forEach>
+		</c:if>
+
 	</div>
 
 	<!-- Controls -->
@@ -75,3 +73,6 @@ while(imagetoken.hasMoreTokens()){
 		<span class="icon-next"></span>
 	</a>
 </header>
+
+</body>
+</html>

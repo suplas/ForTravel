@@ -18,26 +18,42 @@
 			myAjax('admin/bannerUpdate.jsp',true,'html','','.addcontent');
 		});//end adminUI 
 		
-		function readURL(input) {
+		$("body").on("click","#preview",function(){
+			var imageLength=$("img.existingImages").length;
+			
+			$("header").find(".fill").each(function(idx, obj) {
+				var imgsrc=$("img.existingImages").eq(idx).attr("src");
+				$(this).css("background-image","url("+imgsrc+")");
+			});
+			$("header").find(".carousel-caption").each(function(idx, obj) {
+				var precaption=$("textarea.content").eq(idx).val();
+				$(this).text(precaption);
+			});
+			$("#previewDiv").css("display","block");
+		});//end previewEvent
+
+		function readURL(input,inputIndex) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 var state = FileReader.readyState;
                 reader.onload = function (e) {
-                    $('.blah').append($('<img/>', {
+                    $('.blah').eq(inputIndex).append($('<img/>', {
 						class:'buttonx',
                     	src: 'images/buttonx.png',
                         style:'cursor: pointer; width:20px',
                     }));
                 	
-                	$('.blah').append($('<img/>', {
+                	$('.blah').eq(inputIndex).append($('<img/>', {
                         src: e.target.result,
+                        class:'existingImages',
                     }));
+                	$('.blah').eq(inputIndex).append("<textarea id='content' name='content' class='content'></textarea>");
                 	
            		}
                 reader.readAsDataURL(input.files[0]); 
         	}//readURL()--
         }
-        $("body").on("change",".imgInp",function(){
+        $("body").on("change",".InputexistingImages",function(){
             var fileNm = this.value;
 
 			if (fileNm != "") {
@@ -48,12 +64,12 @@
     			alert("이미지파일 (.jpg, .png, .gif ) 만 업로드 가능합니다.");
    				 return false;
 				}else{
-					
-					readURL(this);
-	                
-	                $(this).after("<input type='file' name='theFile' class='imgInp' ><br />");
-	                
+					inputIndex=$(".InputexistingImages").index(this);
+	                $(this).after("<div class='blah'></div>");
 	                $(this).css("display","none");
+	                $(this).after("<input type='file' name='theFile' class='InputexistingImages' ><br />")
+ 	                
+					readURL(this,inputIndex);
 				}
 
 			}
@@ -64,8 +80,7 @@
         	imageIndex=$(".buttonx").index(this);
         	console.log(imageIndex);
         	$(".InputexistingImages").eq(imageIndex).remove();
-        	$(".existingImages").eq(imageIndex).remove();
-        	$(".content").eq(imageIndex).remove();
+        	$(".blah").eq(imageIndex).remove();
         	$(this).remove();
       });
 	}); /* endDoucumentReady */
