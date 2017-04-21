@@ -7,13 +7,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select
 		num,imageName,imageCaption
 		from BannerImage
+		where num=1
 	</select>
 <!-- 	<update id="boardReadcnt" parameterType="int">
 	</update> -->
-	<insert id="BannerImageWrite" parameterType="hashmap">
+	<insert id="BannerImageInsert" parameterType="BannerImageDTO">
 	insert into  BannerImage (num,imageName,imageCaption)
     values (1, #{imageName},#{imageCaption})
 	</insert>
+	
+	<update id="BannerUpdate" parameterType="BannerImageDTO">
+		update BannerImage
+		set imageName=#{imageName},imageCaption=#{imageCaption}
+		where num = #{num}
+	</update>
 	
 	<delete id="BannerImageDelete" >
 		delete from BannerImage

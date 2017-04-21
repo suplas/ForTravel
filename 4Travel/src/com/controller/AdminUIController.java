@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.biz.PackageBiz;
 import com.biz.ReviewBoardBiz;
+import com.entity.MemberDTO;
 import com.entity.PackageThirdDTO;
 import com.entity.ReviewBoardDTO;
 import com.exception.CommonException;
@@ -24,7 +26,13 @@ public class AdminUIController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String target ="";
+		HttpSession session=request.getSession();
+		MemberDTO admindto=(MemberDTO)session.getAttribute("adminlogin");
+		if(admindto!=null){
 		target="AdminUI.jsp";
+		}else{
+			target="Home";
+		}
 		  RequestDispatcher dis =
 	        		request.getRequestDispatcher(target);
 	        dis.forward(request, response);
