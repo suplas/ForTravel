@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.biz.BannerImageBiz;
-import com.biz.PackageBiz;
+import com.biz.PackageFirstBiz;
+import com.biz.PackageThirdBiz;
 import com.biz.ReviewBoardBiz;
 import com.entity.BannerImageDTO;
 import com.entity.PackageThirdDTO;
@@ -35,13 +36,14 @@ public class HomeController extends HttpServlet {
 		}
 		
 		String target ="";
-		PackageBiz service = new PackageBiz();
+		PackageFirstBiz service = new PackageFirstBiz();
+		PackageThirdBiz service2= new PackageThirdBiz();
 		ReviewBoardBiz biz = new ReviewBoardBiz();
 		PackageThirdDTO dto = new PackageThirdDTO();
 		BannerImageBiz bannerBiz=new BannerImageBiz();
 	
 		try {
-			List<PackageThirdDTO> list = service.packageNewlist();
+			List<PackageThirdDTO> list = service2.packageNewlist();
 			request.setAttribute("Plist", list);
 			List<ReviewBoardDTO> list2 = biz.bestredcnt(readcnt);
 			request.setAttribute("Plist2", list2);

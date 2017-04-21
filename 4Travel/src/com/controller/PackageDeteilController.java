@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.biz.PackageBiz;
+import com.biz.PackageFirstBiz;
+import com.biz.PackageThirdBiz;
 import com.entity.MemberDTO;
 import com.entity.PackageThirdDTO;
 import com.exception.CommonException;
@@ -32,7 +33,7 @@ public class PackageDeteilController extends HttpServlet {
 		dto.setStartdate(startdate);
 		dto.setTerm(term);
 		String target="";
-		PackageBiz biz=new PackageBiz();
+		PackageThirdBiz biz=new PackageThirdBiz();
 		
 		try {
 			List<PackageThirdDTO> list=biz.packageAllList(packagename);

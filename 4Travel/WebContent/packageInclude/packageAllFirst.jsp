@@ -78,11 +78,11 @@
              <%Date today = new Date();
              SimpleDateFormat dayform=new SimpleDateFormat("yyyy/MM"); 
              %>
-       			<a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">
+       			<a href="PackageThirdListController?&packageno=${i.packageno}&startdate=<%=dayform.format(today)%>">
                     <img class="packageimg" src="images/${i.image}.jpg" alt="package01">
                 </a>
                 <h3 class = "title">
-                    <a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">${i.packagename}</a>
+                    <a href="PackageThirdListController?&packageno=${i.packageno}&startdate=<%=dayform.format(today)%>">${i.packagename}</a>
                 </h3>
                			<p class = "loc">여행 지역 : ${i.loc}</p>
                			<p class = "term">여행 기간 : ${i.term}</p>

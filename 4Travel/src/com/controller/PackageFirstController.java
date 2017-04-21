@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.biz.PackageBiz;
+import com.biz.PackageFirstBiz;
+import com.biz.PackageThirdBiz;
 import com.entity.PackageThirdDTO;
 import com.exception.CommonException;
 
@@ -21,12 +22,12 @@ public class PackageFirstController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String city = request.getParameter("city");
-	
+		
 		
 		String target ="";
-		PackageBiz service = new PackageBiz();
+		PackageThirdBiz biz=new PackageThirdBiz();
 		try {
-			List<PackageThirdDTO> list = service.packageList(city);
+			List<PackageThirdDTO> list = biz.packageList(city);
 			request.setAttribute("Plist", list);
 			target="PackageFirst.jsp";
 			

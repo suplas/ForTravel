@@ -45,7 +45,7 @@ public class BannerImageBiz {
 	public void BannerUpdate(BannerImageDTO dto) throws CommonException{
 		SqlSession session=MySqlSessionFactory.openSession();
 		try{
-			session.selectOne(namespace+"BannerImageSelect",dto);
+			session.update(namespace+"BannerUpdate",dto);
 			session.commit();
 		}catch(Exception e){
 			System.out.println("BannerImageupdate실패");

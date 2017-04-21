@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.biz.PackageBiz;
+import com.biz.PackageFirstBiz;
+import com.biz.PackageThirdBiz;
 import com.entity.PackageThirdDTO;
 import com.exception.CommonException;
 
@@ -20,7 +21,7 @@ public class MainBodyController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String target ="";
-		PackageBiz service = new PackageBiz();
+		PackageThirdBiz service = new PackageThirdBiz();
 		try {
 			List<PackageThirdDTO> list = service.packageNewlist();
 			request.setAttribute("Plist", list);

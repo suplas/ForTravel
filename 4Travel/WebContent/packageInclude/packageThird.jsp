@@ -1,3 +1,7 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.entity.PackageThirdDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="javafx.scene.control.Alert"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -254,12 +258,29 @@ $(document).ready(function() {
  	 				<tr style="text-align: center;"> 
  	 				<td>출/도착시간</td><td>항공  </td><td>상품명</td><td> 여행기간 </td><td>상품가격 </td><td> 예약상태 </td>  
  	 				</tr>
- 	 				<c:forEach var="i" items="${Plist2}">
+ 	 				 <%Date today = new Date();
+             		SimpleDateFormat dayform=new SimpleDateFormat("MM"); 
+             		int todayMonth=Integer.parseInt(dayform.format(today));
+             		System.out.println(todayMonth);
+             		List<PackageThirdDTO> list=(List<PackageThirdDTO>)request.getAttribute("Plist");
+             		System.out.println("1");
+             		List<PackageThirdDTO> list2=new ArrayList<>();
+             		System.out.println("2");
+             		for(int i=0;i<list.size();i++){
+             		System.out.println(list.get(i).getStartdate());
+             		String stMonth=dayform.format(list.get(i).getStartdate());
+             		System.out.println(stMonth);
+             		
+             			/* if(dayform.format(list.get(i).getStartdate()).equals(todayMonth)){
+             				list2.add(list.get(i));
+             			} */
+             		}
+             		%>
+ 	 				<c:forEach var="i" items="<%=list2%>">
  	 				<tr class="packagelistTable">
  	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <td><a href="PackageDeteilController?packagename=${i.packagename}">${i.packagename}</a></td> 
  	 				<td>${i.term}</td> <td><font color="red">${i.price}</font></td> <td>${i.reservationab}</td>  
  	 				</tr>
- 	 				
  	 				</c:forEach>
  	 			</table>
  	 		</div>
