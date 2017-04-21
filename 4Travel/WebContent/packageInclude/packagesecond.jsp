@@ -15,8 +15,8 @@
 			var wHeight = $(window).height();
 			if(sc > 292){ 
 				$("#DefoultBar").css("top","30px");
-				$("#DefoultBar").css("left","72%");   
-				$("#DefoultBar").css("width","21%");     
+				$("#DefoultBar").css("left","68%");      
+				$("#DefoultBar").css("width","18%");      
 				$("#DefoultBar").css("position","fixed");
 			}else if (sc < 292){
 				$("#DefoultBar").css("position","absolute"); 
@@ -117,7 +117,9 @@
             	예약현황<br>
             	${Plist[0].presentreservation}/${Plist[0].personnel}명<font color="red" size="3px">(최소출발인원 ${Plist[0].minpersonnel}명)</font>
             	<br><br> 
-            	<button>예약하기</button>
+            	<form action="#">
+            	<input type="submit" value="예약하기">
+            	</form>
             	</div>
             	
             </div>
