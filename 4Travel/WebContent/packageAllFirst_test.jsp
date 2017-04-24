@@ -152,6 +152,7 @@
                			<p class = "term">여행 기간 : ${i.term}</p>
                 		<p class = "price"><span>가격 : </span><span class="testEle">${i.price}</span></p>
   
+  					
         	</div>
            
         <!-- /.row -->
