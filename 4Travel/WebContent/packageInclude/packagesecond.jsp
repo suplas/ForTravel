@@ -26,8 +26,17 @@
 			
 			};
 		});
+		$("#popup").on("click",function(event){
+			
+			var popUrl = "packageInclude/reservation.jsp?packagename="+$(".page-header").text();	//팝업창에 출력될 페이지 URL
+
+			var popOption = "top=300, left=500, width=380, height=150, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+				window.open(popUrl,"",popOption);
+			});
 	});
 	</script>
+
 <div class="container">
 
         <!-- Page Heading/Breadcrumbs -->
@@ -36,8 +45,8 @@
             <div class="col-lg-12">
             
                 <h1 class="page-header">${Plist[0].packagename}
-                    <small>${Plist[0].city}</small>
                 </h1>
+                <small>${Plist[0].city}</small>
                 <ol class="breadcrumb">
                     <li><a href="Home">Home</a>
                     </li>
@@ -117,9 +126,11 @@
             	예약현황<br>
             	${Plist[0].presentreservation}/${Plist[0].personnel}명<font color="red" size="3px">(최소출발인원 ${Plist[0].minpersonnel}명)</font>
             	<br><br> 
-            	<form action="#">
-            	<input type="submit" value="예약하기">
-            	</form>
+            	<!-- <form action="packageInclude/reservation.jsp"> -->
+            	<!-- <form action="packageInclude/reservation.jsp?packagename=ccc"> -->
+            	<button id ="popup">상담예약하기</button>
+            	<!-- </form> -->
+            	<!-- </form> -->
             	</div>
             	
             </div>

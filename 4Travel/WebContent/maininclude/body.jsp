@@ -8,6 +8,7 @@
  <div class="container">
  <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".newpackage").css("width","100%");
@@ -55,7 +56,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
          <h3 class="page-header">
                  <font color="orange">BEST 여행 후기</font>  	 
          </h3> 
-         
+         <a href="HelloAnalytics.jsp">테스트</a>
      <c:forEach var="BestReview" items="${Plist2}"> 
         <div >
                
@@ -125,7 +126,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
         
 
     </div>
-    <footer style="margin: 0 auto;">
+    <footer style="margin: 0 auto; position: relative; top: 100px;">
             <div class="row" style="background: black;
     width: 100%;
     height: 100%;
