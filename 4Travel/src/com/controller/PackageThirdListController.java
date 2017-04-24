@@ -1,7 +1,6 @@
 package com.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,8 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.biz.PackageBiz;
-import com.entity.MemberDTO;
+import com.biz.PackageThirdBiz;
 import com.entity.PackageThirdDTO;
 import com.exception.CommonException;
 
@@ -23,22 +21,20 @@ import com.exception.CommonException;
 public class PackageThirdListController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String packagename = request.getParameter("packagename");
 		String startdate = request.getParameter("startdate");
-		String term = request.getParameter("term");
-		System.out.println(startdate);
-		PackageThirdDTO dto = new PackageThirdDTO();
-		dto.setPackagename(packagename);
-		dto.setStartdate(startdate);
-		dto.setTerm(term);
+		int packageno= Integer.parseInt(request.getParameter("packageno"));
+		/*PackageThirdDTO dto = new PackageThirdDTO();
+		dto.setStartdate(startdate);*/
 		String target="";
-		PackageBiz biz=new PackageBiz();
+		PackageThirdBiz biz=new PackageThirdBiz();
 		
 		try {
-			List<PackageThirdDTO> list=biz.packageAllList(packagename);
-			List<PackageThirdDTO> list2=biz.packageTableAllList(dto);
+			List<PackageThirdDTO> list=biz.packageAllList(packageno);
+			
+         	
+			//List<PackageThirdDTO> list2=biz.packageTableAllList(dto);
 			request.setAttribute("Plist", list);
-			request.setAttribute("Plist2", list2);
+			//request.setAttribute("Plist2", list2);
 			target="PackageThird.jsp";
 			
 		} catch (CommonException e) {

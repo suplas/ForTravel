@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.biz.PackageBiz;
+import com.biz.PackageFirstBiz;
+import com.biz.PackageThirdBiz;
 import com.entity.PackageFirstDTO;
 import com.exception.CommonException;
 
@@ -22,21 +23,22 @@ public class PackageFirstALLController extends HttpServlet {
 		
 		String loc = request.getParameter("loc");
 		int page=0;
-		int totalPage = 0;
+		//int totalPage = 0;
 		if(request.getParameter("page")==""||request.getParameter("page")==null){//페이지번호가 없으면 기본값 1 삽입			
 			page = 1;			
 		}else{
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		String target ="";
-		PackageBiz service = new PackageBiz();
+		PackageFirstBiz service=new PackageFirstBiz();
+		PackageThirdBiz biz=new PackageThirdBiz();
 		
 		
 		//System.out.println(loc);
 	
 		try {
-			totalPage = service.selectCountList(loc);
-			System.out.println(totalPage+"//////sisisisi");
+			//totalPage = biz.selectCountList(loc);
+			//System.out.println(totalPage+"//////sisisisi");
 			List<PackageFirstDTO> list = service.countryAllList(loc);
 			request.setAttribute("Plist", list);
 	

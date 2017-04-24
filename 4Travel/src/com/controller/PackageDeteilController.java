@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.biz.PackageBiz;
+import com.biz.PackageFirstBiz;
+import com.biz.PackageThirdBiz;
 import com.entity.MemberDTO;
 import com.entity.PackageThirdDTO;
 import com.exception.CommonException;
@@ -23,19 +24,16 @@ import com.exception.CommonException;
 public class PackageDeteilController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String packagename = request.getParameter("packagename");
+		String packagenum = request.getParameter("packageno");
+		int packageno = Integer.parseInt(packagenum);
 		String startdate = request.getParameter("startdate");
 		String term = request.getParameter("term");
 		System.out.println(startdate);
-		PackageThirdDTO dto = new PackageThirdDTO();
-		dto.setPackagename(packagename);
-		dto.setStartdate(startdate);
-		dto.setTerm(term);
 		String target="";
-		PackageBiz biz=new PackageBiz();
+		PackageThirdBiz biz=new PackageThirdBiz();
 		
 		try {
-			List<PackageThirdDTO> list=biz.packageAllList(packagename);
+			List<PackageThirdDTO> list=biz.packageAllList(packageno);
 			request.setAttribute("Plist", list);
 			target="PackageSecond.jsp";
 			

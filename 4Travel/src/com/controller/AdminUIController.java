@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.biz.PackageBiz;
+import com.biz.PackageFirstBiz;
 import com.biz.ReviewBoardBiz;
 import com.entity.MemberDTO;
 import com.entity.PackageThirdDTO;

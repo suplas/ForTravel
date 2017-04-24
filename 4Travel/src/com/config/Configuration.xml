@@ -30,7 +30,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/config/PackageMapper.xml" />
+		<mapper resource="com/config/PackageFirstMapper.xml" />
+		<mapper resource="com/config/PackageThirdMapper.xml" />
 		<mapper resource="com/config/ReviewBoardMapper.xml" />
 		<mapper resource="com/config/ReviewReplyMapper.xml" />
 		<mapper resource="com/config/QABoardMapper.xml" />

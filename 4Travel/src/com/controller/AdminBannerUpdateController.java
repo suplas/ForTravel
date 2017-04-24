@@ -47,6 +47,8 @@ public class AdminBannerUpdateController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("items:"+items);
+		System.out.println("itemssize"+items.size());
 		Iterator<FileItem> ite = items.iterator();
 		String fieldName = null;
 		String fieldValue = "";
@@ -59,6 +61,7 @@ public class AdminBannerUpdateController extends HttpServlet {
 			if (fileItem.isFormField()) { //type = "file" false
 				fieldName = fileItem.getFieldName();
 				fieldValue += fileItem.getString("UTF-8")+"/";
+				System.out.println("if 필드 네임:"+fieldName+"\t"+"if필드 밸류"+fieldValue);
 			} else { //type = "file" true
 				fileName = fileItem.getName();  
 				fileSize = fileItem.getSize();
@@ -66,6 +69,8 @@ public class AdminBannerUpdateController extends HttpServlet {
 				if(fileName.trim() != ""){
 				f = new File("C:\\temp\\upload",fileName);
 				imageName += fileName+"/";
+				System.out.println("파일네임!!!!!!!!!!!!!11111"+fileName);
+				System.out.println("이미지 111111111111111111"+imageName);
 				}
 				try {
 					fileItem.write(f);
@@ -80,6 +85,7 @@ public class AdminBannerUpdateController extends HttpServlet {
 		HttpSession session = request.getSession();
 		BannerImageBiz biz=new BannerImageBiz();
 		BannerImageDTO dto=new BannerImageDTO(1,imageName,fieldValue);
+		System.out.println("dto마지막"+imageName+"\t"+fieldValue);
 		try {
 			biz.BannerUpdate(dto);
 			target="Home";
