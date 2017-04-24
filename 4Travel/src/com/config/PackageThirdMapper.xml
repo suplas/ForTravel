@@ -42,13 +42,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	order by price asc
     	
     </select>
-    <select id="packageNewlist" resultType="PackageThirdDTO">
-    <![CDATA[
- 		select packagename,COMPANY,doorimg,AIRLINE,price,STARTDATE,LASTDATE,loc,term
- 		from packagedb
- 		where rownum <= 3 and startdate >= sysdate
- 		order by packageno
- 		]]>
- 	</select>
+   
 
 </mapper>

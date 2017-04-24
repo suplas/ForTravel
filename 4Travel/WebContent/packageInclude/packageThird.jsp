@@ -155,7 +155,7 @@ $(document).ready(function() {
 		url:"packageInclude/packageThridListUpdate.jsp",
 		dataType:"html",
 		data:{
-			packagename:'${Plist[0].packagename}',
+			packageno:'${Plist[0].packageno}',
 			startyear:year,
 			startmonth:month,
 			term:'${Plist[0].term}'

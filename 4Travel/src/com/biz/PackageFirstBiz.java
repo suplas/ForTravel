@@ -31,5 +31,19 @@ public class PackageFirstBiz {
 		return list;
 	}
 	
+	public List<PackageFirstDTO> packageNewlist() throws CommonException{
+		SqlSession session=MySqlSessionFactory.openSession();
+		List<PackageFirstDTO> list = null;
+		try{
+		list = session.selectList(namespace+"packageNewlist");
+		
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new CommonException("패키지리스트 불러오기 실패");
+		}finally {
+			session.close();
+		}
+		return list;
+	}
 	
 }//end class
