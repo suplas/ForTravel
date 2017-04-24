@@ -1,3 +1,4 @@
+<%@page import="sun.security.jca.GetInstance.Instance"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.entity.PackageThirdDTO"%>
 <%@page import="java.util.List"%>
@@ -126,7 +127,7 @@ $(document).ready(function() {
 		url:"packageInclude/packageThridListUpdate.jsp",
 		dataType:"html",
 		data:{
-			packagename:'${Plist[0].packagename}',
+			packageno:'${Plist[0].packageno}',
 			startyear:year,
 			startmonth:month,
 			term:'${Plist[0].term}'
@@ -259,26 +260,25 @@ $(document).ready(function() {
  	 				<td>출/도착시간</td><td>항공  </td><td>상품명</td><td> 여행기간 </td><td>상품가격 </td><td> 예약상태 </td>  
  	 				</tr>
  	 				 <%Date today = new Date();
-             		SimpleDateFormat dayform=new SimpleDateFormat("MM"); 
-             		int todayMonth=Integer.parseInt(dayform.format(today));
-             		System.out.println(todayMonth);
+             		SimpleDateFormat dayform=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
+             		SimpleDateFormat monthForm=new SimpleDateFormat("MM"); 
+             		String todayMonth=monthForm.format(today);
              		List<PackageThirdDTO> list=(List<PackageThirdDTO>)request.getAttribute("Plist");
-             		System.out.println("1");
              		List<PackageThirdDTO> list2=new ArrayList<>();
-             		System.out.println("2");
+             		System.out.println(list.size());
              		for(int i=0;i<list.size();i++){
-             		System.out.println(list.get(i).getStartdate());
-             		String stMonth=dayform.format(list.get(i).getStartdate());
-             		System.out.println(stMonth);
-             		
-             			/* if(dayform.format(list.get(i).getStartdate()).equals(todayMonth)){
+             		//System.out.println(list.get(i).getStartdate() instanceof String);
+             		//System.out.println("::::"+list.get(i).getStartdate());
+             		Date MonDt=dayform.parse(list.get(i).getStartdate());
+             		String monthString=monthForm.format(MonDt);
+             			if(Integer.parseInt(todayMonth) <= Integer.parseInt(monthString) && (Integer.parseInt(todayMonth)+1) > Integer.parseInt(monthString)){
              				list2.add(list.get(i));
-             			} */
+             			}
              		}
              		%>
  	 				<c:forEach var="i" items="<%=list2%>">
  	 				<tr class="packagelistTable">
- 	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <td><a href="PackageDeteilController?packagename=${i.packagename}">${i.packagename}</a></td> 
+ 	 				<td>${i.startdate}<br><font color="red">${i.lastdate}</font></td> <td>${i.airline}</td> <td><a href="PackageDeteilController?packageno=${i.packageno}&startdate=${i.startdate}">${i.packagename}</a></td> 
  	 				<td>${i.term}</td> <td><font color="red">${i.price}</font></td> <td>${i.reservationab}</td>  
  	 				</tr>
  	 				</c:forEach>
