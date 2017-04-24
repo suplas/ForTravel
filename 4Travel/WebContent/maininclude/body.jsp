@@ -8,7 +8,6 @@
  <div class="container">
  <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".newpackage").css("width","100%");
@@ -56,7 +55,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
          <h3 class="page-header">
                  <font color="orange">BEST 여행 후기</font>  	 
          </h3> 
-         <a href="HelloAnalytics.jsp">테스트</a>
+         
      <c:forEach var="BestReview" items="${Plist2}"> 
         <div >
                
@@ -94,11 +93,11 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
     				<%Date today = new Date();
     				SimpleDateFormat dayform=new SimpleDateFormat("yyyy/MM"); 
     				%>
-				<a href="PackageThirdListController?packagename=${i.packagename}&packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">
-                        <p><img  class="newpackage" src="images/${i.doorimg}.jpg"></img></a><br><br>
+				<a href="PackageThirdListController?packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">
+                        <p><img  class="newpackage" src="images/${i.image}.jpg"></img></a><br><br>
                         	패키지 명 : ${i.packagename}<br>
-                        	출발날짜 : ${i.startdate}<br>
-                        	도착날짜 : ${i.lastdate}<br>
+                        	<%-- 출발날짜 : ${i.startdate}<br> --%>
+                        	<%-- 도착날짜 : ${i.lastdate}<br> --%>
                         	<span>가격 : </span><span class="testEle">${i.price}</span></p>
                     </div>
                </div>
@@ -126,7 +125,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
         
 
     </div>
-    <footer style="margin: 0 auto; position: relative; top: 100px;">
+    <footer style="margin: 0 auto;">
             <div class="row" style="background: black;
     width: 100%;
     height: 100%;
@@ -149,4 +148,4 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
-    </script>
+    </script> 
