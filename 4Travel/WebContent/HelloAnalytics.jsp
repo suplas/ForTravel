@@ -1,156 +1,200 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <title>Hello Analytics - A quickstart guide for JavaScript</title>
+  <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 
-<button id="auth-button" hidden >Authorize</button>
-
-<h1>Hello Analytics</h1>
-
-<textarea cols="80" rows="20" id="query-output"></textarea>
 
 <script>
 
-  // Replace with your client ID from the developer console.
-  var CLIENT_ID = '<160209807606-df5os0jsh96u5tef9930a0f26hapvush.apps.googleusercontent.com>';
+  // Replace with your client ID from the developer console. https://console.developers.google.com/apis/credentials
 
-  // Set authorized scope.
+  var CLIENT_ID = '160209807606-df5os0jsh96u5tef9930a0f26hapvush.apps.googleusercontent.com';
+
+  // Replace with your view ID. from https://ga-dev-tools.appspot.com/account-explorer/
+
+  var VIEW_ID = '148586598';
+
+  var DISCOVERY = 'https://analyticsreporting.googleapis.com/$discovery/rest';
+
   var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
 
 
+
   function authorize(event) {
+
     // Handles the authorization flow.
+
     // `immediate` should be false when invoked from the button click.
+
     var useImmdiate = event ? false : true;
+
     var authData = {
+
       client_id: CLIENT_ID,
+
       scope: SCOPES,
+
       immediate: useImmdiate
+
     };
 
     gapi.auth.authorize(authData, function(response) {
-      var authButton = document.getElementById('auth-button');
+
       if (response.error) {
-        authButton.hidden = false;
+
+	$(".getViews").text("인증필요");
+
       }
+
       else {
-        authButton.hidden = true;
-        queryAccounts();
+
+	$(".getViews").text("불러오는 중");
+
+        queryReports();
+
       }
+
     });
+
   }
 
 
-function queryAccounts() {
-  // Load the Google Analytics client library.
-  gapi.client.load('analytics', 'v3').then(function() {
 
-    // Get a list of all Google Analytics accounts for this user
-    gapi.client.analytics.management.accounts.list().then(handleAccounts);
-  });
-}
+  function queryReports() {
 
+    // Load the API from the client discovery URL.
 
-function handleAccounts(response) {
-  // Handles the response from the accounts list method.
-  if (response.result.items && response.result.items.length) {
-    // Get the first Google Analytics account.
-    var firstAccountId = response.result.items[0].id;
+    gapi.client.load(DISCOVERY
 
-    // Query for properties.
-    queryProperties(firstAccountId);
-  } else {
-    console.log('No accounts found for this user.');
+    ).then(function() {
+
+        // Call the Analytics Reporting API V4 batchGet method.
+
+        gapi.client.analyticsreporting.reports.batchGet( {
+
+          "reportRequests":[
+
+          {
+
+            "viewId":VIEW_ID,
+
+            "dateRanges":[
+
+              {
+
+                "startDate":"7daysAgo",
+
+                "endDate":"today"
+
+              }],
+
+            "dimensions": [
+
+              {
+
+                "name": "ga:pagePath"
+
+              }],
+
+            "dimensionFilterClauses": [
+
+              {
+
+                "filters": [
+
+                  {
+
+                    "dimensionName": "ga:pagePath",
+
+                    "not": false,
+
+                    "expressions": [
+
+                      "\\"+location.pathname
+
+                    ],
+
+                    "caseSensitive": false,
+
+                  }
+
+                ]
+
+              }],
+
+            "metrics":[
+
+              {
+
+                "expression":"ga:hits"
+
+              }],
+
+            "orderBys": [
+
+              {
+
+                "fieldName": "ga:hits",
+
+                "sortOrder": "DESCENDING",
+
+              }
+
+            ],
+
+          }]
+
+        } ).then(function(response) {
+
+          var parse = JSON.parse(response.body);
+
+          var views = "지난 1주일간 조회수: "+parse.reports[0].data.totals[0].values[0];
+
+          console.log(views);
+
+	  $(".getViews").text(views);
+
+        })
+
+        .then(null, function(err) {
+
+            // Log any errors.
+
+            console.log(err);
+
+        });
+
+    });
+
   }
-}
 
-
-function queryProperties(accountId) {
-  // Get a list of all the properties for the account.
-  gapi.client.analytics.management.webproperties.list(
-      {'accountId': accountId})
-    .then(handleProperties)
-    .then(null, function(err) {
-      // Log any errors.
-      console.log(err);
-  });
-}
-
-
-function handleProperties(response) {
-  // Handles the response from the webproperties list method.
-  if (response.result.items && response.result.items.length) {
-
-    // Get the first Google Analytics account
-    var firstAccountId = response.result.items[0].accountId;
-
-    // Get the first property ID
-    var firstPropertyId = response.result.items[0].id;
-
-    // Query for Views (Profiles).
-    queryProfiles(firstAccountId, firstPropertyId);
-  } else {
-    console.log('No properties found for this user.');
-  }
-}
-
-
-function queryProfiles(accountId, propertyId) {
-  // Get a list of all Views (Profiles) for the first property
-  // of the first Account.
-  gapi.client.analytics.management.profiles.list({
-      'accountId': accountId,
-      'webPropertyId': propertyId
-  })
-  .then(handleProfiles)
-  .then(null, function(err) {
-      // Log any errors.
-      console.log(err);
-  });
-}
-
-
-function handleProfiles(response) {
-  // Handles the response from the profiles list method.
-  if (response.result.items && response.result.items.length) {
-    // Get the first View (Profile) ID.
-    var firstProfileId = response.result.items[0].id;
-
-    // Query the Core Reporting API.
-    queryCoreReportingApi(firstProfileId);
-  } else {
-    console.log('No views (profiles) found for this user.');
-  }
-}
-
-
-function queryCoreReportingApi(profileId) {
-  // Query the Core Reporting API for the number sessions for
-  // the past seven days.
-  gapi.client.analytics.data.ga.get({
-    'ids': 'ga:' + profileId,
-    'start-date': '7daysAgo',
-    'end-date': 'today',
-    'metrics': 'ga:sessions'
-  })
-  .then(function(response) {
-    var formattedJson = JSON.stringify(response.result, null, 2);
-    document.getElementById('query-output').value = formattedJson;
-  })
-  .then(null, function(err) {
-      // Log any errors.
-      console.log(err);
-  });
-}
-
-  // Add an event listener to the 'auth-button'.
-  document.getElementById('auth-button').addEventListener('click', authorize);
+ $(".getViews").click(function(){authorize(event);});
+		
 </script>
 
-<script src="https://apis.google.com/js/client.js?onload=authorize"></script>
+<script async src="https://apis.google.com/js/client.js"></script>
+<div class="getViews">aaaa</div>
+
+
 
 </body>
+
+<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDY0Wq21y6Knp32_j_LAIuKMfTvUqpYZSg",
+    authDomain: "travel-165306.firebaseapp.com",
+    databaseURL: "https://travel-165306.firebaseio.com",
+    projectId: "travel-165306",
+    storageBucket: "travel-165306.appspot.com",
+    messagingSenderId: "160209807606"
+  };
+  firebase.initializeApp(config);
+</script>
 </html>
