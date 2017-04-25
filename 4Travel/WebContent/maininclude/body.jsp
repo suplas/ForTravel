@@ -129,7 +129,9 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
             <div class="row" style="background: black;
     width: 100%;
     height: 100%;
-    margin: 0 auto;">
+    margin: 0 auto;
+    position: relative;
+    top: 100px;">
                 <div class="col-lg-12">
                    <jsp:include page="forcopy.jsp" flush="true" />
                 </div>
