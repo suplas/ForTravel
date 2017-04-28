@@ -6,15 +6,45 @@
 	height:500px;
     border: 1px solid gray;
 }
+
 </style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="js/myScript.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("body").on("click","#adminUI",function(){
+		var beginDate=$("#beginDate").val();
+		var endDate=$("#endDate").val();
+		var today=new Date();
+		
+		$("body").on("click","#adminLog",function(){
+			$("#dateTr").css("display","block");
 			myAjax('admin/admin.jsp',true,'html','','.addcontent');
-		});//end adminUI
+		});//end adminLog click
+		
+		$("body").on("click","#changeDateButton",function(){
+			beginDate=$("#beginDate").val();
+			endDate=$("#endDate").val();
+		});//end changeDateButton click
+		
+		$("body").on("click","#reviewboardStatic",function(){
+			console.log(beginDate=='');
+			console.log(today.getFullYear());
+			console.log((today.getMonth()+1)); 
+			console.log(today.getDate()); 
+			if(endDate=='' && beginDate==''){
+				endDate += today.getFullYear()+"-";
+				endDate += (today.getMonth()+1)+"-";
+				endDate += today.getDate();
+				beginDate += today.getFullYear()+"-";
+				beginDate += (today.getMonth()+1)+"-";
+				beginDate += today.getDate();
+			}
+				console.log(endDate+"::::::::"+beginDate);
+			//myAjax('admin/staticReviewBoard.jsp',true,'html','{ beginDate: beginDate, endDate: endDate }','.addcontent');
+		});//end 
 		
 		$("body").on("click","#adminMain",function(){
+			$("#dateTr").css("display","none");
 			myAjax('admin/bannerUpdate.jsp',true,'html','','.addcontent');
 		});//end adminUI 
 		
@@ -99,7 +129,7 @@
             <div class="col-md-12">
             <ol class="breadcrumb">
             <li>
-            <a id="adminUI" style="cursor: pointer;">관리자화면</a>
+            <a id="adminLog" style="cursor: pointer;">통계/로그분석</a>
             </li>
             <li>
         	<a id="adminMain" style="cursor: pointer;">메인화면 수정</a>
@@ -120,6 +150,13 @@
 			</div>		
 		</div>
 		<table  id="addcon">
+			<tr id="dateTr" style="display: none;"><td id="dateTd">
+			시작날짜<input name="beginDate" type="date" id="beginDate" min="2000-01-01">&nbsp;
+			마지막 날짜<input type="date" name="endDate" id="endDate" min="2000-01-01"> &nbsp; 
+			<button id="changeDateButton">날짜변경</button><br/><br/><br/>
+			<button id="reviewboardStatic">여행후기통계</button>&nbsp;
+			<button id="reservationStatic">예약통계</button>&nbsp;
+			<button id="memberStatic">회원통계</button></td></tr>
 			<tr><td class="addcontent"></td></tr>
 		</table>
     </div>

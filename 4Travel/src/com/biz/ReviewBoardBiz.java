@@ -16,6 +16,23 @@ import com.exception.CommonException;
 public class ReviewBoardBiz {
 	String namespace="com.fortravel.ReviewBoardMapper.";
 	
+	public List<ReviewBoardDTO> staticReview(HashMap<String, String> map) throws CommonException{
+		SqlSession session=MySqlSessionFactory.openSession();
+		List<ReviewBoardDTO> list=null;
+		try{
+		list=session.selectList(namespace+"staticReview",map);
+		System.out.println(list.size());
+		}catch(Exception e){
+			System.out.println("불러오기실패");
+			throw new CommonException("staticReview 불러오기 실패");
+		}finally {
+			session.close();
+		}
+		return list;
+	}
+	
+	
+	
 	public List<ReviewBoardDTO> bestredcnt(int readcnt) throws CommonException{
 		
 		SqlSession session=MySqlSessionFactory.openSession();
