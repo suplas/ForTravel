@@ -65,7 +65,15 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
                         <h4><i class="fa fa-fw fa-compass"></i>베스트 여행후기</h4>
                     </div> -->
         	 <div class="panel-body">
-        	 <p><a href="ReviewBoardDetailController?num=${BestReview.num}"><img  class="newpackage" src="/4Travel/images/${BestReview.image1}"></img></a><br><br>
+        	 <p><a href="ReviewBoardDetailController?num=${BestReview.num}">
+        	 <c:if test="${BestReview.image1 !=null}">
+			<c:set var="image_array" value="${fn:split(BestReview.image1,'/')}" />
+				<img class="newpackage" src="/4Travel/images/${image_array[0]}"/>
+			</c:if>
+			<c:if test="${BestReview.image1 ==null}">
+        	 <img  class="newpackage" src="images/noimage.png"/>
+        	 </c:if>
+        	 </a><br><br>
                         	<span>타이틀 : </span><span class="testEle">${BestReview.title}</span></p>
                         	작성자 : ${BestReview.userid}<br>
                         	여행지 : ${BestReview.travelNation}/${BestReview.travelLoc}<br>
