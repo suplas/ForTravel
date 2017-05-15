@@ -23,8 +23,8 @@ import com.exception.CommonException;
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet("/Home")
-public class HomeController extends HttpServlet {
+@WebServlet("/MHome")
+public class MobileHomeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int readcnt = 0;
@@ -48,7 +48,7 @@ public class HomeController extends HttpServlet {
 			request.setAttribute("Plist2", list2);
 			BannerImageDTO bannerdto=bannerBiz.BannerImageSelect();
 			request.setAttribute("bannerdto", bannerdto);
-			target="main.jsp";
+			target="JqueryMobile/JQueryMobile.jsp";
 			
 		} catch (CommonException e) {
 			e.printStackTrace();
@@ -56,9 +56,10 @@ public class HomeController extends HttpServlet {
 		}
 		
 		
-		  RequestDispatcher dis =
+		response.sendRedirect(target);
+		 /* RequestDispatcher dis =
 	        		request.getRequestDispatcher(target);
-	        dis.forward(request, response);
+	        dis.forward(request, response);*/
 	        
 	        
 	}
