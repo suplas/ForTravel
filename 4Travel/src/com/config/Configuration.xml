@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
      <typeAlias type="com.entity.MemberDTO" alias="MemberDTO"/>
      <typeAlias type="com.entity.QABoardDTO" alias="QABoardDTO"/>
      <typeAlias type="com.entity.BannerImageDTO" alias="BannerImageDTO"/>
+     <typeAlias type="com.entity.ReservationDTO" alias="ReservationDTO"/>
     </typeAliases>
     
 	<environments default="development">
@@ -37,6 +38,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/QABoardMapper.xml" />
 		<mapper resource="com/config/MemberMapper.xml" />
 		<mapper resource="com/config/BannerImageMapper.xml" />
+		<mapper resource="com/config/ReservationMapper.xml"/>
 	</mappers>
 </configuration>
 

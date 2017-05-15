@@ -28,7 +28,7 @@
 		});
 		$("#popup").on("click",function(event){
 			
-			var popUrl = "packageInclude/reservation.jsp?packagename="+$(".page-header").text();	//팝업창에 출력될 페이지 URL
+			var popUrl = "Reservation.jsp?packagename="+$(".page-header").text();	//팝업창에 출력될 페이지 URL
 
 			var popOption = "top=300, left=500, width=380, height=150, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
 
