@@ -18,13 +18,22 @@
 <!-- Custom CSS -->
 <link href="css/modern-business.css" rel="stylesheet">
 
+
 <!-- Custom Fonts -->
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
+    
+    <script type="text/javascript" language="JavaScript">
+var mobileKeyWords = new Array("iPhone", "iPod", "BlackBerry", "Android", "Windows CE", "Windows CE;", "LG", "MOT", "SAMSUNG", "SonyEricsson", "Mobile", "Symbian", "Opera Mobi", "Opera Mini", "IEmobile");
+for (var word in mobileKeyWords){
+if (navigator.userAgent.match(mobileKeyWords[word]) != null){
+window.location.href = "JqueryMobile/JQueryMobile.jsp";
+break;
+}
+}
+</script>
 
 
-
-출처: http://kiss7.tistory.com/316 [키스세븐]
 
 </head>
 <body>

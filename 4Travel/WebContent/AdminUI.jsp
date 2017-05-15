@@ -19,6 +19,7 @@
 
 	<!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script> 
+    
 </head>
 <body>
 <jsp:include page="maininclude/Serch.jsp" flush="true"/>

@@ -6,15 +6,17 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.dao.MySqlSessionFactory;
 import com.entity.MemberDTO;
+import com.entity.ReservationDTO;
 import com.exception.CommonException;
 
 public class ReservationBiz {
-	String namespace="com.fortravel.MemberMapper.";
+	String namespace="com.fortravel.ReservationMapper.";
 	
-	public void Reservation(MemberDTO mDTO)throws CommonException{
+	public void Reservation(ReservationDTO dto)throws CommonException{
 		SqlSession session=MySqlSessionFactory.openSession();
 		try{
-			int n=session.insert(namespace+"memberJoin",mDTO);
+			int n = session.insert(namespace+"reservation",dto);
+			System.out.println("biz통과");
 			session.commit();
 		}catch (Exception e) {
 			e.printStackTrace();
