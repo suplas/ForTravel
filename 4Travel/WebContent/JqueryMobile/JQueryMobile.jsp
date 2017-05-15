@@ -51,7 +51,7 @@
         -webkit-align-items: center;
         align-items: center;
     }
-    }
+    
     </style>
  
 </head>
