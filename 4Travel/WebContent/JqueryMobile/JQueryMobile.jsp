@@ -14,6 +14,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
 <script src="css/swiper.min.js"></script>
+
  <style type="text/css">
    html, body {
         position: relative;
@@ -75,8 +76,10 @@
             <div class="swiper-slide"><img src=imeage/op1.jpg></div> 
             <div class="swiper-slide"><img src=imeage/op2.jpg></div>
             <div class="swiper-slide"><img src=imeage/op3.jpg></div>
-           
+        
         </div>
+<div id="myTest">           
+     </div> 
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
         <!-- Add Arrows -->
@@ -105,9 +108,11 @@
         autoplayDisableOnInteraction: false
     });
     </script>
+   
     
     
 </body>
+
 </html>
 
 
