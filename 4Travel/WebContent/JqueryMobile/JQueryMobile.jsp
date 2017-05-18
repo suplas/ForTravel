@@ -14,11 +14,10 @@
 <link rel="stylesheet" href="css/jqueryMobile.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
-<!-- <script src="css/swiper.min.js"></script> -->
 
-   
 </head>
 <body>
+
 <div data-role ="header" style="background-color: #ffa70b;"> 
 <h1>4Trevel</h1>
 <a herf = "#" data-icon = "arrow-L" class = "ui-btn ui-btn-b">Back</a>
@@ -37,20 +36,28 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src=imeage/op1.jpg></div> 
             <div class="swiper-slide"><img src=imeage/op2.jpg></div>
-            <div class="swiper-slide"><img src=imeage/op3.jpg></div>
+            <div class="swiper-slide"><img src=imeage/op3.jpg></div>	
         
         </div>
  
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
         <!-- Add Arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>  
+        <div class="swiper-button-prev"></div> 
+    </div>
+    <div>
+    	<h3><font color = "orange">BEST 여행 후기</font></h3>
+    	<div style="border: 1px; background-color: red;">
+    	<img src = "imeage/osak.jpg" style="position:relative; left:20%;">
+    	</div> 
+     	 
     </div>
 </div>
 <div data-role ="footer" data-position="fixed">
 <h1>footer</h1>
 </div> 
+<<<<<<< HEAD
 
  <!-- Swiper JS -->
     <script src="js/swiper.min.js"></script>
@@ -68,6 +75,25 @@
         autoplayDisableOnInteraction: false
     });
     </script>
+=======
+<!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script type="text/javascript">
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false
+    });
+    </script>
+ 
+>>>>>>> branch 'master' of https://github.com/suplas/ForTravel.git
 </body>
 </html>
 
