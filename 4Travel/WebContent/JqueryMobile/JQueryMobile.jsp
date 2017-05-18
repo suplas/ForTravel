@@ -44,7 +44,7 @@
         <div class="swiper-pagination"></div>
         <!-- Add Arrows -->
         <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-prev"></div> 
     </div>
     <div>
     	<h3><font color = "orange">BEST 여행 후기</font></h3>
