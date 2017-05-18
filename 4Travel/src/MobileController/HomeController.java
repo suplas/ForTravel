@@ -1,4 +1,4 @@
-package com.controller;
+package MobileController;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,7 +23,7 @@ import com.exception.CommonException;
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet("/MHome")
+@WebServlet("/Home")
 public class HomeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,7 +49,7 @@ public class HomeController extends HttpServlet {
 			request.setAttribute("Plist2", list2);
 			BannerImageDTO bannerdto=bannerBiz.BannerImageSelect();
 			request.setAttribute("bannerdto", bannerdto);
-			target="JqueryMobile/JQueryMobile.jsp";
+			target="main.jsp";
 			
 		} catch (CommonException e) {
 			e.printStackTrace();
