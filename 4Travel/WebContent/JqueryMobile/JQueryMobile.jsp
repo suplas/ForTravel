@@ -14,7 +14,13 @@
 <link rel="stylesheet" href="css/jqueryMobile.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+<!-- Jquery source -->
+<script type="text/javascript">
+$(document).ready(function() {
+	
 
+});
+</script>
 </head>
 <body>
 
@@ -46,10 +52,21 @@
         <div class="swiper-button-next"></div>  
         <div class="swiper-button-prev"></div> 
     </div>
+    <!-- End Swiper -->
+    
+    <!-- main package area -->
     <div>
     	<h3><font color = "orange">BEST 여행 후기</font></h3>
-    	<div style="border: 1px; background-color: red;">
-    	<img src = "imeage/osak.jpg" style="position:relative; left:20%;">
+    	<div class ="package_div">
+    	<div class= "package_div_img" >
+    	<img src ="imeage/osak.jpg" class="package_img">
+    	</div>
+    	<div class="package_text_div">
+    	<h3>타이틀 :</h3>
+    	<h3>작성자 :</h3>
+    	<h3>여행지 :</h3>
+    	<h3>조회수 :</h3>
+    	</div>
     	</div> 
      	 
     </div>
@@ -57,25 +74,7 @@
 <div data-role ="footer" data-position="fixed">
 <h1>footer</h1>
 </div> 
-<<<<<<< HEAD
 
- <!-- Swiper JS -->
-    <script src="js/swiper.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script type="text/javascript">
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        paginationClickable: true,
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: 2500,
-        autoplayDisableOnInteraction: false
-    });
-    </script>
-=======
 <!-- Swiper JS -->
     <script src="js/swiper.min.js"></script>
 
@@ -92,8 +91,7 @@
         autoplayDisableOnInteraction: false
     });
     </script>
- 
->>>>>>> branch 'master' of https://github.com/suplas/ForTravel.git
+
 </body>
 </html>
 
