@@ -57,25 +57,7 @@
 <div data-role ="footer" data-position="fixed">
 <h1>footer</h1>
 </div> 
-<<<<<<< HEAD
 
- <!-- Swiper JS -->
-    <script src="js/swiper.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script type="text/javascript">
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        paginationClickable: true,
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: 2500,
-        autoplayDisableOnInteraction: false
-    });
-    </script>
-=======
 <!-- Swiper JS -->
     <script src="js/swiper.min.js"></script>
 
@@ -93,7 +75,7 @@
     });
     </script>
  
->>>>>>> branch 'master' of https://github.com/suplas/ForTravel.git
+
 </body>
 </html>
 
