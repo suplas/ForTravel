@@ -14,7 +14,13 @@
 <link rel="stylesheet" href="css/jqueryMobile.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+<!-- Jquery source -->
+<script type="text/javascript">
+$(document).ready(function() {
+	
 
+});
+</script>
 </head>
 <body>
 
@@ -46,10 +52,21 @@
         <div class="swiper-button-next"></div>  
         <div class="swiper-button-prev"></div> 
     </div>
+    <!-- End Swiper -->
+    
+    <!-- main package area -->
     <div>
     	<h3><font color = "orange">BEST 여행 후기</font></h3>
-    	<div style="border: 1px; background-color: red;">
-    	<img src = "imeage/osak.jpg" style="position:relative; left:20%;">
+    	<div class ="package_div">
+    	<div class= "package_div_img" >
+    	<img src ="imeage/osak.jpg" class="package_img">
+    	</div>
+    	<div class="package_text_div">
+    	<h3>타이틀 :</h3>
+    	<h3>작성자 :</h3>
+    	<h3>여행지 :</h3>
+    	<h3>조회수 :</h3>
+    	</div>
     	</div> 
      	 
     </div>
@@ -74,7 +91,6 @@
         autoplayDisableOnInteraction: false
     });
     </script>
- 
 
 </body>
 </html>

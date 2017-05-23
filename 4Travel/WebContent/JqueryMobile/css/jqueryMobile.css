@@ -35,3 +35,19 @@
         -webkit-align-items: center;
         align-items: center;
     }
+    
+    /* 메인 패키지 div 영역 CSS */
+    .package_div{
+    	border: 1px; 
+   		
+    }
+    /*메인 패키지 이미지 div 영역 CSS */
+    .package_text_div{
+    	position: absolute;
+    }
+   
+    .package_div_img{
+    	width: 30%;
+    	position:absolute; 
+    	 left:40%; 	
+    }
