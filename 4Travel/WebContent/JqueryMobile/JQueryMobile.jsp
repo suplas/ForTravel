@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>jquery mobile</title>
 
-<link rel="stylesheet" href="./jqueryMobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="jqueryMobile/jquery.mobile-1.4.5.css">
 <script src="./jquery/jquery.js"></script>
 <script src="./jqueryMobile/jquery.mobile-1.4.5.js"></script>
 <link rel="stylesheet" href="css/swiper.min.css">
@@ -117,14 +117,20 @@
 </head>
 <body>
 	<div id="home" data-role="page">
-		<div data-role="header" style="background-color: #ffa70b;">
+		<div data-role="header" style="background-color: #ffffff;">
 			<h1>4Trevel</h1>
-			<a class="main_button" href="#home" data-icon="home">Home</a>
-			<a class="main_button" href="#login">로그인</a>
+			<a class="main_button" href="#home" data-icon="home" style="background-color:#ffffff;">Home</a>
+			<a class="main_button" href="#login" style="background-color: #ffffff;">로그인</a>
+			<hr>
+			<span class="header_naviBar">
+				<a id = "header_naviBar_package" href="#package">패키지</a>
+				<a id = "header_naviBar_review" href="#review">여행 후기</a>
+				<a id = "header_naviBar_login" href="#login">로그인</a>
+				</span>
 		</div>
 			
 
-		<div data-role="content">
+		<div data-role="content"  style="background-color: #E6E9ED;">
 
 			<div class="slider_bg">
 				<div class="slider">
@@ -198,9 +204,9 @@
 		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#package" data-icon="info">패키지</a></li>
-					<li><a href="#review" data-icon="info">여행후기</a></li>
-					<li><a href="#login" data-icon="info">로그인</a></li>
+					<li><a href="#package" data-icon="info" style="background-color: #f5f7fa;">패키지</a></li>
+					<li><a href="#review" data-icon="info" style="background-color: #f5f7fa;">여행후기</a></li>
+					<li><a href="#login" data-icon="info" style="background-color: #f5f7fa;">로그인</a></li>
 				</ul>
 			</div>
 		</div>
