@@ -16,81 +16,182 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
 <!-- Jquery source -->
 <script type="text/javascript">
-$(document).ready(function() {
-	
+var intervalFn;
+var init = {
+setting:function(){
 
-});
+var $listTarget = $('.list ul li');
+var liWidth,liOffset;
+$.each($listTarget,function(i,e){
+liWidth = $(e).innerWidth();
+$(e).css('left',liWidth*i);
+})
+
+this.clickEv();
+},
+clickEv:function(){
+rs = 2000
+var $listTarget = $('.list ul');
+
+$('.next').on('click',function(){
+
+clearInterval(intervalFn)
+intervalFn = setInterval(function(){
+init.moveEff($listTarget.children('li'),'next');
+},rs)
+})
+$('.prev').on('click',function(){
+clearInterval(intervalFn)
+intervalFn = setInterval(function(){
+init.moveEff($listTarget.children('li'),'right');
+},rs)
+})
+},
+moveEff:function(t,c){
+if(c == 'next'){
+
+var overWrap = t.first().position().left;
+
+var dumi = 0
+
+$.each(t,function(i,e){
+$(e).animate({
+left:'-=' + $(e).width()
+},{
+duration:500,
+step:function(){
+
+if(overWrap <= 0 && dumi == 0){
+var copyEl = t.first().html();
+var spot = t.last().position().left;
+
+t.last().after('<li style="left:'+spot+'px">'+copyEl+'</li>');
+dumi = 1;
+}
+},
+complete:function(){
+t.first().remove()
+}
+})
+})
+
+}else if(c =='right'){
+
+var overWrap = t.first().position().left;
+var dumi = 0
+$.each(t,function(i,e){
+$(e).animate({
+left:'+='+$(e).width()
+},{
+duration:500,
+step:function(){
+
+if(overWrap > 0 && dumi == 0){
+var copyEl = t.last().html()
+var spot = t.first().position().left
+t.first().before('<li style="left:'+spot+'px">'+copyEl+'</li>')
+dumi=1
+}
+},
+complete:function(){
+t.last().remove()
+}
+})
+})
+}
+}
+}
+
+$(document).ready(function(){
+init.setting()
+$('.next').trigger('click')
+})
 </script>
 </head>
 <body>
-
+<div id="home" data-role="page">
 <div data-role ="header" style="background-color: #ffa70b;"> 
 <h1>4Trevel</h1>
-<a herf = "#" data-icon = "arrow-L" class = "ui-btn ui-btn-b">Back</a>
-<a herf = "#" data-icon = "home" class = "ui-btn ui-btn-b">Home</a>
+<a href = "#" data-icon = "arrow-L" class = "ui-btn ui-btn-b">Back</a>
+<a href = "#" data-icon = "home" class = "ui-btn ui-btn-b">Home</a>
 <div data-role = "controlgroup" data-type="horizontal" style="margin-left:20%; margin-right:10%;" >  
-<a herf = "#" data-role = "button"  >패키지</a> 
-<a herf = "#" data-role = "button" >여행후기</a>
-<a herf = "#" data-role = "button" >로그인</a> 
-
-
+<a href = "#package" data-role = "button"  >패키지</a> 
+<a href = "#" data-role = "button" >여행후기</a>
+<a href = "#" data-role = "button" >로그인</a> 
 </div>
 </div>
+
+
 <div data-role ="content">
-<!-- Swiper -->
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src=imeage/op1.jpg></div> 
-            <div class="swiper-slide"><img src=imeage/op2.jpg></div>
-            <div class="swiper-slide"><img src=imeage/op3.jpg></div>	
-        
-        </div>
- 
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next"></div>  
-        <div class="swiper-button-prev"></div> 
-    </div>
-    <!-- End Swiper -->
+
+ <div class="slider_bg">
+<div class="slider">
+<div class="controller"> 
+<button class="next">&gt;</button>
+<!-- <button class="prev">&lt;</button> -->
+</div>
+<div class="list">
+<ul>
+<li><a href=""><img src="imeage/op1.jpg" alt=""></a></li>
+<li><a href=""><img src="imeage/op2.jpg" alt=""></a></li>
+<li><a href=""><img src="imeage/op3.jpg" alt=""></a></li>
+</ul>
+</div>
+</div>
+</div>
     
-    <!-- main package area -->
-    <div>
-    	<h3><font color = "orange">BEST 여행 후기</font></h3>
+   <!-- main package area -->
+    <div class="package_main_div">
+    	<h3><font color = "orange">패키지 추천</font></h3>
+    	<hr>
     	<div class ="package_div">
     	<div class= "package_div_img" >
     	<img src ="imeage/osak.jpg" class="package_img">
     	</div>
     	<div class="package_text_div">
-    	<h3>타이틀 :</h3>
-    	<h3>작성자 :</h3>
-    	<h3>여행지 :</h3>
-    	<h3>조회수 :</h3>
+    	<h3>이름 및 내용</h3>
     	</div>
     	</div> 
-     	 
-    </div>
+    	<div class ="package_div2">
+    	<div class= "package_div_img" >
+    	<img src ="imeage/osak.jpg" class="package_img">
+    	</div>
+    	<div class="package_text_div">
+    	<h3>이름 및 내용</h3>
+    	</div>
+    	</div> 
+    </div> <!-- End main package area  -->
+    
+      <!-- main review area -->
+    <div class="package_main_div">
+    	<h3><font color = "orange">Best 후기</font></h3>
+    	<hr>
+    	<div class ="review_div">
+    	<div class= "review_div_img" >
+    	<img src ="imeage/osak.jpg" class="package_img">
+    	</div>
+    	<div class="package_text_div">
+    	<h3>이름 및 내용</h3>
+    	</div>
+    	</div> 
+    	<div class ="package_div2">
+    	<div class= "package_div_img" >
+    	<img src ="imeage/osak.jpg" class="package_img">
+    	</div>
+    	<div class="package_text_div">
+    	<h3>이름 및 내용</h3>
+    	</div>
+    	</div> 
+    </div><!-- End main review area  -->
+    
 </div>
 <div data-role ="footer" data-position="fixed">
 <h1>footer</h1>
 </div> 
-
-<!-- Swiper JS -->
-    <script src="js/swiper.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script type="text/javascript">
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        paginationClickable: true,
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: 2500,
-        autoplayDisableOnInteraction: false
-    });
-    </script>
+</div>
+<div id="package" data-role="page">
+<h3>두번째 페이지 </h3>
+</div>
 
 </body>
 </html>
