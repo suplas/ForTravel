@@ -14,6 +14,11 @@ body {
 	padding: 0;
 }
 
+.subNavi{
+	background-color: orange;
+	
+}
+
 * {
 	margin: 0;
 	padding: 0
@@ -93,6 +98,17 @@ ul {
 }
 
 /* 메인 패키지 div 영역 CSS */
+
+
+.main_navbar{
+	background-color: orange;
+}
+
+.main_button{
+	position: absolute;
+	top:0;
+	background-color: orange;
+}
 
 .package_main_div{
 	POSITION: relative;
