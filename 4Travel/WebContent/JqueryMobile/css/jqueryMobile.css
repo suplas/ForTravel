@@ -40,6 +40,10 @@ body {
 	padding: 0
 }
 
+a{
+	text-decoration: none;
+}
+
 ul {
 	list-style: none;
 }
@@ -116,6 +120,8 @@ ul {
 	width: 100%;
 }
 
+
+
 /* 메인 패키지 div 영역 CSS */
 
 
@@ -131,8 +137,7 @@ ul {
 
 .package_main_div{
 	POSITION: relative;
-    left: 2%;
-    top: 15px;
+    bottom: 18px;
 	height: 175px;
 }
 .package_div {
@@ -142,8 +147,10 @@ ul {
 .package_div2 {
 	position: relative;
 	left: 52%;
-	bottom: 120px;
+	bottom: 162px; 
 }
+
+
 
 /*메인 패키지 이미지 div 영역 CSS */
 .package_text_div {
@@ -151,6 +158,12 @@ ul {
 	
 }
 
+#package_price{
+	position: relative;
+    bottom: 22px;
+    left: 31%;
+	
+}
 .package_div_img {
 	width: 30%;
 	position: relative;

@@ -1,3 +1,9 @@
+<%@page import="com.biz.ReviewReplyBiz"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.net.ConnectException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -114,8 +120,60 @@
 		$('.next').trigger('click')
 	})
 </script>
+
+<!-- ajex DB연동 -->
+<script>
+$(function(){
+	$(document).ready(function(){
+		$.ajax({
+			url:'JQueryMobile.jsp?dummy='+new Date().getTime,
+			Type:'get',
+			success:function(t){
+				$(t).find("person").each(function(){
+					var city = $(this).find('city').text();
+					$('<h1></h1>').text(city).appendTo('body');
+				});
+			},
+			error:function(){
+				 alert("DB 연동 실패");
+			}
+		});
+	});
+});
+	
+
+</script>
 </head>
 <body>
+<%
+ try{
+	String driver = "oracle.jdbc.driver.OracleDriver";
+	Class.forName(driver);
+	String url ="jdbc:oracle:thin:@192.168.1.14:1521:orcl";
+	String userName="fortravel";
+	String passWord ="fortravel";
+	Connection con = DriverManager.getConnection(url, userName, passWord);
+	Statement st = con.createStatement();
+	
+	String sql = "select city from packagedb";
+	ResultSet rs = st.executeQuery(sql);
+	while(rs.next()){
+		String s = rs.getString("city");
+	
+	String strXML = " ";
+	strXML+="<packagedb>";
+	strXML+="<person>";
+	strXML+="<city>"+s+"</city>";
+	strXML+="</person>";
+	strXML+="</packagedb>";
+	out.write(strXML);
+	}
+}catch (Exception e){
+	System.out.println(e); 
+}
+%>
+
+
 	<div id="home" data-role="page">
 		<div data-role="header" style="background-color: #ffffff;">
 			<h1>4Trevel</h1>
@@ -138,11 +196,11 @@
 						<button class="next">&gt;</button>
 						<!-- <button class="prev">&lt;</button> -->
 					</div>
-					<div class="list">
+					<div class="list" style="position: relative; left:9%; ">
 						<ul>
-							<li><a href=""><img src="imeage/op1.jpg" alt=""></a></li>
-							<li><a href=""><img src="imeage/op2.jpg" alt=""></a></li>
-							<li><a href=""><img src="imeage/op3.jpg" alt=""></a></li>
+							<li><a href=""><img src="imeage/op1.jpg" alt="" ></a></li>
+							<li><a href=""><img src="imeage/op2.jpg" alt="" ></a></li>
+							<li><a href=""><img src="imeage/op3.jpg" alt="" ></a></li>
 						</ul>
 					</div>
 				</div>
@@ -160,7 +218,8 @@
 						<img src="imeage/osak.jpg" class="package_img">
 					</div>
 					<div class="package_text_div">
-						<h3>이름 및 내용</h3>
+						<a href="#"><h3>이름 및 내용</h3></a>
+						<h5>출발일자</h5><h2>가격</h2>
 					</div>
 				</div>
 				<div class="package_div2">
@@ -168,7 +227,8 @@
 						<img src="imeage/osak.jpg" class="package_img">
 					</div>
 					<div class="package_text_div">
-						<h3>이름 및 내용</h3>
+						<a href="#"><h3>이름 및 내용</h3></a>
+						<h5>출발일자</h5><h3 id="package_price">원</h3>
 					</div>
 				</div>
 			</div>
@@ -182,33 +242,20 @@
 				<hr>
 				<br>
 				<div class="review_div">
-					<div class="review_div_img">
-						<img src="imeage/osak.jpg" class="package_img">
-					</div>
 					<div class="package_text_div">
-						<h3>이름 및 내용</h3>
+						<a href="#"><h3>내용 / 작성자</h3></a>
+						<h3 style="position:absolute;left:75%;top:4%;">조회수:</h3>
 					</div>
-				</div>
-				<div class="package_div2">
-					<div class="package_div_img">
-						<img src="imeage/osak.jpg" class="package_img">
-					</div>
+				</div><br>
+				<div class="review_div2"> 
 					<div class="package_text_div">
-						<h3>이름 및 내용</h3>
+						<a href="#"><h3>내용 / 작성자</h3></a>
+						<h3 style="position:absolute;left:75%;top:4%;">조회수:</h3>
 					</div>
 				</div>
 			</div>
 			<!-- End main review area  -->
 
-		</div>
-		<div data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#package" data-icon="info" style="background-color: #f5f7fa;">패키지</a></li>
-					<li><a href="#review" data-icon="info" style="background-color: #f5f7fa;">여행후기</a></li>
-					<li><a href="#login" data-icon="info" style="background-color: #f5f7fa;">로그인</a></li>
-				</ul>
-			</div>
 		</div>
 	</div>
 	<div id="package" data-role="page">
