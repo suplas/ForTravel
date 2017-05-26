@@ -126,13 +126,31 @@
 $(function(){
 	$(document).ready(function(){
 		$.ajax({
-			url:'JQueryMobile.jsp?dummy='+new Date().getTime,
+			url:'JQueryMobile.jsp',
 			Type:'get',
 			success:function(t){
+				console.log(t);
 				$(t).find("person").each(function(){
-					var city = $(this).find('city').text();
-					$('<h1></h1>').text(city).appendTo('body');
+					
+					var PACKAGENAME = $(this).find('PACKAGENAME').text();
+					console.log(PACKAGENAME);
+					var PRICE = $(this).find('PRICE').text();
+					var image1= $(this).find('image1').text();
+					var image2 = $(this).find('image2').text();
+					var image3 = $(this).find('image3').text();
+					var doorimg = $(this).find('doorimg').text();
+					var imgdetail = $(this).find('imgdetail').text();
+					//배너 이미지 DB 연동
+					$("#package_imeage_frist").attr({src:image1});
+					$("#package_imeage_two").attr({src:image2});
+					$("#package_imeage_three").attr({src:image3});
+					
+					//package 추천 영역 DB 연동
+					$("#package_name").text(PACKAGENAME).css("font-size","11px"	);
+					$("#package_name2").text(PACKAGENAME).css("font-size","11px");
+					
 				});
+				console.log($("#package_imeage_frist").attr("src"));
 			},
 			error:function(){
 				 alert("DB 연동 실패");
@@ -155,19 +173,25 @@ $(function(){
 	Connection con = DriverManager.getConnection(url, userName, passWord);
 	Statement st = con.createStatement();
 	
-	String sql = "select city from packagedb";
+	String sql = "select PACKAGENAME,PRICE,image1,image2,image3,doorimg,imgdetail from packagedb where packageno between 1 and 2";
+	st.executeUpdate(sql);
 	ResultSet rs = st.executeQuery(sql);
+	String strXML = "";
 	while(rs.next()){
-		String s = rs.getString("city");
-	
-	String strXML = " ";
 	strXML+="<packagedb>";
 	strXML+="<person>";
-	strXML+="<city>"+s+"</city>";
+	strXML+="<PACKAGENAME>"+rs.getString("PACKAGENAME")+"</PACKAGENAME>";
+	strXML+="<PRICE>"+rs.getString("PRICE")+"</PRICE>";
+	strXML+="<image1>"+rs.getString("image1")+"</image1>";
+	strXML+="<image2>"+rs.getString("image2")+"</image2>";
+	strXML+="<image3>"+rs.getString("image3")+"</image3>";
+	strXML+="<doorimg>"+rs.getString("doorimg")+"</doorimg>";
+	strXML+="<imgdetail>"+rs.getString("imgdetail")+"</imgdetail>";
 	strXML+="</person>";
+	}
 	strXML+="</packagedb>";
 	out.write(strXML);
-	}
+	
 }catch (Exception e){
 	System.out.println(e); 
 }
@@ -198,9 +222,9 @@ $(function(){
 					</div>
 					<div class="list" style="position: relative; left:9%; ">
 						<ul>
-							<li><a href=""><img src="imeage/op1.jpg" alt="" ></a></li>
-							<li><a href=""><img src="imeage/op2.jpg" alt="" ></a></li>
-							<li><a href=""><img src="imeage/op3.jpg" alt="" ></a></li>
+							<li><a href=""><img id="package_imeage_frist"  alt="" ></a></li>
+							<li><a href=""><img id="package_imeage_two"  alt="" ></a></li>
+							<li><a href=""><img id="package_imeage_three" alt="" ></a></li>
 						</ul>
 					</div>
 				</div>
@@ -218,8 +242,8 @@ $(function(){
 						<img src="imeage/osak.jpg" class="package_img">
 					</div>
 					<div class="package_text_div">
-						<a href="#"><h3>이름 및 내용</h3></a>
-						<h5>출발일자</h5><h2>가격</h2>
+						<a href="#"><h3 id="package_name"></h3></a>
+						<h5>출발일자</h5><h4 id="package_price" style="position: relative;bottom: 17px;left: 40%;">원</h4> 
 					</div>
 				</div>
 				<div class="package_div2">
@@ -227,8 +251,8 @@ $(function(){
 						<img src="imeage/osak.jpg" class="package_img">
 					</div>
 					<div class="package_text_div">
-						<a href="#"><h3>이름 및 내용</h3></a>
-						<h5>출발일자</h5><h3 id="package_price">원</h3>
+						<a href="#"><h3 id="package_name2">이름 및 내용</h3></a>		
+						<h5>출발일자</h5><h4 id="package_price2">원</h4>
 					</div>
 				</div>
 			</div>
@@ -256,6 +280,9 @@ $(function(){
 			</div>
 			<!-- End main review area  -->
 
+		</div>
+		<div data-role="footer">
+		<h3>footer</h3>
 		</div>
 	</div>
 	<div id="package" data-role="page">

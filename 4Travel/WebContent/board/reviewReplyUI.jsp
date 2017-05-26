@@ -47,6 +47,11 @@ $(document).ready(function(){
 				data:queryString,
 				success:function(responseData,status,xhr){
 					console.log(responseData);
+					
+					var s=$(ㄱㄷㄴ).find("loc");
+					s.lenght for ans 
+					{4if(s[i])
+						}
 					$("#replyDiv").html(responseData);
 				},
 				error:function(error){
