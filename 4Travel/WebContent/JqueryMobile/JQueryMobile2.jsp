@@ -65,8 +65,7 @@
 					$(e).animate(
 							{
 								left : '-=' + $(e).width()
-							},
-							{
+},{
 								duration : 500,
 								step : function() {
 
@@ -94,8 +93,7 @@
 					$(e).animate(
 							{
 								left : '+=' + $(e).width()
-							},
-							{
+},{
 								duration : 500,
 								step : function() {
 
@@ -125,96 +123,104 @@
 
 <!-- ajex DB연동 -->
 <script>
-	$(function() {
-		$(document).ready(function() {
-			$.ajax({
-				url : 'JQueryMobile.jsp',
-				Type : 'get',
-				success : function(t) {
 
-					$(t).find("person").each(function(i) {
-
-						/* var aara = t.split(",");
-						var PRICE = $(this).find('PRICE').text(); */
-
-						$("#package_imeage_frist").attr({
-							src : $(t).find('image1#1').text()
-						});
-						$("#package_imeage_two").attr({
-							src : $(t).find('image2#1').text()
-						});
-						$("#package_imeage_three").attr({
-							src : $(t).find('image3#1').text()
-						});
-
-					});
-				}
-			});
+$(function(){
+	$(document).ready(function(){
+		$.ajax({
+			url:'JQueryMobile.jsp',
+			Type:'get',
+			success:function(t){
+				 console.log(t);
+				 t.spilt(","),
+				var packagename = [];
+				$(t).find("person").each(function(i){
+					packagename[i] = $(this).find('PACKAGENAME').text();
+					console.log(PACKAGENAME[i]);
+					console.log(PACKAGENAME);
+					var PRICE = $(this).find('PRICE').text();
+					var image1 = $(this).find('image1').text();
+					var image2 = $(this).find('image2').text();
+					var image3 = $(this).find('image3').text();
+					//배너 이미지 DB 연동
+					$("#package_imeage_frist").attr({src:image1});
+					$("#package_imeage_two").attr({src:image2});
+					$("#package_imeage_three").attr({src:image3});
+					
+					//package 추천 영역 DB 연동
+					$("#package_name").text(PACKAGENAME).css("font-size","11px"	);
+					$("#package_name2").text(PACKAGENAME).css("font-size","11px");
+					
+				});
+				console.log($("#package_imeage_frist").attr("src"));
+			},
+			error:function(){
+				 alert("DB 연동 실패");
+			}
 		});
 	});
+});
+	
+
 </script>
 </head>
 <body>
-	<%
-		try {
-			String driver = "oracle.jdbc.driver.OracleDriver";
-			Class.forName(driver);
-			String url = "jdbc:oracle:thin:@192.168.1.14:1521:orcl";
-			String userName = "fortravel";
-			String passWord = "fortravel";
-			Connection con = DriverManager.getConnection(url, userName, passWord);
-			Statement st = con.createStatement();
-
-			/*  String sql = "select PACKAGENAME,PRICE,image1,image2,image3 from packagedb where packageno between 1 and 2";   */
-			String sql = "select * from packagedb";
-			st.executeUpdate(sql);
-			ResultSet rs = st.executeQuery(sql);
-			String strXML = "";
-
-			int packageID = 1;
-			int imeage1ID = 1;
-			int imeage2ID = 1;
-			int imeage3ID = 1;
-			int priceID = 1;
-			strXML += "<packagedb>";
-			while (rs.next()) {
-				strXML += "<person>";
-				strXML += "<PACKAGENAME id=" + packageID + ">" + rs.getString("PACKAGENAME") + "</PACKAGENAME>";
-				strXML += "<PRICE id=" + priceID + ">" + rs.getString("PRICE") + "</PRICE>";
-				strXML += "<image1 id=" + imeage1ID + ">" + rs.getString("image1") + "</image1>";
-				strXML += "<image2 id=" + imeage2ID + ">" + rs.getString("image2") + "</image2>";
-				strXML += "<image3 id=" + imeage3ID + ">" + rs.getString("image3") + "</image3>";
-				strXML += "</person>" + ",";
-				packageID++;
-				imeage1ID++;
-				imeage2ID++;
-				imeage3ID++;
-				priceID++;
-			}
-			strXML += "</packagedb>";
-			out.write(strXML);
-
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	%>
+<%
+ try{
+	String driver = "oracle.jdbc.driver.OracleDriver";
+	Class.forName(driver);
+	String url ="jdbc:oracle:thin:@192.168.1.14:1521:orcl";
+	String userName="fortravel";
+	String passWord ="fortravel";
+	Connection con = DriverManager.getConnection(url, userName, passWord);
+	Statement st = con.createStatement();
+	
+	/* String sql = "select PACKAGENAME,PRICE,image1,image2,image3 from packagedb"; */
+	String sql = "select * from packagedb";
+	st.executeUpdate(sql);
+	ResultSet rs = st.executeQuery(sql);
+	String strXML = "";
+	
+	int packageID = 1;	
+	int  imeage1ID= 1;	
+	int imeage2ID = 1;	
+	int imeage3ID = 1;
+	int priceID = 1;
+	strXML+="<packagedb>";
+	while(rs.next()){
+	strXML+="<person>";
+	strXML+="<PACKAGENAME id="+packageID+ ">"+rs.getString("PACKAGENAME")+"</PACKAGENAME>";
+	strXML+="<PRICE id ="+priceID+">"+rs.getString("PRICE")+"</PRICE>";
+	strXML+="<image1 id ="+imeage1ID+">"+rs.getString("image1")+"</image1>";
+	strXML+="<image2 id ="+imeage2ID+">"+rs.getString("image2")+"</image2>";
+	strXML+="<image3 id ="+imeage3ID+">"+rs.getString("image3")+"</image3>";
+	strXML+="</person>"+",";
+	y++;
+	}
+	strXML+="</packagedb>";
+	out.write(strXML);
+	
+	
+}catch (Exception e){
+	System.out.println(e); 
+}
+%>
 
 
 	<div id="home" data-role="page">
 		<div data-role="header" style="background-color: #ffffff;">
 			<h1>4Trevel</h1>
-			<a class="main_button" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button"
-				href="#login" style="background-color: #ffffff;">로그인</a>
+			<a class="main_button" href="#home" data-icon="home" style="background-color:#ffffff;">Home</a>
+			<a class="main_button" href="#login" style="background-color: #ffffff;">로그인</a>
 			<hr>
-			<span class="header_naviBar"> <a id="header_naviBar_package"
-				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
-					후기</a> <a id="header_naviBar_login" href="#login">로그인</a>
-			</span>
+			<span class="header_naviBar">
+				<a id = "header_naviBar_package" href="#package">패키지</a>
+				<a id = "header_naviBar_review" href="#review">여행 후기</a>
+				<a id = "header_naviBar_login" href="#login">로그인</a>
+				</span>
 		</div>
+			
 
-
-		<div data-role="content" style="background-color: #E6E9ED;">
+		<div data-role="content"  style="background-color: #E6E9ED;">
 
 			<div class="slider_bg">
 				<div class="slider">
@@ -222,11 +228,11 @@
 						<button class="next">&gt;</button>
 						<!-- <button class="prev">&lt;</button> -->
 					</div>
-					<div class="list" style="position: relative; left: 9%;">
+					<div class="list" style="position: relative; left:9%; ">
 						<ul>
-							<li><a href=""><img id="package_imeage_frist" alt=""></a></li>
-							<li><a href=""><img id="package_imeage_two" alt=""></a></li>
-							<li><a href=""><img id="package_imeage_three" alt=""></a></li>
+							<li><a href=""><img id="package_imeage_frist"  alt="" ></a></li>
+							<li><a href=""><img id="package_imeage_two"  alt="" ></a></li>
+							<li><a href=""><img id="package_imeage_three" alt="" ></a></li>
 						</ul>
 					</div>
 				</div>
@@ -245,9 +251,7 @@
 					</div>
 					<div class="package_text_div">
 						<a href="#"><h3 id="package_name"></h3></a>
-						<h5>출발일자</h5>
-						<h4 id="package_price"
-							style="position: relative; bottom: 17px; left: 40%;">원</h4>
+						<h5>출발일자</h5><h4 id="package_price" style="position: relative;bottom: 17px;left: 40%;">원</h4> 
 					</div>
 				</div>
 				<div class="package_div2">
@@ -255,9 +259,8 @@
 						<img src="imeage/osak.jpg" class="package_img">
 					</div>
 					<div class="package_text_div">
-						<a href="#"><h3 id="package_name2">이름 및 내용</h3></a>
-						<h5>출발일자</h5>
-						<h4 id="package_price2">원</h4>
+						<a href="#"><h3 id="package_name2">이름 및 내용</h3></a>		
+						<h5>출발일자</h5><h4 id="package_price2">원</h4>
 					</div>
 				</div>
 			</div>
@@ -273,14 +276,13 @@
 				<div class="review_div">
 					<div class="package_text_div">
 						<a href="#"><h3>내용 / 작성자</h3></a>
-						<h3 style="position: absolute; left: 75%; top: 4%;">조회수:</h3>
+						<h3 style="position:absolute;left:75%;top:4%;">조회수:</h3>
 					</div>
-				</div>
-				<br>
-				<div class="review_div2">
+				</div><br>
+				<div class="review_div2"> 
 					<div class="package_text_div">
 						<a href="#"><h3>내용 / 작성자</h3></a>
-						<h3 style="position: absolute; left: 75%; top: 4%;">조회수:</h3>
+						<h3 style="position:absolute;left:75%;top:4%;">조회수:</h3>
 					</div>
 				</div>
 			</div>
@@ -288,7 +290,7 @@
 
 		</div>
 		<div data-role="footer">
-			<h3>footer</h3>
+		<h3>footer</h3>
 		</div>
 	</div>
 	<div id="package" data-role="page">
