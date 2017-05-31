@@ -133,10 +133,7 @@
 				success : function(t) {
 
 					$(t).find("person").each(function(i) {
-
-						/* var aara = t.split(",");
-						var PRICE = $(this).find('PRICE').text(); */
-
+							console.log(t);
 						$("#package_imeage_frist").attr({
 							src : $(t).find('image1#1').text()
 						});
@@ -146,7 +143,12 @@
 						$("#package_imeage_three").attr({
 							src : $(t).find('image3#1').text()
 						});
-
+						$("#packagename").text($(t).find('packagename#1').text()).css('font-size','11px'); 
+						$("#packagename2").text($(t).find('packagename#2').text()).css('font-size','11px');
+						
+						$("#startdateOne").text($(t).find('startdate#1').text());
+						$("#startdateTwo").text($(t).find('startdate#2').text());
+							
 					});
 				}
 			});
@@ -166,7 +168,7 @@
 			Statement st = con.createStatement();
 
 			/*  String sql = "select PACKAGENAME,PRICE,image1,image2,image3 from packagedb where packageno between 1 and 2";   */
-			String sql = "select * from packagedb";
+			 String sql = "select PACKAGENO,COMPANY,TO_CHAR(STARTDATE,'yy-mm-dd'),LASTDATE,AIRLINE,STARTAIRPLANEID,LASTAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,PERSONNEL,LOC,LINK,IMAGE1,IMAGE2,IMAGE3,CITY,DOORIMG,OVERVIEW,DETAIL,BABYPRICE,CHILDPRICE,TAX,IMGDETAIL,TOURNUM,NUM from packagedb where packageno between 1 and 2"; 
 			st.executeUpdate(sql);
 			ResultSet rs = st.executeQuery(sql);
 			String strXML = "";
@@ -176,6 +178,7 @@
 			int imeage2ID = 1;
 			int imeage3ID = 1;
 			int priceID = 1;
+			int startDateId = 1;
 			strXML += "<packagedb>";
 			while (rs.next()) {
 				strXML += "<person>";
@@ -184,12 +187,14 @@
 				strXML += "<image1 id=" + imeage1ID + ">" + rs.getString("image1") + "</image1>";
 				strXML += "<image2 id=" + imeage2ID + ">" + rs.getString("image2") + "</image2>";
 				strXML += "<image3 id=" + imeage3ID + ">" + rs.getString("image3") + "</image3>";
+				strXML += "<startdate id=" + startDateId + ">" + rs.getString("startdate") + "</startdate>";
 				strXML += "</person>" + ",";
 				packageID++;
 				imeage1ID++;
 				imeage2ID++;
 				imeage3ID++;
 				priceID++;
+				startDateId++;
 			}
 			strXML += "</packagedb>";
 			out.write(strXML);
@@ -244,8 +249,8 @@
 						<img src="imeage/osak.jpg" class="package_img">
 					</div>
 					<div class="package_text_div">
-						<a href="#"><h3 id="package_name"></h3></a>
-						<h5>출발일자</h5>
+						<a href="#"><h3 id="packagename"></h3></a>
+						<h5 id = startdateOne></h5>
 						<h4 id="package_price"
 							style="position: relative; bottom: 17px; left: 40%;">원</h4>
 					</div>
@@ -255,8 +260,8 @@
 						<img src="imeage/osak.jpg" class="package_img">
 					</div>
 					<div class="package_text_div">
-						<a href="#"><h3 id="package_name2">이름 및 내용</h3></a>
-						<h5>출발일자</h5>
+						<a href="#"><h3 id="packagename2"></h3></a>
+						<h5 id = startdateTwo></h5>
 						<h4 id="package_price2">원</h4>
 					</div>
 				</div>
