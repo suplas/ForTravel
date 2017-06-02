@@ -194,7 +194,7 @@ $(function(){
 	strXML+="<image2 id ="+imeage2ID+">"+rs.getString("image2")+"</image2>";
 	strXML+="<image3 id ="+imeage3ID+">"+rs.getString("image3")+"</image3>";
 	strXML+="</person>"+",";
-	y++;
+	
 	}
 	strXML+="</packagedb>";
 	out.write(strXML);

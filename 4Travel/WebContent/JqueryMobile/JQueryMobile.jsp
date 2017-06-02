@@ -146,8 +146,23 @@
 						$("#packagename").text($(t).find('packagename#1').text()).css('font-size','11px'); 
 						$("#packagename2").text($(t).find('packagename#2').text()).css('font-size','11px');
 						
-						$("#startdateOne").text($(t).find('startdate#1').text());
-						$("#startdateTwo").text($(t).find('startdate#2').text());
+						/* startdate 날짜 포멧 변환 */
+						var date = ($(t).find('startdate#1').text()).split(" ")[0];
+						var tmpDate = date.split("-");
+						var startdate = tmpDate[0]+"/"+tmpDate[1]+"/"+tmpDate[2];
+						var date2 = ($(t).find('startdate#2').text()).split(" ")[0];
+						var tmpDate2 = date2.split("-");
+						var startdate2 = tmpDate2[0]+"/"+tmpDate2[1]+"/"+tmpDate2[2];
+						
+						 
+						$("#startdateOne").text(startdate);
+						$("#startdateTwo").text(startdate2);
+						
+						
+						$("#package_price").text($(t).find('price#1').text()+"원");
+						$("#package_price2").text($(t).find('price#2').text()+"원");
+						
+						$("#packagePage_img1").attr({src : $(t).find('image1#2').text()});
 							
 					});
 				}
@@ -166,20 +181,20 @@
 			String passWord = "fortravel";
 			Connection con = DriverManager.getConnection(url, userName, passWord);
 			Statement st = con.createStatement();
+			
+			  String sql = "select * from packagedb";
 
-			/*  String sql = "select PACKAGENAME,PRICE,image1,image2,image3 from packagedb where packageno between 1 and 2";   */
-			 String sql = "select PACKAGENO,COMPANY,TO_CHAR(STARTDATE,'yy-mm-dd'),LASTDATE,AIRLINE,STARTAIRPLANEID,LASTAIRPLANEID,TERM,PACKAGENAME,PRICE,RESERVATIONAB,MINPERSONNEL,PRESENTRESERVATION,PERSONNEL,LOC,LINK,IMAGE1,IMAGE2,IMAGE3,CITY,DOORIMG,OVERVIEW,DETAIL,BABYPRICE,CHILDPRICE,TAX,IMGDETAIL,TOURNUM,NUM from packagedb where packageno between 1 and 2"; 
 			st.executeUpdate(sql);
 			ResultSet rs = st.executeQuery(sql);
 			String strXML = "";
-
+		
 			int packageID = 1;
 			int imeage1ID = 1;
 			int imeage2ID = 1;
 			int imeage3ID = 1;
 			int priceID = 1;
 			int startDateId = 1;
-			strXML += "<packagedb>";
+			strXML += "<packagedb style='display:none;'>"; 
 			while (rs.next()) {
 				strXML += "<person>";
 				strXML += "<PACKAGENAME id=" + packageID + ">" + rs.getString("PACKAGENAME") + "</PACKAGENAME>";
@@ -206,7 +221,7 @@
 
 
 	<div id="home" data-role="page">
-		<div data-role="header" style="background-color: #ffffff;">
+		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
 			<a class="main_button" href="#home" data-icon="home"
 				style="background-color: #ffffff;">Home</a> <a class="main_button"
@@ -214,12 +229,12 @@
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
 				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
-					후기</a> <a id="header_naviBar_login" href="#login">로그인</a>
+					후기</a> <a id="header_naviBar_login" href="#sign-up">회원가입</a>
 			</span>
 		</div>
 
 
-		<div data-role="content" style="background-color: #E6E9ED;">
+		<div data-role="content" style="background-color: #ffffff;">
 
 			<div class="slider_bg">
 				<div class="slider">
@@ -252,7 +267,7 @@
 						<a href="#"><h3 id="packagename"></h3></a>
 						<h5 id = startdateOne></h5>
 						<h4 id="package_price"
-							style="position: relative; bottom: 17px; left: 40%;">원</h4>
+							style="position: relative; bottom: 17px; left: 27%;"></h4> 
 					</div>
 				</div>
 				<div class="package_div2">
@@ -262,14 +277,14 @@
 					<div class="package_text_div">
 						<a href="#"><h3 id="packagename2"></h3></a>
 						<h5 id = startdateTwo></h5>
-						<h4 id="package_price2">원</h4>
+						<h4 id="package_price2" style="position: relative; bottom: 17px; left: 27%;"></h4>
 					</div>
 				</div>
 			</div>
 			<!-- End main package area  -->
 
 			<!-- main review area -->
-			<div class="package_main_div">
+			<div class="review_main_div">
 				<h3 class="subNavi">
 					<font color="black">Best 후기</font>
 				</h3>
@@ -296,48 +311,96 @@
 			<h3>footer</h3>
 		</div>
 	</div>
+	<!-- package page 영역 -->
 	<div id="package" data-role="page">
-		<div data-role="header" style="background-color: #ffa70b;">
+		<div data-role="header" style="background-color: #ffffff;">
 			<h1>4Trevel</h1>
-			<a href="#" data-icon="arrow-L" class="ui-btn ui-btn-b"
-				data-rel="back">Back</a> <a href="#home" data-icon="home"
-				class="ui-btn ui-btn-b">Home</a>
-			<div data-role="controlgroup" data-type="horizontal"
-				style="margin-left: 23%; margin-right: 10%;">
-				<a href="#package" data-role="button">패키지</a> <a href="#reivew"
-					data-role="button">여행후기</a> <a href="#login" data-role="button">로그인</a>
+			<a class="main_button" href="#home" data-icon="home"
+				style="background-color: #ffffff;">Home</a> <a class="main_button"
+				href="#login" style="background-color: #ffffff;">로그인</a>
+			<hr>
+			<span class="header_naviBar"> <a id="header_naviBar_package"
+				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
+					후기</a> <a id="header_naviBar_login" href="#login">로그인</a>
+			</span>
+		</div>
+		<div data-role="content" style="background-color: #E6E9ED;">
+			<div>
+				<a href="#"><img id = "packagePage_img1"></a>
 			</div>
 		</div>
+		<div data-role="footer">
+			<h3>footer</h3>
+		</div>
 
-	</div>
+	</div> <!-- package page 영역 종료 -->
+	
+	<!-- review page 여역 -->
 
 	<div id="review" data-role="page">
-		<div data-role="header" style="background-color: #ffa70b;">
+		<div data-role="header" style="background-color: #ffffff;">
 			<h1>4Trevel</h1>
-			<a href="#" data-icon="arrow-L" class="ui-btn ui-btn-b"
-				data-rel="back">Back</a> <a href="#home" data-icon="home"
-				class="ui-btn ui-btn-b">Home</a>
-			<div data-role="controlgroup" data-type="horizontal"
-				style="margin-left: 23%; margin-right: 10%;">
-				<a href="#package" data-role="button">패키지</a> <a href="#reivew"
-					data-role="button">여행후기</a> <a href="#login" data-role="button">로그인</a>
-			</div>
+			<a class="main_button" href="#home" data-icon="home"
+				style="background-color: #ffffff;">Home</a> <a class="main_button"
+				href="#login" style="background-color: #ffffff;">로그인</a>
+			<hr>
+			<span class="header_naviBar"> <a id="header_naviBar_package"
+				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
+					후기</a> <a id="header_naviBar_login" href="#login">로그인</a>
+			</span>
 		</div>
-	</div>
+		<div data-role="content" style="background-color: #E6E9ED;">
+		
+		</div>
+		<div data-role="footer">
+			<h3>footer</h3>
+		</div>
+	</div> <!-- review page 영역 종료 -->
+	
+	<!-- login page 영역 -->
 
 	<div id="login" data-role="page">
-		<div data-role="header" style="background-color: #ffa70b;">
+		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a href="#" data-icon="arrow-L" class="ui-btn ui-btn-b"
-				data-rel="back">Back</a> <a href="#home" data-icon="home"
-				class="ui-btn ui-btn-b">Home</a>
-			<div data-role="controlgroup" data-type="horizontal"
-				style="margin-left: 23%; margin-right: 10%;">
-				<a href="#package" data-role="button">패키지</a> <a href="#reivew"
-					data-role="button">여행후기</a> <a href="#login" data-role="button">로그인</a>
-			</div>
+			<a class="main_button" href="#home" data-icon="home"
+				style="background-color: #ffffff;">Home</a> <a class="main_button"
+				href="#login" style="background-color: #ffffff;">로그인</a>
+			<hr>
+			<span class="header_naviBar"> <a id="header_naviBar_package"
+				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
+					후기</a> <a id="header_naviBar_login" href="#sign-up">회원가입</a>
+			</span>
 		</div>
-	</div>
+		<div data-role="content" style="background-color: #E6E9ED;">
+		
+		</div>
+		<div data-role="footer">
+			<h3>footer</h3>
+		</div>
+	</div> <!-- login page 영역 종료 -->
+	
+	<!-- sign-up page 영역 -->
+
+	<div id="sign-up" data-role="page">
+		<div data-role="header" style="background-color: #E6E9ED;">
+			<h1>4Trevel</h1>
+			<a class="main_button" href="#home" data-icon="home"
+				style="background-color: #ffffff;">Home</a> <a class="main_button"
+				href="#login" style="background-color: #ffffff;">로그인</a>
+			<hr>
+			<span class="header_naviBar"> <a id="header_naviBar_package"
+				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
+					후기</a> <a id="header_naviBar_login" href="#sign-up">회원가입</a>
+			</span>
+		</div>
+		<div data-role="content" style="background-color: #E6E9ED;">
+		
+		</div>
+		<div data-role="footer">
+			<h3>footer</h3>
+		</div>
+	</div> <!-- sign-up page 영역 종료 -->
+	
 
 </body>
 </html>
