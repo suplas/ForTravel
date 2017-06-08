@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="jqueryMobile/jquery.mobile-1.4.5.css">
 <script src="./jquery/jquery.js"></script>
 <script src="./jqueryMobile/jquery.mobile-1.4.5.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="js/daum.js"></script>
 <link rel="stylesheet" href="css/swiper.min.css">
 <link rel="stylesheet" href="css/jqueryMobile.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -154,6 +156,7 @@
 						var tmpDate2 = date2.split("-");
 						var startdate2 = tmpDate2[0]+"/"+tmpDate2[1]+"/"+tmpDate2[2];
 						
+						$(".package_img").attr({src : $(t).find('doorimg#1').text()});
 						 
 						$("#startdateOne").text(startdate);
 						$("#startdateTwo").text(startdate2);
@@ -162,7 +165,16 @@
 						$("#package_price").text($(t).find('price#1').text()+"원");
 						$("#package_price2").text($(t).find('price#2').text()+"원");
 						
-						$("#packagePage_img1").attr({src : $(t).find('image1#2').text()});
+						$("#packagePage_img1").attr({src : $(t).find('doorimg#1').text()});
+						$("#packagePage_img2").attr({src : $(t).find('doorimg#2').text()});
+						$("#packagePage_img3").attr({src : $(t).find('doorimg#3').text()});
+						$("#packagePage_img4").attr({src : $(t).find('doorimg#4').text()});
+						$("#packagePage_img5").attr({src : $(t).find('doorimg#5').text()});
+						$(".package_page_name1").text($(t).find('packagename#1').text());
+						$(".package_page_name2").text($(t).find('packagename#2').text());
+						$(".package_page_name3").text($(t).find('packagename#3').text());
+						$(".package_page_name4").text($(t).find('packagename#4').text());
+						$(".package_page_name5").text($(t).find('packagename#5').text());
 							
 					});
 				}
@@ -194,6 +206,7 @@
 			int imeage3ID = 1;
 			int priceID = 1;
 			int startDateId = 1;
+			int doorimg = 1;
 			strXML += "<packagedb style='display:none;'>"; 
 			while (rs.next()) {
 				strXML += "<person>";
@@ -203,6 +216,7 @@
 				strXML += "<image2 id=" + imeage2ID + ">" + rs.getString("image2") + "</image2>";
 				strXML += "<image3 id=" + imeage3ID + ">" + rs.getString("image3") + "</image3>";
 				strXML += "<startdate id=" + startDateId + ">" + rs.getString("startdate") + "</startdate>";
+				strXML += "<doorimg id=" + doorimg + ">" + rs.getString("doorimg") + "</doorimg>";
 				strXML += "</person>" + ",";
 				packageID++;
 				imeage1ID++;
@@ -210,6 +224,7 @@
 				imeage3ID++;
 				priceID++;
 				startDateId++;
+				doorimg++;
 			}
 			strXML += "</packagedb>";
 			out.write(strXML);
@@ -311,9 +326,11 @@
 			<h3>footer</h3>
 		</div>
 	</div>
+	
 	<!-- package page 영역 -->
+	
 	<div id="package" data-role="page">
-		<div data-role="header" style="background-color: #ffffff;">
+		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
 			<a class="main_button" href="#home" data-icon="home"
 				style="background-color: #ffffff;">Home</a> <a class="main_button"
@@ -324,9 +341,32 @@
 					후기</a> <a id="header_naviBar_login" href="#login">로그인</a>
 			</span>
 		</div>
-		<div data-role="content" style="background-color: #E6E9ED;">
+		<div data-role="content" style="background-color: #ffffff; height: 460px;">
+		<div>
+			<div class = "packagePage_heaght">
 			<div>
 				<a href="#"><img id = "packagePage_img1"></a>
+				<a href="#"><h5 class = "package_page_name1"></h5></a>
+				</div>
+				<div class = "Package_page_imgDiv">
+				<a href="#"><img id = "packagePage_img2"></a>
+				<a href="#"><h5 class = "package_page_name2"></h5></a>
+				</div>
+				</div>
+				<div class = "packagePage_heaght">
+				<div>
+				<a href="#"><img id = "packagePage_img3"></a>
+				<a href="#"><h5 class = "package_page_name3"></h5></a>
+				</div>
+				<div class = "Package_page_imgDiv">
+				<a href="#"><img id = "packagePage_img4"></a>
+				<a href="#"><h5 class = "package_page_name4"></h5></a>
+				</div>
+				</div>
+				<div class = "packagePage_heaght">
+				<a href="#"><img id = "packagePage_img5"></a>
+				<a href="#"><h5 class = "package_page_name5"></h5></a>  
+			</div>
 			</div>
 		</div>
 		<div data-role="footer">
@@ -371,11 +411,16 @@
 					후기</a> <a id="header_naviBar_login" href="#sign-up">회원가입</a>
 			</span>
 		</div>
-		<div data-role="content" style="background-color: #E6E9ED;">
+		<div data-role="content" style="background-color: #ffffff;">
+		 <input type ="text" name="userid" value ="아이디">
+		 <input type ="password" name="passwd" value="비밀번호"> 
 		
+			<a class="ui-btn" href="#home" data-role="button"
+				style="background-color: #E6E9ED;">로그인</a>
 		</div>
 		<div data-role="footer">
-			<h3>footer</h3>
+			<a class="ui-btn" href="#home" data-role="button"
+				style="background-color: #E6E9ED;">회원가입</a> 
 		</div>
 	</div> <!-- login page 영역 종료 -->
 	
@@ -393,10 +438,15 @@
 					후기</a> <a id="header_naviBar_login" href="#sign-up">회원가입</a>
 			</span>
 		</div>
-		<div data-role="content" style="background-color: #E6E9ED;">
-		
-		</div>
-		<div data-role="footer">
+		<div data-role="content" style="background-color: #ffffff;">
+	<div style="border: 1px solid;">
+	<input class="inputSize" type="text" name="username" style="outline: none;">  
+	<input class="inputSize" type="date" name="birth" id="birth" max="2017-04-11" min="1900-01-01">	
+	<input class="inputSize" type ="text" name="userid" id="userid" name="userid">
+	<input class="inputSize" type="password" id="passwd" name="passwd">
+	<input class="inputSize" type="password" id="passwdconfirm" name="passwdconfirm">
+	</div>
+		<div data-role="footer"> 
 			<h3>footer</h3>
 		</div>
 	</div> <!-- sign-up page 영역 종료 -->

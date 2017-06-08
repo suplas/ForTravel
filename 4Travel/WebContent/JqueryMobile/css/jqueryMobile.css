@@ -135,7 +135,7 @@ ul {
 .main_button{
 	position: absolute;
 	top:0;
-	background-color: orange;
+	background-color: #E6E9ED; 
 }
 
 .package_main_div{
@@ -181,3 +181,22 @@ ul {
 	width: 150px;
 	
 }
+
+#packagePage_img1,#packagePage_img2,#packagePage_img3,#packagePage_img4,#packagePage_img5 {
+	width: 150px;
+}
+
+.Package_page_imgDiv{ 
+	    position: relative;
+    left: 54%;
+    bottom: 113px;
+    
+}
+h5{
+	font-size: 11px;
+}
+.packagePage_heaght{
+	height: 125px;
+}
+
+
