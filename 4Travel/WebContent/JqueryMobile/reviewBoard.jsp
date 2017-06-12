@@ -127,8 +127,8 @@ out.write(strXML2);
 <div id="review" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a id="#main_button_home" data-icon="home" href="JQueryMobile.jsp" data-ajax="false" 
-				style="background-color: #ffffff;">Home</a> <a id="main_button_login"
+			<a class="main_button_home" href="JQueryMobile.jsp" data-ajax="false" 
+				style="background-color: #ffffff;">Home</a> <a class="main_button_login"
 				href="JQueryMobile.jsp" data-ajax="false" data-transition="slide" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
@@ -138,7 +138,7 @@ out.write(strXML2);
 		</div>
 		<div data-role="content" style="background-color: #ffffff;">
 		<div style="height:61px;"> 
-		<a id ="reviewBoard_img_aTag" href = "#review_deteil"><img id = "reviewBoard_img1"></a>
+		<a id ="reviewBoard_img_aTag" href ="#review_deteil"><img id = "reviewBoard_img1"></a>
 		<div class = "review_title_text">
 		<h4 id = "loc"></h4>
 		<h4 id = "city"></h4>
@@ -146,7 +146,7 @@ out.write(strXML2);
 		<h4 id = "date"></h4>
 		</div>
 		<div class = "reviewBoard_title_text2">
-		<h4 id = "title"></h4>
+		<a href ="#review_deteil"><h4 id = "title"></h4></a>
 		<h4 id = "userid"></h4>
 		</div>
 		
@@ -161,8 +161,8 @@ out.write(strXML2);
 	<div id="review_deteil" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a id="#main_button_home" data-icon="home" href="JQueryMobile.jsp" data-ajax="false" 
-				style="background-color: #ffffff;">Home</a> <a id="main_button_login"
+			<a class="main_button_home" href="#review"
+				style="background-color: #ffffff;">목록가기</a> <a class="main_button_login"
 				href="JQueryMobile.jsp" data-ajax="false" data-transition="slide" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"

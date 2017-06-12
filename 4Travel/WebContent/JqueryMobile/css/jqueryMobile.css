@@ -132,7 +132,7 @@ ul {
 	background-color: #e6e9ed;
 }
 
-#main_button_home, #main_button_login{
+.main_button_home, .main_button_login{
 	position: absolute;
 	top:0;
 	background-color: #E6E9ED; 

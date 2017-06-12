@@ -240,8 +240,8 @@
 	<div id="home" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a class="main_button" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button" 
+			<a class="main_button_home" href="#home" data-icon="home"
+				style="background-color: #ffffff;">Home</a> <a class="main_button_login" 
 				href="#login" data-rel="dialog" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
@@ -334,8 +334,7 @@
 	<div id="package" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a class="main_button" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button"
+			<a class="main_button_home" href="#home" style="background-color: #ffffff;">Home</a> <a class="main_button_login"
 				href="#login" data-transition="slide" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
