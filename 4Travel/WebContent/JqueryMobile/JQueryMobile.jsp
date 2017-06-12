@@ -16,13 +16,12 @@
 <link rel="stylesheet" href="jqueryMobile/jquery.mobile-1.4.5.css">
 <script src="./jquery/jquery.js"></script>
 <script src="./jqueryMobile/jquery.mobile-1.4.5.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="js/daum.js"></script>
 <link rel="stylesheet" href="css/swiper.min.css">
 <link rel="stylesheet" href="css/jqueryMobile.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <!-- Jquery source -->
 <script type="text/javascript">
 	var intervalFn;
@@ -127,7 +126,6 @@
 
 <!-- ajex DB연동 -->
 <script>
-	$(function() {
 		$(document).ready(function() {
 			$.ajax({
 				url : 'JQueryMobile.jsp',
@@ -179,8 +177,13 @@
 					});
 				}
 			});
+			$("body").on("click","#header_naviBar_review",function(){
+				window.location.href = "reviewBoard.jsp";
+				
+			})
 		});
-	});
+	
+
 </script>
 </head>
 <body>
@@ -194,7 +197,9 @@
 			Connection con = DriverManager.getConnection(url, userName, passWord);
 			Statement st = con.createStatement();
 			
+			
 			  String sql = "select * from packagedb";
+			
 
 			st.executeUpdate(sql);
 			ResultSet rs = st.executeQuery(sql);
@@ -228,10 +233,11 @@
 			}
 			strXML += "</packagedb>";
 			out.write(strXML);
-
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	
 	%>
 
 
@@ -239,12 +245,12 @@
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
 			<a class="main_button" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button"
-				href="#login" style="background-color: #ffffff;">로그인</a>
+				style="background-color: #ffffff;">Home</a> <a class="main_button" 
+				href="#login" data-rel="dialog" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
-				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
-					후기</a> <a id="header_naviBar_login" href="#sign-up">회원가입</a>
+				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" data-transition="slide">여행
+					후기</a> <a id="header_naviBar_login" href="#sign-up" data-transition="pop" data-rel="dialog">회원가입</a>
 			</span>
 		</div>
 
@@ -276,7 +282,7 @@
 				<br>
 				<div class="package_div">
 					<div class="package_div_img">
-						<img src="imeage/osak.jpg" class="package_img">
+						<img class="package_img">
 					</div>
 					<div class="package_text_div">
 						<a href="#"><h3 id="packagename"></h3></a>
@@ -287,7 +293,7 @@
 				</div>
 				<div class="package_div2">
 					<div class="package_div_img">
-						<img src="imeage/osak.jpg" class="package_img">
+						<img class="package_img">
 					</div>
 					<div class="package_text_div">
 						<a href="#"><h3 id="packagename2"></h3></a>
@@ -320,7 +326,7 @@
 				</div>
 			</div>
 			<!-- End main review area  -->
-
+			
 		</div>
 		<div data-role="footer">
 			<h3>footer</h3>
@@ -334,11 +340,11 @@
 			<h1>4Trevel</h1>
 			<a class="main_button" href="#home" data-icon="home"
 				style="background-color: #ffffff;">Home</a> <a class="main_button"
-				href="#login" style="background-color: #ffffff;">로그인</a>
+				href="#login" data-transition="slide" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
-				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
-					후기</a> <a id="header_naviBar_login" href="#login">로그인</a>
+				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" href="#review" data-transition="slide">여행
+					후기</a> <a id="header_naviBar_login" href="#sign-up" data-transition="slide">회원가입</a>
 			</span>
 		</div>
 		<div data-role="content" style="background-color: #ffffff; height: 460px;">
@@ -367,6 +373,7 @@
 				<a href="#"><img id = "packagePage_img5"></a>
 				<a href="#"><h5 class = "package_page_name5"></h5></a>  
 			</div>
+			
 			</div>
 		</div>
 		<div data-role="footer">
@@ -377,38 +384,16 @@
 	
 	<!-- review page 여역 -->
 
-	<div id="review" data-role="page">
-		<div data-role="header" style="background-color: #ffffff;">
-			<h1>4Trevel</h1>
-			<a class="main_button" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button"
-				href="#login" style="background-color: #ffffff;">로그인</a>
-			<hr>
-			<span class="header_naviBar"> <a id="header_naviBar_package"
-				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
-					후기</a> <a id="header_naviBar_login" href="#login">로그인</a>
-			</span>
-		</div>
-		<div data-role="content" style="background-color: #E6E9ED;">
-		
-		</div>
-		<div data-role="footer">
-			<h3>footer</h3>
-		</div>
-	</div> <!-- review page 영역 종료 -->
+	
 	
 	<!-- login page 영역 -->
 
 	<div id="login" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a class="main_button" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button"
-				href="#login" style="background-color: #ffffff;">로그인</a>
+			
 			<hr>
-			<span class="header_naviBar"> <a id="header_naviBar_package"
-				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
-					후기</a> <a id="header_naviBar_login" href="#sign-up">회원가입</a>
+			<span class="header_naviBar">
 			</span>
 		</div>
 		<div data-role="content" style="background-color: #ffffff;">
@@ -419,7 +404,7 @@
 				style="background-color: #E6E9ED;">로그인</a>
 		</div>
 		<div data-role="footer">
-			<a class="ui-btn" href="#home" data-role="button"
+			<a class="ui-btn" href="#sign-up" data-role="button" data-transition="slide"
 				style="background-color: #E6E9ED;">회원가입</a> 
 		</div>
 	</div> <!-- login page 영역 종료 -->
@@ -429,19 +414,16 @@
 	<div id="sign-up" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a class="main_button" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button"
-				href="#login" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
-				href="#package">패키지</a> <a id="header_naviBar_review" href="#review">여행
-					후기</a> <a id="header_naviBar_login" href="#sign-up">회원가입</a>
+				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" href="#review" data-transition="slide">여행
+					후기</a> <a id="header_naviBar_login" href="#login" data-transition="pop" data-rel="dialog">로그인</a>
 			</span>
 		</div>
 		<div data-role="content" style="background-color: #ffffff;">
 	<div style="border: 1px solid;">
 	<input class="inputSize" type="text" name="username" style="outline: none;">  
-	<input class="inputSize" type="date" name="birth" id="birth" max="2017-04-11" min="1900-01-01">	
+	<input class="inputSize" type="date" name="birth" id="birth" max="2017-12-31" min="1900-01-01">	
 	<input class="inputSize" type ="text" name="userid" id="userid" name="userid">
 	<input class="inputSize" type="password" id="passwd" name="passwd">
 	<input class="inputSize" type="password" id="passwdconfirm" name="passwdconfirm">

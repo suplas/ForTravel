@@ -199,4 +199,22 @@ h5{
 	height: 125px;
 }
 
+#reviewBoard_img1{
+	    width: 80px;
+    position: relative;
+    left: 78%;
+}
+.review_title_text{
+	position: relative;
+    bottom: 57px;
+    font-size: 11px;
+    right: 7px;
+}
+	
+.reviewBoard_title_text2{
+	position: relative;
+    bottom: 106px;
+    left: 47%;
+    font-size: 11px;
+}
 
