@@ -177,10 +177,6 @@
 					});
 				}
 			});
-			$("body").on("click","#header_naviBar_review",function(){
-				window.location.href = "reviewBoard.jsp";
-				
-			})
 		});
 	
 
@@ -249,7 +245,7 @@
 				href="#login" data-rel="dialog" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
-				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" data-transition="slide">여행
+				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" data-transition="slide" href="reviewBoard.jsp" data-ajax="false">여행
 					후기</a> <a id="header_naviBar_login" href="#sign-up" data-transition="pop" data-rel="dialog">회원가입</a>
 			</span>
 		</div>

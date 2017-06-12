@@ -35,36 +35,27 @@ $.ajax({
 			var resulthtml="";
 		$(t2).find("person2").each(function(i) {
 				console.log(t2);
-				/* var imeage = "imeage/"
-				var image1 = $(t2).find('image1#1').text(); */
+				 var imeage = "imeage/"
+				var image1 = $(t2).find('image1#1').text(); 
 				
 			/* review board title image */
-			/* $("#reviewBoard_img1").attr({src : imeage + image1 }); */
-			lochtml += "<p>"+$(t2).find("travelloc#1").text()+"</p>"; 
-			/* cityhtml += "<p>"+$(t2).find('travelnation#1').text()+"</p>";
-			resulthtml += "<div>"+lochtml+cityhtml+"</div>"; */
+			 $("#reviewBoard_img1").attr({src : imeage + image1 });
 			
-			/* $(".testdiv").html(resulthtml); */
-			$("#review_title_text").html(lochtml);
 			
 			/* review board title text */
-			/* $("#loc").text('나라 :' + );
+			 $("#loc").text('나라 :' +$(t2).find('loc#1').text() );
 			$("#city").text('도시:' +$(t2).find('travelnation#1').text());
 			$("#readcnt").text('조회수 : '+$(t2).find('readcnt#1').text());
 			$("#date").text('작성일 :'+ $(t2).find('writeday#1').text());
-			$("#title").text($(t2).find('title#1').text())
-			$("#userid").text($(t2).find('userid#1').text()) */
+			$("#title").text($(t2).find('title#1').text());
+			$("#userid").text($(t2).find('userid#1').text())
 			
 	
 })
 	}
-error : function(e){
-	console.log(e);
-}
-})//end ajax
-$("body").on("click",".main_button",function(){
-				window.location.href = "JQueryMobile.jsp";
-			})
+
+});//end ajax
+
 }); 
 
 </script>
@@ -127,7 +118,7 @@ try {
 	image3id++;
 }
 strXML2 += "</reviewboard>";
-System.out.print(strXML2);
+out.write(strXML2);
 	
 } catch (Exception e) {
 	System.out.println(e);
@@ -136,9 +127,9 @@ System.out.print(strXML2);
 <div id="review" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a class="main_button"data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button"
-				href="#login" data-transition="slide" style="background-color: #ffffff;">로그인</a>
+			<a id="#main_button_home" data-icon="home" href="JQueryMobile.jsp" data-ajax="false" 
+				style="background-color: #ffffff;">Home</a> <a id="main_button_login"
+				href="JQueryMobile.jsp" data-ajax="false" data-transition="slide" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
 				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" href="reviewBoard.jsp" data-transition="slide">여행
@@ -147,7 +138,7 @@ System.out.print(strXML2);
 		</div>
 		<div data-role="content" style="background-color: #ffffff;">
 		<div style="height:61px;"> 
-		<a href = "#" ><img id = "reviewBoard_img1"></a>
+		<a id ="reviewBoard_img_aTag" href = "#review_deteil"><img id = "reviewBoard_img1"></a>
 		<div class = "review_title_text">
 		<h4 id = "loc"></h4>
 		<h4 id = "city"></h4>
@@ -166,6 +157,20 @@ System.out.print(strXML2);
 			<h3>footer</h3>
 		</div>
 	</div> <!-- review page 영역 종료 -->
+	
+	<div id="review_deteil" data-role="page">
+		<div data-role="header" style="background-color: #E6E9ED;">
+			<h1>4Trevel</h1>
+			<a id="#main_button_home" data-icon="home" href="JQueryMobile.jsp" data-ajax="false" 
+				style="background-color: #ffffff;">Home</a> <a id="main_button_login"
+				href="JQueryMobile.jsp" data-ajax="false" data-transition="slide" style="background-color: #ffffff;">로그인</a>
+			<hr>
+			<span class="header_naviBar"> <a id="header_naviBar_package"
+				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" href="reviewBoard.jsp" data-transition="slide">여행
+					후기</a> <a id="header_naviBar_login" href="#sign-up" data-transition="slide">회원가입</a>
+			</span>
+		</div>
+		</div>
 
 </body>
 </html>
