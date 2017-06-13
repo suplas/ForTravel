@@ -187,9 +187,9 @@
 		try {
 			String driver = "oracle.jdbc.driver.OracleDriver";
 			Class.forName(driver);
-			String url = "jdbc:oracle:thin:@192.168.1.14:1521:orcl";
-			String userName = "fortravel";
-			String passWord = "fortravel";
+			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+			String userName = "Fortravel";
+			String passWord = "Fortravel";
 			Connection con = DriverManager.getConnection(url, userName, passWord);
 			Statement st = con.createStatement();
 			
@@ -395,7 +395,7 @@
 		 <input type ="text" name="userid" value ="아이디">
 		 <input type ="password" name="passwd" value="비밀번호"> 
 		
-			<a class="ui-btn" href="#home" data-role="button"
+			<a id = "login"class="ui-btn" href="#home" data-role="button"
 				style="background-color: #E6E9ED;">로그인</a>
 		</div>
 		<div data-role="footer">
