@@ -178,7 +178,20 @@
 				}
 			});
 		});
-	
+		$("main_button_logout").on("click",function(){
+			
+		});
+		<%
+		String id = request.getParameter("id");
+		if(id !=null){
+		session.setAttribute("id", id);
+		}else{
+			session.setAttribute("null", id);
+		}
+		String userid = (String)session.getAttribute("id");
+		System.out.println(userid);
+		
+		%>
 
 </script>
 </head>
@@ -234,6 +247,7 @@
 			System.out.println(e);
 		}
 	
+	
 	%>
 
 
@@ -241,8 +255,14 @@
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
 			<a class="main_button_home" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button_login" 
-				href="#login" data-rel="dialog" style="background-color: #ffffff;">로그인</a>
+				style="background-color: #ffffff;">Home</a> 
+				<%if(userid == null){ %>)
+				<a class="main_button_login" href="login.jsp" data-rel="dialog" data-ajax="false" style="background-color: #ffffff;">로그인</a>
+				<%}else{ %>
+				<a class="main_button_logout" href="#logout" data-rel="dialog" style="background-color: #ffffff;">로그아웃</a>
+				
+				<%}%>
+				
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
 				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" data-transition="slide" href="reviewBoard.jsp" data-ajax="false">여행
@@ -376,34 +396,7 @@
 		</div>
 
 	</div> <!-- package page 영역 종료 -->
-	
-	<!-- review page 여역 -->
 
-	
-	
-	<!-- login page 영역 -->
-
-	<div id="login" data-role="page">
-		<div data-role="header" style="background-color: #E6E9ED;">
-			<h1>4Trevel</h1>
-			
-			<hr>
-			<span class="header_naviBar">
-			</span>
-		</div>
-		<div data-role="content" style="background-color: #ffffff;">
-		 <input type ="text" name="userid" value ="아이디">
-		 <input type ="password" name="passwd" value="비밀번호"> 
-		
-			<a id = "login"class="ui-btn" href="#home" data-role="button"
-				style="background-color: #E6E9ED;">로그인</a>
-		</div>
-		<div data-role="footer">
-			<a class="ui-btn" href="#sign-up" data-role="button" data-transition="slide"
-				style="background-color: #E6E9ED;">회원가입</a> 
-		</div>
-	</div> <!-- login page 영역 종료 -->
-	
 	<!-- sign-up page 영역 -->
 
 	<div id="sign-up" data-role="page">

@@ -45,12 +45,16 @@ $(function(){
 			}
 			});
 		});
-	});ㅔ
+	});
 
 </script>
 </head>
 <body>
 <%
+
+String userid = (String)session.getAttribute("id");
+System.out.println(userid);
+
 try{
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	Class.forName(driver);
@@ -59,14 +63,16 @@ try{
 	String passWord = "Fortravel";
 	Connection con = DriverManager.getConnection(url, userName, passWord);
 	Statement st3 = con.createStatement();
-	String sql3 = "insert into  reviewboard (num,title,travelnation,travelloc,content) values(fortravel_seq.nextval,'"
-	+request.getParameter("title")+"',"+request.getParameter("travelnation")+","+request.getParameter("content")+","+request.getParameter("travelloc")+")";
+	String sql3 = "insert into  reviewboard (num,title,userid,readcnt,travelnation,travelloc,content) values(fortravel_seq.nextval,'"
+	+request.getParameter("title")+"','"+userid+"',0,'"+request.getParameter("travelnation")+"','"+request.getParameter("content")+"','"+request.getParameter("travelloc")+"')";
 	st3.executeUpdate(sql3);
 	con.close();
 	st3.close();
 } catch(Exception e) {
 	System.out.println(e);
 }
+
+
 
 %>
 		<div id="review_write" data-role="page">
@@ -84,8 +90,8 @@ try{
 		<div>
 		<h3>여행 후기 작성</h3>
 		<hr><br>
-		여행 국가 : <input type = "text" id = "review_input_loc" name ="travelnation"> 
-		여행 도시 : <input type = "text" id = "review_input_city" name="travelloc">
+		여행 국가 : <input type = "text" id = "review_input_travelnation" name ="travelnation"> 
+		여행 도시 : <input type = "text" id = "review_input_travelloc" name="city">
 		제목 : <input type = "text" id = "review_input_title" name="title">
 		내용 : <p><textarea rows="20" cols="130" id="review_input_content" name="content"></textarea></p>
 		<button id ="btn1">전송</button>

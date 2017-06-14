@@ -58,30 +58,13 @@ $.ajax({
 
 }); 
 
- function checkLogin(){
-	 if($.trim($("#userid").val()) == ""){
-		 alert("아이디를 입력해 주세요.");
-		 $("#userid").focus();
-		 return;
-	 }
-	 
-	 if($.trim($("#userPW").val()) == ""){
-		 alert("비밀번호를 입력해 주세요.");
-		 $("#userPW").focus();
-		 return;
-	 }
-
- 
- $.ajax({
-	 type:'post',
-	 async:true,
-	 url:
- })
- }
 </script>
 </head>
 <body>
-<%String strXML2 = "";
+<%
+String userid = (String)session.getAttribute("id");
+System.out.println(userid);
+String strXML2 = "";
 try {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	Class.forName(driver);
@@ -171,7 +154,7 @@ out.write(strXML2);
 		</div>
 		</div>
 		<div>
-		<a href = "reviewwrite.jsp" data-transition="pop" data-rel="dialog" data-ajax="false">글쓰기</a>
+		<a id = "ReviewWrite" href = "reviewwrite.jsp" data-transition="pop" data-rel="dialog" data-ajax="false">글쓰기</a>
 		</div>
 		</div>
 		<div data-role="footer">
